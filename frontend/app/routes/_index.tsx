@@ -1,41 +1,33 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/react";
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+import { authenticator } from "~/services/auth.server";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
+  return [{ title: "New Remix App" }];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <Form method="post">
+        <input type="email" name="email" required />
+        <input
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          required
+        />
+        <button>Sign In</button>
+      </Form>
+    </>
   );
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+  return await authenticator.authenticate("user-login", request, {
+    successRedirect: "/success",
+    // TODO: 今はログイン失敗時にエラー画面に行くが、「正しい認証情報入れろや」的なエラーメッセージ表示になるはず
+    // failureRedirect: "/",
+  });
 }
