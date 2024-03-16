@@ -15,4 +15,4 @@ COPY . .
 RUN npm run build
 
 # アプリケーションを起動
-CMD ["npm run dev"]
+CMD ["npm", "run", "dev"]
