@@ -4,7 +4,7 @@ import { Form } from "@remix-run/react";
 import { authenticator } from "~/services/auth.server";
 
 export const meta: MetaFunction = () => {
-  return [{ title: "New Remix App" }];
+  return [{ title: "aaaaa" }];
 };
 
 export default function Index() {
