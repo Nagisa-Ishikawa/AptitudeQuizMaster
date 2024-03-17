@@ -6,7 +6,6 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-    tty: true
 
   backend:
     build: ./backend
@@ -14,7 +13,6 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    tty: true
     # environment:
     #   - DATABASE_URL=postgres://user:password@localhost:5432/aptitude-quiz-master?sslmode=disable
     # links:

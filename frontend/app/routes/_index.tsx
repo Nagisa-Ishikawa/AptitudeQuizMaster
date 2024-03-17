@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/react";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { authenticator } from "~/services/auth.server";
+import { Button } from "@mantine/core";
 
 export const meta: MetaFunction = () => {
   return [{ title: "aaaaa" }];
@@ -19,6 +20,7 @@ export default function Index() {
           required
         />
         <button>Sign In</button>
+        <Button>aaa</Button>
       </Form>
     </>
   );
