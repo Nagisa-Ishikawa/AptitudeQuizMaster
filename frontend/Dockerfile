@@ -1,21 +1,21 @@
-# ベースイメージ
+# コンテナのベースイメージ指定
 FROM node:18
 
-# bashインストール
+# コンテナ内でbash使いたいのでインストール
 RUN apt-get update && apt-get install -y --no-install-recommends bash
 
-# アプリケーションディレクトリを作成
+# アプリケーションディレクトリ作成
 WORKDIR /app
 
-# アプリケーションの依存関係をインストール
+# ライブラリをインストール
 COPY package*.json ./
 RUN npm install
 
-# アプリケーションのソースをバンドル
+# ローカルファイルをコンテナにコピー
 COPY . .
 
-# ビルド
+# アプリビルド
 RUN npm run build
 
-# アプリケーションを起動
+# アプリ起動
 CMD ["npm", "run", "dev"]

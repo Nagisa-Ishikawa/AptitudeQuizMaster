@@ -1,25 +1,24 @@
-# ベースイメージ
+# コンテナのベースイメージ指定
 FROM golang:1.19
 
-# bashインストール
+# コンテナ内でbash使いたいのでインストール
 RUN apt-get update && apt-get install -y --no-install-recommends bash
 
-# ワークディレクトリの設定
+# ワークディレクトリ設定
 WORKDIR /app
 
-# ソースコードをコピー
+# ローカルファイルをコンテナにコピー
 COPY . .
 
-# Goの依存関係管理ファイルをコピー
+# Goのライブラリ依存関係管理ファイルコピー、インストール
 RUN go mod tidy
 COPY go.mod ./
 COPY go.sum ./
-
 RUN go mod download
 
 
-# アプリケーションをビルド
+# アプリビルド
 RUN go build -o main ./cmd
 
-# アプリケーションを起動
+# アプリ起動
 CMD ["./main"]
