@@ -6,4 +6,5 @@ export default {
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
   // serverBuildPath: "build/index.js",
+  v2_routeConvention: true,
 };

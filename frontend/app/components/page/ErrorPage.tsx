@@ -1,6 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
 
-export function ErrorBoundary() {
+export const ErrorPage: React.FC = () => {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
@@ -24,4 +24,4 @@ export function ErrorBoundary() {
   } else {
     return <h1>Unknown Error</h1>;
   }
-}
+};

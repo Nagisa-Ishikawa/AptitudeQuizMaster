@@ -6,12 +6,12 @@ import type {
 import { redirect } from "@remix-run/node";
 import { authenticator } from "~/services/auth.server";
 
-export const action: ActionFunction = async ({
+export const logoutAction: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
   return await authenticator.logout(request, { redirectTo: "/" });
 };
 
-export const loader: LoaderFunction = async () => {
+export const logoutLoader: LoaderFunction = async () => {
   return redirect("/");
 };

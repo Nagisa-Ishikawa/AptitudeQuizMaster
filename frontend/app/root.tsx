@@ -27,10 +27,10 @@ export default function App() {
       <body>
         <MantineProvider theme={theme}>
           <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
         </MantineProvider>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
       </body>
     </html>
   );

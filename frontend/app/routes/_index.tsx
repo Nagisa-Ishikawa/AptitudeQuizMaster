@@ -10,19 +10,17 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <>
-      <Form method="post">
-        <input type="email" name="email" required />
-        <input
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          required
-        />
-        <button>Sign In</button>
-        <Button>aaa</Button>
-      </Form>
-    </>
+    <Form method="post">
+      <input type="email" name="email" required />
+      <input
+        type="password"
+        name="password"
+        autoComplete="current-password"
+        required
+      />
+      <button>Sign In</button>
+      <Button>aaa</Button>
+    </Form>
   );
 }
 

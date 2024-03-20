@@ -1,9 +1,9 @@
-import { Outlet } from "@remix-run/react";
+import { ErrorPage } from "~/components/page/ErrorPage";
 
 export default function LogoutRoute() {
   return (
     <main>
-      <Outlet />
+      <ErrorPage />
     </main>
   );
 }

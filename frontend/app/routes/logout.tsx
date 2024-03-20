@@ -1,9 +1,4 @@
-import { Outlet } from "@remix-run/react";
+import { logoutAction, logoutLoader } from "~/actions/logout";
 
-export default function LogoutRoute() {
-  return (
-    <main>
-      <Outlet />
-    </main>
-  );
-}
+export const action = logoutAction;
+export const loader = logoutLoader;
