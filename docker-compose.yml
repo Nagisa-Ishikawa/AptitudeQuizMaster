@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   frontend:
+    container_name: aptitude-quiz-master-frontend
     build: ./frontend
     ports:
       - "3000:3000"
@@ -8,6 +9,7 @@ services:
       - backend
 
   backend:
+    container_name: aptitude-quiz-master-backend
     build: ./backend
     ports:
       - "8080:8080"
@@ -20,6 +22,7 @@ services:
 
   db:
     image: postgres
+    container_name: aptitude-quiz-master-db
     environment:
       POSTGRES_DB: aptitude-quiz-master
       POSTGRES_USER: user

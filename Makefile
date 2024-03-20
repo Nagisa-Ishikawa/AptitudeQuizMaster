@@ -4,6 +4,12 @@ up:
 	$(dc) up
 
 # ビルド
-# Dockerfileいじったらビルドし直す
+# Dockerfileをいじったらビルドし直す
 build:
 	$(dc) build --no-cache
+
+# コンテナ内bash起動
+front-sh:
+	docker exec -it aptitude-quiz-master-frontend bash
+back-sh:
+	docker exec -it aptitude-quiz-master-backend bash

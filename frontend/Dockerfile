@@ -1,6 +1,9 @@
 # ベースイメージ
 FROM node:18
 
+# bashインストール
+RUN apt-get update && apt-get install -y --no-install-recommends bash
+
 # アプリケーションディレクトリを作成
 WORKDIR /app
 

@@ -1,6 +1,9 @@
 # ベースイメージ
 FROM golang:1.19
 
+# bashインストール
+RUN apt-get update && apt-get install -y --no-install-recommends bash
+
 # ワークディレクトリの設定
 WORKDIR /app
 
@@ -16,9 +19,6 @@ RUN go mod download
 
 
 # アプリケーションをビルド
-# RUN go build -o main .
-# RUN go build -o main ./cmd/main.go
-# RUN go build -o main ./cmd
 RUN go build -o main ./cmd
 
 # アプリケーションを起動
