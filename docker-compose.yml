@@ -7,14 +7,20 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # node_modulesはコンテナ内のものを使いたいのでマウント除外する
 
   backend:
     container_name: aptitude-quiz-master-backend
     build: ./backend
     ports:
-      - "8080:8080"
+      - "1323:1323"
     depends_on:
       - db
+    volumes:
+      - ./backend:/app
+    command: sh -c 'go build -o main ./cmd && air'
     # environment:
     #   - DATABASE_URL=postgres://user:password@localhost:5432/aptitude-quiz-master?sslmode=disable
     # links:

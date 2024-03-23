@@ -17,3 +17,7 @@ back-sh:
 # コンテナ内db接続
 db:
 	docker exec -it aptitude-quiz-master-db psql -U user -d postgres
+
+.PHONY: kill
+kill1232:
+	@kill $$(lsof -ti:1232) 2>/dev/null || true

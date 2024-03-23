@@ -1,5 +1,5 @@
 # コンテナのベースイメージ指定
-FROM golang:1.19
+FROM golang:1.22
 
 # コンテナ内でbash使いたいのでインストール
 RUN apt-get update && apt-get install -y --no-install-recommends bash
@@ -11,9 +11,10 @@ WORKDIR /app
 COPY . .
 
 # Goのライブラリ依存関係管理ファイルコピー、インストール
-RUN go mod tidy
+RUN go install github.com/cosmtrek/air@latest
 COPY go.mod ./
 COPY go.sum ./
+RUN go mod tidy
 RUN go mod download
 
 
@@ -21,4 +22,4 @@ RUN go mod download
 RUN go build -o main ./cmd
 
 # アプリ起動
-CMD ["./main"]
+CMD ["air"]
