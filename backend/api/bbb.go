@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"database/sql"
 	"fmt" // fmtパッケージのインポートを追加
-	// "os"  // osパッケージのインポートを追加
+	"os"  // osパッケージのインポートを追加
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/lib/pq"
@@ -16,13 +16,12 @@ type EMPLOYEE struct {
 }
 
 func Bbb(c echo.Context) error {
-	// db_url, ok := os.LookupEnv("DATABASE_URL")
-	// if !ok {
-	// 	return c.String(http.StatusOK, ".envにDATABASE_URLを設定してね")
-	// }
-	// db_url =
+	db_url, ok := os.LookupEnv("DATABASE_URL")
+	if !ok {
+		return c.String(http.StatusOK, ".envにDATABASE_URLを設定してね")
+	}
 
-	db, err := sql.Open("postgres", "postgres://user:password@localhost:5432/aptitude-quiz-master?sslmode=disable")
+	db, err := sql.Open("postgres", db_url)
 	defer db.Close()
 
 	if err != nil {

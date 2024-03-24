@@ -13,7 +13,8 @@ const primaryColor: MantineColorsTuple = [
   "#01286d",
 ];
 
-/** mantine uiのテーマオブジェクト
+/**
+ * mantine uiのテーマオブジェクト
  * mantine ui で使うコンポーネント全般の、デフォルトのカラーとかフォントとかを決める
  */
 export const theme = createTheme({

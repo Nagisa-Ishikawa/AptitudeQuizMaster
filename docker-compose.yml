@@ -21,10 +21,10 @@ services:
     volumes:
       - ./backend:/app
     command: sh -c 'go build -o main ./cmd && air'
-    # environment:
-    #   - DATABASE_URL=postgres://user:password@localhost:5432/aptitude-quiz-master?sslmode=disable
-    # links:
-    #   - db:db
+    environment:
+      - DATABASE_URL="postgres://user:password@db:5432/aptitude-quiz-master?sslmode=disable"
+    links:
+      - db:db
 
   db:
     image: postgres

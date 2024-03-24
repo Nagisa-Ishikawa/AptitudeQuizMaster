@@ -5,7 +5,7 @@ import { authenticator } from "~/services/auth.server";
 import { Button } from "@mantine/core";
 
 export const meta: MetaFunction = () => {
-  return [{ title: "aaaaa" }];
+  return [{ title: "DIVX aptitude quiz master" }];
 };
 
 export default function Index() {
