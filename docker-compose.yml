@@ -1,30 +1,13 @@
 version: "3.8"
 services:
-  frontend:
-    container_name: aptitude-quiz-master-frontend
-    build: ./frontend
+  app:
+    container_name: aptitude-quiz-master-app
+    build: ./application
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
     volumes:
-      - ./frontend:/app
+      - ./application:/app
       - /app/node_modules # node_modulesはコンテナ内のものを使いたいのでマウント除外する
-
-  backend:
-    container_name: aptitude-quiz-master-backend
-    build: ./backend
-    ports:
-      - "1323:1323"
-    depends_on:
-      - db
-    volumes:
-      - ./backend:/app
-    command: sh -c 'go build -o main ./cmd && air'
-    environment:
-      - DATABASE_URL="postgres://user:password@db:5432/aptitude-quiz-master?sslmode=disable"
-    links:
-      - db:db
 
   db:
     image: postgres

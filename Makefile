@@ -11,8 +11,6 @@ build:
 # コンテナ内bash接続
 front-sh:
 	docker exec -it aptitude-quiz-master-frontend bash
-back-sh:
-	docker exec -it aptitude-quiz-master-backend bash
 
 # コンテナ内db接続
 db:
