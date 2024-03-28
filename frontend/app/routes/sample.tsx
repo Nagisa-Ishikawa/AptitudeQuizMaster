@@ -1,11 +1,12 @@
 import { Button } from "@mantine/core";
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import { Form, useActionData, useLoaderData } from "@remix-run/react";
+import { useEffect } from "react";
 
 /**
  * remixでは、GETメソッドはloaderという関数で行う
  */
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+const loader = async ({ request }: LoaderFunctionArgs) => {
   // loader, actionのスクリプトはサーバー側で実行される
   console.log("🐟このログはサーバー側だけでるよ");
 
@@ -34,6 +35,16 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   //   });
 };
 
+const action = async ({ request, params }: ActionFunctionArgs) => {
+  if (request.method === "POST") {
+    return await fetch("http://backend:1323/bbb", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(params),
+    });
+  }
+};
+
 /**
  * サンプルページ
  */
@@ -43,6 +54,7 @@ export default function SampleRoute() {
   console.log("👉👈このログはクライアント側でもサーバー側でもでるよ");
 
   const fetchedData = useLoaderData<typeof loader>();
+  const data = useActionData<typeof action>();
 
   return (
     <main>
@@ -51,12 +63,18 @@ export default function SampleRoute() {
       <div>{fetchedData}</div>
       <Button
         onClick={() => {
-          // このログはサーバーでのレンダリング時に実行されず、クライアントでのスクリプト実行時だけ表示される
+          // このonClickの関数はサーバーでのレンダリング時に実行されず、クライアントでのスクリプト実行時だけ表示される
           console.log("✅このログはクライアント側だけ出るよ");
         }}
       >
-        ボタン
+        ログサンプルボタン
       </Button>
+      return (
+      <Form method="post">
+        <input type="text" name="visitorsName" />
+        {data ? data.message : "Waiting..."}
+      </Form>
+      );
     </main>
   );
 }
