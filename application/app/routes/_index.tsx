@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/react";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form } from "@remix-run/react";
-import { authenticator } from "~/services/auth.server";
+import { authenticator } from "../services/auth.server";
 import { Button } from "@mantine/core";
 
 export const meta: MetaFunction = () => {

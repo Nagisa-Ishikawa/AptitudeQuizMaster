@@ -13,6 +13,7 @@
   "dependencies": {
     "@mantine/core": "^7.6.2",
     "@mantine/hooks": "^7.6.2",
+    "@prisma/client": "^5.11.0",
     "@remix-run/css-bundle": "^2.8.0",
     "@remix-run/express": "^2.8.0",
     "@remix-run/node": "^2.8.0",
@@ -41,6 +42,7 @@
     "postcss": "^8.4.37",
     "postcss-preset-mantine": "^1.13.0",
     "postcss-simple-vars": "^7.0.1",
+    "prisma": "^5.11.0",
     "typescript": "^5.1.6"
   },
   "engines": {

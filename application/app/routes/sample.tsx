@@ -1,49 +1,38 @@
 import { Button } from "@mantine/core";
-import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
+import { prisma } from "prisma/servers/db.server";
 import { useEffect } from "react";
+
+type User = {
+  id: number;
+};
 
 /**
  * remixでは、GETメソッドはloaderという関数で行う
  */
-const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   // loader, actionのスクリプトはサーバー側で実行される
   console.log("🐟このログはサーバー側だけでるよ");
 
   // クッキーの読み込み
   const cookie = request.headers.get("Cookie");
+  console.log("クッキーサンプル :", cookie);
 
   // クエリパラメータの取得
   const url = new URL(request.url);
   const query = url.searchParams.get("param_sample");
-  console.log("クエリパラメータ param_sample :", query);
+  console.log("クエリパラメータサンプル :", query);
 
-  const res = await fetch("http://backend:1323/aaa");
-  return res;
-
-  // 他のやりかたもあるよの例
-  //   // fetch("https://any/path").then((res)=>res.json()) と同じ
-  //   // json()の返り値が、クライアントに送信される
-  //   return json({ any: "thing" });
-
-  //   // const res:Response = fetch("https://any/path") と同じ
-  //   // Responseの値が、クライアントに送信される
-  //   return new Response(JSON.stringify({ any: "thing" }), {
-  //     headers: {
-  //       "Content-Type": "application/json; charset=utf-8",
-  //     },
-  //   });
+  const data = await prisma.user.findMany();
+  console.log("🤔data :", data);
+  return json(data);
 };
 
-const action = async ({ request, params }: ActionFunctionArgs) => {
-  if (request.method === "POST") {
-    return await fetch("http://backend:1323/bbb", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params),
-    });
-  }
-};
+/**
+ * remixでは、POST, PUT, DELETEメソッドはactionという関数で行う
+ */
+// export const action = async ({ request, params }: ActionFunctionArgs) => {};
 
 /**
  * サンプルページ
@@ -53,14 +42,17 @@ export default function SampleRoute() {
   // クライアントでもスクリプトは実行される
   console.log("👉👈このログはクライアント側でもサーバー側でもでるよ");
 
-  const fetchedData = useLoaderData<typeof loader>();
-  const data = useActionData<typeof action>();
+  const data = useLoaderData<User[]>();
 
   return (
     <main>
       <div>サンプルページ</div>
       <div>フェッチしたデータ↓</div>
-      <div>{fetchedData}</div>
+      <div>
+        {data?.map((x, i) => (
+          <div key={i}>{x.id}</div>
+        ))}
+      </div>
       <Button
         onClick={() => {
           // このonClickの関数はサーバーでのレンダリング時に実行されず、クライアントでのスクリプト実行時だけ表示される
@@ -69,12 +61,6 @@ export default function SampleRoute() {
       >
         ログサンプルボタン
       </Button>
-      return (
-      <Form method="post">
-        <input type="text" name="visitorsName" />
-        {data ? data.message : "Waiting..."}
-      </Form>
-      );
     </main>
   );
 }
