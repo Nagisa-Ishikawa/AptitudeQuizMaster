@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  app:
+    container_name: aptitude-quiz-master-app
+    build: ./application
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./application:/app
+      - /app/node_modules # node_modulesはコンテナ内のものを使いたいのでマウント除外する
+
+  db:
+    image: postgres
+    container_name: aptitude-quiz-master-db
+    environment:
+      POSTGRES_DB: aptitude-quiz-master
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
