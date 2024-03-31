@@ -2,6 +2,7 @@ import { Button } from "@mantine/core";
 import { LoaderFunctionArgs, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { prisma } from "../services/db.server";
+import { Exam } from "@prisma/client";
 
 /**
  * remixでは、GETメソッドはloaderという関数で行う
@@ -37,7 +38,7 @@ export default function SampleRoute() {
   // クライアントでもスクリプトは実行される
   console.log("👉👈このログはクライアント側でもサーバー側でもでるよ");
 
-  const data = useLoaderData<(typeof loader)[]>();
+  const data = useLoaderData<Exam[]>();
 
   return (
     <main>
