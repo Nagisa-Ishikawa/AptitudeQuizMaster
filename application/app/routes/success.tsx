@@ -18,7 +18,6 @@ export default function SuccessRoute() {
       <div>
         <form action="/logout" method="post">
           <button type="submit">サインアウト</button>
-          <Button>ddd</Button>
           <Button onClick={onClickCcc}>ccc</Button>
         </form>
       </div>
