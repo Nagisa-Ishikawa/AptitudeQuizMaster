@@ -8,6 +8,8 @@ services:
     volumes:
       - ./application:/app
       - /app/node_modules # node_modulesはコンテナ内のものを使いたいのでマウント除外する
+    depends_on:
+      - "db"
 
   db:
     image: postgres

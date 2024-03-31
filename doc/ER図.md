@@ -13,7 +13,7 @@
 - exams
   - 過去に受験した試験内容を変えてしまわないよう、論理削除で扱う
   - 出題順やカテゴリーなどの情報も追加していきたいかも
-- exam_items
+- exam_questions
   - type
     - チェックボックス | ラジオボタン | テキスト
     - 並べ変えリストとか画像のアップロードも追加していきたいかも
@@ -37,34 +37,33 @@ erDiagram
 		datetime exam_start_date "受験開始日"
 		datetime exam_end_date "受験終了日"
 	}
+	examinee_answers {
+		number id "試験の回答"
+		number examinee_id "回答者"
+		number exam_question_id "設問"
+		json answer "回答"
+		boolean is_marked "後で見るマーク"
+	}
 	exams {
 		number id "試験"
 		string title
 		number time_limit "制限時間(分)"
 		datetime deleted_at
 	}
-	exam_items {
+	exam_questions {
 		number id "試験の設問"
-		string text
+		string question "問題文"
 		number type "設問タイプ"
 		json option "チェックボックスの選択肢などの情報"
 		json collect_answer "正答"
 		number json_version "設問定義のバージョン"
 		datetime deleted_at
 	}
-	exam_answers {
-		number id "試験の回答"
-		number examinee_id "回答者"
-		number exam_item_id "設問"
-		json answer "回答内容"
-		boolean is_marked "後で見る"
-	}
-	
 
 	examinees }o--|| exams : ""
-	examinees ||--o| exam_answers: ""
-	exams ||--o{ exam_items : "has"
-	exam_answers }o--|| exam_items : ""
+	examinees ||--o| examinee_answers: ""
+	exams ||--o{ exam_questions : "has"
+	examinee_answers }o--|| exam_questions : ""
 	
 
 ```

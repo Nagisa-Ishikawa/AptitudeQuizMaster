@@ -1,12 +1,7 @@
 import { Button } from "@mantine/core";
-import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/node";
-import { Form, useActionData, useLoaderData } from "@remix-run/react";
-import { prisma } from "prisma/servers/db.server";
-import { useEffect } from "react";
-
-type User = {
-  id: number;
-};
+import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { prisma } from "../services/db.server";
 
 /**
  * remixでは、GETメソッドはloaderという関数で行う
@@ -24,8 +19,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const query = url.searchParams.get("param_sample");
   console.log("クエリパラメータサンプル :", query);
 
-  const data = await prisma.user.findMany();
-  console.log("🤔data :", data);
+  const data = await prisma.exam.findMany();
+
   return json(data);
 };
 
@@ -42,7 +37,7 @@ export default function SampleRoute() {
   // クライアントでもスクリプトは実行される
   console.log("👉👈このログはクライアント側でもサーバー側でもでるよ");
 
-  const data = useLoaderData<User[]>();
+  const data = useLoaderData<(typeof loader)[]>();
 
   return (
     <main>
