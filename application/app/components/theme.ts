@@ -1,4 +1,9 @@
-import { Button, MantineColorsTuple, createTheme } from "@mantine/core";
+import {
+  colorsTuple,
+  Button,
+  MantineColorsTuple,
+  createTheme,
+} from "@mantine/core";
 
 const primaryColor: MantineColorsTuple = [
   "#ebf3ff",
@@ -7,7 +12,7 @@ const primaryColor: MantineColorsTuple = [
   "#9ec1f0",
   "#83b0eb",
   "#699fe6",
-  "#0146ac",
+  "#0141A0",
   "#013c97",
   "#013282",
   "#01286d",
@@ -16,10 +21,16 @@ const primaryColor: MantineColorsTuple = [
 /**
  * mantine uiのテーマオブジェクト
  * mantine ui で使うコンポーネント全般の、デフォルトのカラーとかフォントとかを決める
+ * 各コンポーネントの色は必ずcolorsで決めたパレットから使う
  */
 export const theme = createTheme({
-  colors: { primaryColor: primaryColor },
+  colors: {
+    primaryColor: primaryColor,
+    headerColor: colorsTuple("#CCCCCC"),
+    bodyColor: colorsTuple("#FFFFFF"),
+  },
   fontFamily: "YuGothic",
+  primaryShade: 6,
   components: {
     Button: Button.extend({
       defaultProps: {
