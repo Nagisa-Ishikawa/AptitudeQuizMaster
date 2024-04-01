@@ -15,7 +15,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 /**
  * _privateパス共通layout
  */
-export default function Layout() {
+export default function Index() {
   const theme = useMantineTheme();
 
   return (
@@ -23,8 +23,9 @@ export default function Layout() {
       <Header />
       <main
         style={{
-          height: "calc(100% - 80px)",
+          height: "calc(100% - 80px)", // 100% - ヘッダーの高さ
           backgroundColor: theme.colors.bodyColor[theme.primaryShade as number],
+          color: theme.colors.textColor[theme.primaryShade as number],
         }}
       >
         <Outlet />

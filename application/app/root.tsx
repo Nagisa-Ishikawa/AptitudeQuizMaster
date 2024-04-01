@@ -11,7 +11,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { theme } from "./components/theme";
+import { theme } from "./components/MantineTheme";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
