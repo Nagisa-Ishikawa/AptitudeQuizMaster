@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
         align="center"
         style={{
           backgroundColor:
-            theme.colors.headerColor[theme.primaryShade as number],
+            theme.colors.secondaryColor[theme.primaryShade as number],
         }}
       >
         <Image src={logo} alt="divxロゴ" h={60} w={160} ml={40} />

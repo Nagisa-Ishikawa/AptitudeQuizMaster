@@ -1,6 +1,5 @@
 import { RingProgress, Text, useMantineTheme } from "@mantine/core";
 import React from "react";
-import { primaryColor, secondaryColor } from "../MantineTheme";
 
 type Props = {
   value: number;
@@ -12,8 +11,13 @@ export const CircleProgress: React.FC<Props> = ({ value, label }: Props) => {
   return (
     <RingProgress
       size={100}
-      rootColor={primaryColor}
-      sections={[{ value: value, color: secondaryColor }]}
+      rootColor={theme.colors.primaryColor[theme.primaryShade as number]}
+      sections={[
+        {
+          value: value,
+          color: theme.colors.secondaryColor[theme.primaryShade as number],
+        },
+      ]}
       label={
         <Text fw={theme.other.fontWeights.bold} ta="center" size="xs">
           {label}

@@ -6,12 +6,15 @@ import {
   rem,
   ThemeIcon,
   Text,
+  Title,
 } from "@mantine/core";
 
+const primaryColor = "#0141A0";
+const secondaryColor = "#CCCCCC";
+const highlightColor = "#CA7218";
 const bodyColor = "#FFFFFF";
 const textColor = "#121412";
-export const primaryColor = "#0141A0";
-export const secondaryColor = "#CCCCCC";
+const lightTextColor = "#676867";
 
 const primaryColorPalette: MantineColorsTuple = [
   "#ebf3ff",
@@ -34,13 +37,15 @@ const primaryColorPalette: MantineColorsTuple = [
 export const theme = createTheme({
   colors: {
     primaryColor: primaryColorPalette,
-    headerColor: colorsTuple(secondaryColor),
+    secondaryColor: colorsTuple(secondaryColor),
+    highlightColor: colorsTuple(highlightColor),
     bodyColor: colorsTuple(bodyColor),
     textColor: colorsTuple(textColor),
+    lightTextColor: colorsTuple(lightTextColor),
   },
   fontFamily: "YuGothic",
   fontSizes: {
-    xs: rem(14),
+    xs: rem(12),
     sm: rem(16),
     md: rem(18),
     lg: rem(20),
@@ -57,7 +62,7 @@ export const theme = createTheme({
     }),
     Text: Text.extend({
       defaultProps: {
-        color: textColor,
+        c: textColor,
       },
     }),
     ThemeIcon: ThemeIcon.extend({
@@ -65,6 +70,12 @@ export const theme = createTheme({
         size: "lg",
         variant: "transparent",
         radius: "0",
+      },
+    }),
+    Title: Title.extend({
+      defaultProps: {
+        lts: "2px",
+        size: "32px",
       },
     }),
   },
