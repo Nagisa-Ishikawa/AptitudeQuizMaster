@@ -8,6 +8,7 @@
 - フロント
   - remix
   - prisma
+  - Google Icons
 - dbms
   - postgres
 

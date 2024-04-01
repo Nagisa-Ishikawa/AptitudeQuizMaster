@@ -1,0 +1,55 @@
+import {
+  Box,
+  Flex,
+  ThemeIcon,
+  Image,
+  rem,
+  useMantineTheme,
+  Space,
+} from "@mantine/core";
+import React from "react";
+import { Legend } from "./Legend";
+import { StarIcon } from "../../routes/_private.exam.list/StarIcon";
+
+export const Legends: React.FC = () => {
+  const theme = useMantineTheme();
+  return (
+    <Flex align="flex-end">
+      <Legend
+        label={"未解答"}
+        sample={
+          <>
+            <Box
+              h={rem(15)}
+              w={rem(15)}
+              style={{
+                border: "2px solid",
+                borderColor:
+                  theme.colors.secondaryColor[theme.primaryShade as number],
+                borderRadius: rem(6),
+              }}
+            ></Box>
+            <Space h={rem(6)} />
+          </>
+        }
+      />
+      <Legend
+        label={"解答済"}
+        sample={
+          <>
+            <Box
+              h={rem(15)}
+              w={rem(15)}
+              bg={theme.colors.secondaryColor[theme.primaryShade as number]}
+              style={{
+                borderRadius: "6px",
+              }}
+            ></Box>
+            <Space h={rem(6)} />
+          </>
+        }
+      />
+      <Legend label={"後で見返す"} sample={<StarIcon size={rem(22)} />} />
+    </Flex>
+  );
+};
