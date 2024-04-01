@@ -1,35 +1,28 @@
-import { Flex, Stack, Title, rem, useMantineTheme } from "@mantine/core";
+import { ExamQuestion, ExamineeAnswer } from "@prisma/client";
+import { LoaderFunction, json } from "@remix-run/node";
+import { Outlet, useLoaderData } from "@remix-run/react";
+import { prisma } from "../../services/db.server";
 
-import { TimeLeft } from "./TimeLeft";
-import { BackLink } from "./BackLink";
-import { Legends } from "./Legends";
+// ExamQuestionモデルと、関連があるモデルを含んだ型
+export type LinkedExamQuestion = ExamQuestion & {
+  examAnswers: ExamineeAnswer[];
+};
 
-/** 問題一覧ページ */
+//
+export const loader: LoaderFunction = async () => {
+  // TODO: ユーザが受けるexamに絞る、論理削除実装する
+  const data = await prisma.examQuestion.findMany({
+    include: {
+      examAnswers: true,
+    },
+  });
+
+  return json(data);
+};
+
+/** _private.examパス下共通処理 */
 export default function Index() {
-  const theme = useMantineTheme();
+  const data = useLoaderData<LinkedExamQuestion[]>();
 
-  return (
-    <Stack w={"100%"} style={{ padding: "30px 80px 40px 80px" }} gap="24px">
-      <Flex align="center" justify="space-between">
-        {/* 問題に戻るリンク */}
-        <BackLink />
-        {/* 残り時間 */}
-        <TimeLeft timeLeft={20} timeLeftLabel="02:23" />
-      </Flex>
-
-      <Flex
-        style={{
-          paddingBottom: rem(8),
-          borderBottom: "1px solid",
-          borderColor:
-            theme.colors.secondaryColor[theme.primaryShade as number],
-        }}
-        justify="space-between"
-      >
-        <Title>問題一覧</Title>
-        {/* 回答状態凡例 */}
-        <Legends />
-      </Flex>
-    </Stack>
-  );
+  return <Outlet context={data} />;
 }

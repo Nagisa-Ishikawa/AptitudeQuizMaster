@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import React from "react";
 import { Legend } from "./Legend";
-import StarIcon from "../../../public/images/icons/star.svg";
+import { StarIcon } from "../../routes/_private.exam.list/StarIcon";
 
 export const Legends: React.FC = () => {
   const theme = useMantineTheme();
@@ -26,7 +26,7 @@ export const Legends: React.FC = () => {
                 border: "2px solid",
                 borderColor:
                   theme.colors.secondaryColor[theme.primaryShade as number],
-                borderRadius: "6px",
+                borderRadius: rem(6),
               }}
             ></Box>
             <Space h={rem(6)} />
@@ -49,14 +49,7 @@ export const Legends: React.FC = () => {
           </>
         }
       />
-      <Legend
-        label={"後で見返す"}
-        sample={
-          <ThemeIcon size={rem(22)}>
-            <Image src={StarIcon} alt="スターアイコン" />
-          </ThemeIcon>
-        }
-      />
+      <Legend label={"後で見返す"} sample={<StarIcon size={rem(22)} />} />
     </Flex>
   );
 };

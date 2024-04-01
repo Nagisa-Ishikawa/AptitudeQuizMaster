@@ -28,6 +28,31 @@ const primaryColorPalette: MantineColorsTuple = [
   "#013282",
   "#01286d",
 ];
+const secondaryColorPallet: MantineColorsTuple = [
+  "#FFFFFF",
+  "#F2F2F2",
+  "#EEEEEE",
+  "#E5E5E5",
+  "#DDDDDD",
+  "#D8D8D8",
+  secondaryColor,
+  "#BFBFBF",
+  "#B2B2B2",
+  "#A5A5A5",
+];
+
+const bodyColorPallet: MantineColorsTuple = [
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#F2F2F2",
+  "#E5E5E5",
+  "#D8D8D8",
+];
 
 /**
  * mantine uiのテーマオブジェクト
@@ -36,10 +61,13 @@ const primaryColorPalette: MantineColorsTuple = [
  */
 export const theme = createTheme({
   colors: {
-    primaryColor: primaryColorPalette,
+    primaryColor: colorsTuple(primaryColor),
+    primaryColorPalette: primaryColorPalette,
     secondaryColor: colorsTuple(secondaryColor),
+    secondaryColorPallet: secondaryColorPallet,
     highlightColor: colorsTuple(highlightColor),
     bodyColor: colorsTuple(bodyColor),
+    bodyColorPallet: bodyColorPallet,
     textColor: colorsTuple(textColor),
     lightTextColor: colorsTuple(lightTextColor),
   },
@@ -55,7 +83,7 @@ export const theme = createTheme({
   components: {
     Button: Button.extend({
       defaultProps: {
-        color: "primaryColor",
+        color: "primaryColorPalette",
         variant: "filled",
         radius: "xl",
       },

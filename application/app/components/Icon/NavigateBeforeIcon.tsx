@@ -4,7 +4,7 @@ import Icon from "../../../public/images/icons/navigate_before.svg";
 import { Image, ThemeIcon } from "@mantine/core";
 
 /** 戻るアイコン */
-export const NavigateBefore: React.FC = () => {
+export const NavigateBeforeIcon: React.FC = () => {
   return (
     <ThemeIcon>
       <Image src={Icon} alt="戻るアイコン" />

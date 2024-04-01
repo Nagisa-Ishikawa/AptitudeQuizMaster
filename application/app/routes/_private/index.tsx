@@ -13,7 +13,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 /**
- * _privateパス共通layout
+ * _privateパス下共通layout
  */
 export default function Index() {
   const theme = useMantineTheme();
