@@ -3,8 +3,9 @@ import { Center, Flex, Text, rem, useMantineTheme } from "@mantine/core";
 import { useOutletContext } from "@remix-run/react";
 import React from "react";
 import { LinkedExamQuestion } from "../_private.exam";
-import { StarIcon } from "./StarIcon";
+import { StarIcon } from "../../components/Icon/StarIcon";
 
+// 問題一覧
 export const Questions: React.FC = () => {
   const theme = useMantineTheme();
   const data = useOutletContext() as LinkedExamQuestion[];

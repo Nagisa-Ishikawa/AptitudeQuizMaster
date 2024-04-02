@@ -3,6 +3,7 @@ import React from "react";
 import { NavigateBeforeIcon } from "../../components/Icon/NavigateBeforeIcon";
 import { Link } from "../../components/Link/Link";
 
+// 問題に戻るリンク
 export const BackLink: React.FC = () => {
   return (
     <Flex align="center">

@@ -13,7 +13,8 @@
   - postgres
 
 # セットアップ
-- 誰かから.envファイルをもらう
+
+- 誰かから.envファイルをもらう・applicationディレクトリ下に配置
 - ローカルにNode.jsをインストール
   - バージョンは.node-version参照
 - コンテナ起動
@@ -23,7 +24,7 @@
 - appコンテナでマイグレーション
   - (appコンテナに接続したまま)`npx prisma migrate dev`
 - TODO: seedデータ用意
-- ブラウザでアクセス
+- ブラウザでアクセスできたらOK！
   - `http://localhost:3000`
 
 
