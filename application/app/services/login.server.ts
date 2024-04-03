@@ -1,7 +1,13 @@
+import { prisma } from "./db.server";
+
 export async function login(email: string, password: string): Promise<number> {
-  if (password === "error") {
+  const user = await prisma.examinee.findFirst({
+    where: { email: email, password: password },
+  });
+
+  if (!user) {
     throw new Error("ログインに失敗しました");
+  } else {
+    return user.id;
   }
-  // TODO: DBからuserを取得する処理 今はパスワードをerrorにすると認証失敗状態
-  return await 1;
 }

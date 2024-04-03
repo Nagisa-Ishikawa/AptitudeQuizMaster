@@ -38,7 +38,7 @@ export const TimeLeft: React.FC = () => {
           fontWeight: theme.other.fontWeights.bold,
         }}
       >
-        全体の残り時間
+        残り時間
       </Text>
       <Space w="xs" />
       <CircleProgress value={100 - remainingPercentage} label={remainingTime} />
