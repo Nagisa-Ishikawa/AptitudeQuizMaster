@@ -25,9 +25,9 @@ export default function LoginRoute() {
 }
 
 export async function action({ request }: ActionFunctionArgs) {
-  return await authenticator.authenticate("user-login", request, {
+  return await authenticator.authenticate("examinee-login", request, {
     successRedirect: "/success",
-    // TODO: 今はログイン失敗時にエラー画面に行くが、「正しい認証情報入れろや」的なエラーメッセージ表示になるはず
-    // failureRedirect: "/",
+    // TODO: 失敗時にトースト・エラー表示
+    failureRedirect: "/",
   });
 }

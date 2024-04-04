@@ -9,8 +9,8 @@ authenticator.use(
   new FormStrategy(async ({ form }) => {
     const email = form.get("email");
     const password = form.get("password");
-    const userId = await login(String(email), String(password));
-    return userId;
+    const examineeId = await login(String(email), String(password));
+    return examineeId;
   }),
-  "user-login"
+  "examinee-login"
 );
