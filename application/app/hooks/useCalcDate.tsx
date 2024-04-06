@@ -13,6 +13,8 @@ export function useCalculateRemainingTime(
   timeLimit: number
 ): [string, number] {
   const passedSeconds = differenceInSeconds(currentTime, examStartDate);
+  if (passedSeconds < 0) return ["00:00", 0];
+
   const timeLimitSeconds = timeLimit * 60;
 
   const remainingSeconds = timeLimitSeconds - passedSeconds;

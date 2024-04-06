@@ -5,3 +5,7 @@ migrate:
 # schema.prismaの内容からモデル型を作成する
 generate:
 	npx prisma generate
+
+# DBにseedデータ挿入
+seed:
+	npx tsx prisma/seed/seed.ts

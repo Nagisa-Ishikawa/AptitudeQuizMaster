@@ -5,14 +5,21 @@ import { CircleProgress } from "../../components/Progress/CircleProgress";
 import { useCalculateRemainingTime } from "../../hooks/useCalcDate";
 import { useEffect, useState } from "react";
 import { addSeconds } from "date-fns";
+import { useOutletContext } from "@remix-run/react";
+import { FetchedData } from "../_private.exam";
 
 // 残り時間
 export const TimeLeft: React.FC = () => {
+  const data = useOutletContext() as FetchedData;
   const theme = useMantineTheme();
 
   const [currentTime, setCurrentTime] = useState(new Date());
-  const examStartDate = new Date("2024-04-03T07:30:00");
-  const timeLimit = 100;
+  if (!data.examinee.examStartDate) {
+    throw new Error("試験を開始してください");
+  }
+  const examStartDate = new Date(data.examinee.examStartDate);
+
+  const timeLimit = data.exam.timeLimit;
 
   const [remainingTime, remainingPercentage] = useCalculateRemainingTime(
     examStartDate,
