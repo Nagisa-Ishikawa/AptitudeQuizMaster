@@ -23,9 +23,13 @@
   - `docker exec -it aptitude-quiz-master-app bash`
 - appコンテナでマイグレーション
   - (appコンテナに接続したまま)`npx prisma migrate dev`
-- TODO: seedデータ用意
+- appコンテナでseed
+  -  (appコンテナに接続したまま)`npx tsx prisma/seed/seed.ts`
 - ブラウザでアクセスできたらOK！
   - `http://localhost:3000`
+  - テストデータのログイン情報
+    - email: `exam.title1@0`
+    - password: `a`
 
 
 # フォルダ構成

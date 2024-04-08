@@ -9,7 +9,7 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
 
   let seed: Prisma.ExamQuestionCreateManyInput[] = [];
   exams.forEach((exam) => {
-    const questionsForExam = Array(12)
+    const questions = Array(22)
       .fill(0)
       .map((_, i) => ({
         question: "examQuestion.question" + i.toString(),
@@ -18,11 +18,11 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
         correctAnswer: JSON.stringify({ sample: "sample" }),
         jsonVersion: 1,
         examId: exam.id,
-        deletedAt: i % 2 === 0 ? now : null,
+        deletedAt: i % 8 === 0 ? now : null,
         createdAt: now,
         updatedAt: now,
       }));
-    seed = seed.concat(questionsForExam);
+    seed = seed.concat(questions);
   });
 
   await prisma.examQuestion.createMany({
