@@ -15,7 +15,7 @@ export default function Index() {
         {/* 問題に戻るリンク */}
         <BackLink />
         {/* 残り時間 */}
-        <TimeLeft timeLeft={20} timeLeftLabel="02:23" />
+        <TimeLeft />
       </Flex>
       <Flex
         style={{

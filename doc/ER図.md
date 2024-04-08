@@ -38,10 +38,10 @@ erDiagram
 		datetime exam_end_date "受験終了日"
 	}
 	examinee_answers {
-		number id "試験の回答"
-		number examinee_id "回答者"
+		number id "試験の解答"
+		number examinee_id "解答者"
 		number exam_question_id "設問"
-		json answer "回答"
+		json answer "解答"
 		boolean is_marked "後で見るマーク"
 	}
 	exams {

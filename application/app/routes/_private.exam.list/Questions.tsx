@@ -2,16 +2,17 @@ import { Center, Flex, Text, rem, useMantineTheme } from "@mantine/core";
 
 import { useOutletContext } from "@remix-run/react";
 import React from "react";
-import { LinkedExamQuestion } from "../_private.exam";
-import { StarIcon } from "./StarIcon";
+import { FetchedData } from "../_private.exam";
+import { StarIcon } from "../../components/Icon/StarIcon";
 
+// 問題一覧
 export const Questions: React.FC = () => {
   const theme = useMantineTheme();
-  const data = useOutletContext() as LinkedExamQuestion[];
+  const data = useOutletContext() as FetchedData;
 
   return (
     <Flex wrap="wrap" gap={rem(16)} style={{ maxWidth: rem(784) }}>
-      {data?.map((x, i) => {
+      {data?.examQuestions?.map((x, i) => {
         const hasAnswer = x.examAnswers?.filter((x) => x.answer).length > 0;
         const isMarked = x.examAnswers?.[x.examAnswers.length - 1]?.isMarked;
 

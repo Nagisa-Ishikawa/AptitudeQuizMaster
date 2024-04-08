@@ -1,16 +1,9 @@
-import {
-  Box,
-  Flex,
-  ThemeIcon,
-  Image,
-  rem,
-  useMantineTheme,
-  Space,
-} from "@mantine/core";
+import { Box, Flex, rem, useMantineTheme, Space } from "@mantine/core";
 import React from "react";
 import { Legend } from "./Legend";
-import { StarIcon } from "../../routes/_private.exam.list/StarIcon";
+import { StarIcon } from "../../components/Icon/StarIcon";
 
+// 解答状態凡例
 export const Legends: React.FC = () => {
   const theme = useMantineTheme();
   return (

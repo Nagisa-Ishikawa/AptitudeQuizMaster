@@ -13,7 +13,8 @@
   - postgres
 
 # セットアップ
-- 誰かから.envファイルをもらう
+
+- 誰かから.envファイルをもらう・applicationディレクトリ下に配置
 - ローカルにNode.jsをインストール
   - バージョンは.node-version参照
 - コンテナ起動
@@ -22,9 +23,13 @@
   - `docker exec -it aptitude-quiz-master-app bash`
 - appコンテナでマイグレーション
   - (appコンテナに接続したまま)`npx prisma migrate dev`
-- TODO: seedデータ用意
-- ブラウザでアクセス
+- appコンテナでseed
+  -  (appコンテナに接続したまま)`npx tsx prisma/seed/seed.ts`
+- ブラウザでアクセスできたらOK！
   - `http://localhost:3000`
+  - テストデータのログイン情報
+    - email: `exam.title1@0`
+    - password: `a`
 
 
 # フォルダ構成

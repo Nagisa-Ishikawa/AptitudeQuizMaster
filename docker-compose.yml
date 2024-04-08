@@ -5,6 +5,7 @@ services:
     build: ./application
     ports:
       - "3000:3000"
+      - "3001:3001"
     volumes:
       - ./application:/app
       - /app/node_modules # node_modulesはコンテナ内のものを使いたいのでマウント除外する
