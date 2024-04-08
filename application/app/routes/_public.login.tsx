@@ -18,14 +18,14 @@ export default function LoginRoute() {
         autoComplete="current-password"
         required
       />
-      <button>Sign In</button>
+      <Button type="submit">Sign In</Button>
     </Form>
   );
 }
 
 export async function action({ request }: ActionFunctionArgs) {
   return await authenticator.authenticate("examinee-login", request, {
-    successRedirect: "/success",
+    successRedirect: "/exam/start",
     // TODO: 失敗時にトースト・エラー表示
     failureRedirect: "/",
   });

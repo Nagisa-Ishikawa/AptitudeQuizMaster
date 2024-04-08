@@ -7,9 +7,13 @@ export default function SuccessRoute() {
   return (
     <main>
       <div>ログイン成功しました。</div>
+      <div>試験を開始しますか？</div>
       <div>
         <form action="/logout" method="post">
-          <button type="submit">サインアウト</button>
+          {/* TODO: もうちょいマシなパレットを追加する */}
+          <Button type="submit" color="secondaryColorPallet">
+            サインアウト
+          </Button>
           <Button onClick={() => navigate("/exam/list")}>試験を開始する</Button>
         </form>
       </div>
