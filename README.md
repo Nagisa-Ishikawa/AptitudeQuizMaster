@@ -7,14 +7,16 @@
     - ひとまずnpm利用で統一
 - フロント
   - remix
-  - prisma
+    - vite系のFW
+    - remixで用意されていないライブラリはviteで調達してね
   - Google Icons
-- dbms
+- バックエンド
+  - prisma
   - postgres
 
 # セットアップ
 
-- 誰かから.envファイルをもらう・applicationディレクトリ下に配置
+- 誰かから.envファイルをもらい、applicationディレクトリ下に配置
 - ローカルにNode.jsをインストール
   - バージョンは.node-version参照
 - コンテナ起動
@@ -34,24 +36,30 @@
 
 # フォルダ構成
 - AptitudeQuizMaster
+  - doc
+    - ER図とか仕様書を入れる
   - application  
     アプリのフォルダ  
     同じ階層にdocやinfraフォルダを掘るのを想定して一段階掘ってる
     - app
-      - components
-        いろんなところで使いそうなUIパーツのみを格納するフォルダ
+      - components  
+        - いろんなところで使いそうなUIパーツのみを格納するフォルダ
       - routes  
-        ページルーティングするフォルダ  
-        ここのフォルダに追加したファイルの名前で、ウェブページが追加される  
-        remixのルーティングはちょっと独特なので要予習  
-        remixはルーティングも描画もdb接続も同じファイルでやるので、ここをメインでいじることになりそう
-      - root.tsx  
-        ルートコンポーネント  
-        全てのコンポーネントはここから読み込まれる
+        - ページルーティングするフォルダ  
+          - ここのフォルダに追加したファイルの名前で、ウェブページが追加される 
+          - remixのルーティングはちょっと独特なので要予習  
+          - remixはルーティングも描画もdb接続も同じファイルでやるので、ここをメインでいじることになりそう
+        - root.tsx            
+          - ルートコンポーネント  
+          - 全てのコンポーネントはここから読み込まれる
     - prisma
       - schema.prisma  
-      prismaのスキーマファイル  
-      ここでDBのテーブル定義を行い、`make migrate`コマンドでDBに反映する
+        - prismaのスキーマファイル  
+        - ここでDBのテーブル定義を行い、`make migrate`コマンドでDBに反映する  `make generate`コマンドでtsの型の定義を生成する
+    - stories  
+      - storybookのファイルを格納するフォルダ 
+      - `make story`でstorybook開始
+
 
 
 # コマンド
@@ -59,5 +67,9 @@
 よく使いそうなコマンドはMakefileに足してるのでそちら参照
 
 
+# その他
 
-
+## 注意事項
+- node_modulesはdockerコンテナ内とローカルで共有していない
+  - 新しくライブラリを追加したら、コンテナとローカルの両方で`npm install`する
+  - prismaから生成した型定義はnode_modulesに入るため、prisma更新したらコンテナとローカルの両方で`make migrate`する
