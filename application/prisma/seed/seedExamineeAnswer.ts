@@ -23,9 +23,9 @@ export const seedExamineeAnswer = async (isProd: boolean, now: Date) => {
         seed.push({
           examineeId: examinee.id,
           examQuestionId: question.id,
-          isMarked: question.id % 3 ? true : false,
+          isMarked: question.id % 3 ? false : true,
           answer:
-            question.id % 4 ? JSON.stringify({ sample: "sample" }) : undefined,
+            question.id % 4 ? undefined : JSON.stringify({ sample: "sample" }),
           createdAt: now,
           updatedAt: now,
         });
