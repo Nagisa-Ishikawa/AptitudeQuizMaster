@@ -1,4 +1,4 @@
-import { Space, Stack, Text, rem, useMantineTheme } from "@mantine/core";
+import { Stack, Text, rem, useMantineTheme } from "@mantine/core";
 import React, { ReactNode } from "react";
 
 type Props = {
