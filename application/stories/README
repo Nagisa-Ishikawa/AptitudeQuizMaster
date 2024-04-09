@@ -1,0 +1,15 @@
+# お願い
+
+componentsを追加したら、storybookもなるべく更新してあげてください
+
+
+# ディレクトリ構成
+
+- app
+  - 本プロジェクトで作成したコンポーネント
+- assets
+  - storybookインストール時に生成されたもの
+  - おそらくConfigure your projectの素材？消しても問題なさそうなら消してヨシ
+- mantine
+  - mantineで用意されているコンポーネント
+  - よく使うパーツはstorybookでも確認できるよう用意した

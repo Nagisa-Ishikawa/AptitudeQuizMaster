@@ -4,7 +4,7 @@ import Icon from "../../../public/images/icons/star.svg";
 import { Image, ThemeIcon } from "@mantine/core";
 
 type Props = {
-  size: string;
+  size?: string;
 };
 
 /** 星アイコン */

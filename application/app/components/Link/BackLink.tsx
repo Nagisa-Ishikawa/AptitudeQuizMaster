@@ -9,7 +9,9 @@ type Props = {
   to: string;
 };
 
-// 左向き矢印付きリンク
+/**
+ * 左向き矢印付きリンク
+ */
 export const BackLink: React.FC<Props> = ({ text, to }: Props) => {
   const navigate = useNavigate();
   return (

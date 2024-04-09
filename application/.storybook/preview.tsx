@@ -3,6 +3,7 @@ import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import React from "react";
 import { theme } from "../app/components/MantineTheme";
 import "@mantine/core/styles.css";
+import { MemoryRouter } from "react-router-dom";
 
 const preview: Preview = {
   parameters: {
@@ -13,15 +14,21 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    // mantine ui 対応用デコレータ
+    (renderStory: any) => (
+      <>
+        <ColorSchemeScript />
+        <MantineProvider theme={theme}>{renderStory()}</MantineProvider>
+      </>
+    ),
+    // useNavigate 対応用
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 };
-
-export const decorators = [
-  (renderStory: any) => (
-    <>
-      <ColorSchemeScript />
-      <MantineProvider theme={theme}>{renderStory()}</MantineProvider>
-    </>
-  ),
-];
 
 export default preview;
