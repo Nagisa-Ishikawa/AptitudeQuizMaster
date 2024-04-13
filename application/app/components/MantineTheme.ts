@@ -7,6 +7,7 @@ import {
   ThemeIcon,
   Text,
   Title,
+  Input,
 } from "@mantine/core";
 
 const primaryColor = "#0141A0";
@@ -15,6 +16,7 @@ const highlightColor = "#CA7218";
 const bodyColor = "#FFFFFF";
 const textColor = "#121412";
 const lightTextColor = "#676867";
+const noteColor = "#D9D9D9";
 
 const primaryColorPalette: MantineColorsTuple = [
   "#ebf3ff",
@@ -70,6 +72,7 @@ export const theme = createTheme({
     bodyColorPallet: bodyColorPallet,
     textColor: colorsTuple(textColor),
     lightTextColor: colorsTuple(lightTextColor),
+    noteColor: colorsTuple(noteColor),
   },
   fontFamily: "YuGothic",
   fontSizes: {
@@ -78,6 +81,8 @@ export const theme = createTheme({
     md: rem(18),
     lg: rem(20),
     xl: rem(22),
+    xll: rem(26),
+    xlll: rem(30),
   },
   primaryShade: 6,
   components: {
@@ -86,6 +91,11 @@ export const theme = createTheme({
         color: "primaryColorPalette",
         variant: "filled",
         radius: "xl",
+      },
+    }),
+    Input: Input.extend({
+      defaultProps: {
+        radius: rem(8),
       },
     }),
     Text: Text.extend({
@@ -102,8 +112,8 @@ export const theme = createTheme({
     }),
     Title: Title.extend({
       defaultProps: {
-        lts: "2px",
-        size: "32px",
+        lts: rem(2),
+        size: rem(32),
       },
     }),
   },

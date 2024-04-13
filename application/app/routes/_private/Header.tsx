@@ -1,6 +1,6 @@
 import { Flex, Image, useMantineTheme } from "@mantine/core";
 
-import logo from "../../../public/images/logo.svg";
+import Logo from "../../../public/images/logo.svg";
 import React from "react";
 
 export const Header: React.FC = () => {
@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
             theme.colors.secondaryColor[theme.primaryShade as number],
         }}
       >
-        <Image src={logo} alt="divxロゴ" h={60} w={160} ml={40} />
+        <Image src={Logo} alt="divxロゴ" h={60} w={160} ml={40} />
       </Flex>
     </header>
   );
