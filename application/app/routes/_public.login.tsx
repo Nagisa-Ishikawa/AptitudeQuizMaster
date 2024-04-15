@@ -15,13 +15,29 @@ import {
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
 import { HashIcon } from "../components/Icon/HashIcon";
-import { KeyIcon } from "../components/Icon/Key";
-import { VisibilityIcon } from "../components/Icon/Visibility";
+import { KeyIcon } from "../components/Icon/KeyIcon";
+import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
 import { useDisclosure } from "@mantine/hooks";
 
 export default function LoginRoute() {
   const theme = useMantineTheme();
   const [visible, { toggle }] = useDisclosure(false);
+  const inputStyleProps = {
+    size: rem(64),
+    styles: {
+      input: { fontSize: theme.fontSizes.lg, paddingLeft: rem(70) },
+      innerInput: {
+        fontSize: theme.fontSizes.lg,
+        paddingLeft: rem(70),
+      },
+      section: { marginLeft: rem(8) },
+    },
+    style: {
+      border: "1px solid",
+      borderColor: theme.colors.noteColor[theme.primaryShade as number],
+      borderRadius: rem(10),
+    },
+  };
 
   return (
     <BackgroundImage src={LoginBackgroundImage} h="100%" w="100%">
@@ -30,23 +46,14 @@ export default function LoginRoute() {
           <Stack w={rem(448)} gap={rem(40)}>
             <Image src={Logo} alt="divxロゴ" />
             <Stack gap={rem(20)}>
+              {/* TODO: 今email認証だけど受験番号の方がいい気がしてきたので受験番号に揃える */}
               <Input
                 placeholder="受験番号"
                 type="email"
                 name="email"
                 required
                 leftSection={<HashIcon size={rem(32)} />}
-                size={rem(64)}
-                styles={{
-                  input: { fontSize: theme.fontSizes.lg, paddingLeft: rem(70) },
-                  section: { marginLeft: rem(8) },
-                }}
-                style={{
-                  border: "1px solid",
-                  borderColor:
-                    theme.colors.noteColor[theme.primaryShade as number],
-                  borderRadius: rem(10),
-                }}
+                {...inputStyleProps}
               />
               <PasswordInput
                 placeholder="パスワード"
@@ -63,20 +70,7 @@ export default function LoginRoute() {
                     onClick={toggle}
                   />
                 }
-                size={rem(64)}
-                styles={{
-                  innerInput: {
-                    fontSize: theme.fontSizes.lg,
-                    paddingLeft: rem(70),
-                  },
-                  section: { marginLeft: rem(8), marginRight: rem(8) },
-                }}
-                style={{
-                  border: "1px solid",
-                  borderColor:
-                    theme.colors.noteColor[theme.primaryShade as number],
-                  borderRadius: rem(10),
-                }}
+                {...inputStyleProps}
               />
             </Stack>
             <Center>
