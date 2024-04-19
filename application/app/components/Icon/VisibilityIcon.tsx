@@ -5,6 +5,9 @@ import OffIcon from "../../../public/images/icons/visibility_off.svg";
 import { Image, ThemeIcon } from "@mantine/core";
 
 type Props = {
+  /**
+   * trueで表示時アイコン、falseで非表示時アイコン
+   */
   isVisible: boolean;
   size?: string;
   [key: string]: unknown;

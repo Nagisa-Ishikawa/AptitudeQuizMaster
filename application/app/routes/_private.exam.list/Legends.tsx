@@ -16,7 +16,7 @@ export const Legends: React.FC = () => {
               h={rem(15)}
               w={rem(15)}
               style={{
-                border: "2px solid",
+                border: `${rem(2)} solid`,
                 borderColor:
                   theme.colors.secondaryColor[theme.primaryShade as number],
                 borderRadius: rem(6),
@@ -35,7 +35,7 @@ export const Legends: React.FC = () => {
               w={rem(15)}
               bg={theme.colors.secondaryColor[theme.primaryShade as number]}
               style={{
-                borderRadius: "6px",
+                borderRadius: rem(6),
               }}
             ></Box>
             <Space h={rem(6)} />
