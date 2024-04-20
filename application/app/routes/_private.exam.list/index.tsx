@@ -10,7 +10,11 @@ export default function Index() {
   const theme = useMantineTheme();
 
   return (
-    <Stack w={"100%"} style={{ padding: "30px 80px 40px 80px" }} gap="24px">
+    <Stack
+      w={"100%"}
+      style={{ padding: `${rem(30)} ${rem(80)} ${rem(40)} ${rem(80)}` }}
+      gap={rem(24)}
+    >
       <Flex align="center" justify="space-between">
         {/* 問題に戻るリンク */}
         <BackLink text="問題に戻る" to="/exam/question" />
@@ -20,7 +24,7 @@ export default function Index() {
       <Flex
         style={{
           paddingBottom: rem(8),
-          borderBottom: "1px solid",
+          borderBottom: `${rem(1)} solid`,
           borderColor:
             theme.colors.secondaryColor[theme.primaryShade as number],
         }}

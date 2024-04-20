@@ -1,7 +1,7 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { authenticator } from "../../services/auth.server";
-import { useMantineTheme } from "@mantine/core";
+import { rem, useMantineTheme } from "@mantine/core";
 
 import { Header } from "./Header";
 
@@ -23,7 +23,7 @@ export default function Index() {
       <Header />
       <main
         style={{
-          height: "calc(100% - 80px)", // 100% - ヘッダーの高さ
+          height: `calc(100% - ${rem(80)})`, // 100% - ヘッダーの高さ
           backgroundColor: theme.colors.bodyColor[theme.primaryShade as number],
           color: theme.colors.textColor[theme.primaryShade as number],
         }}

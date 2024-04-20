@@ -6,6 +6,7 @@ import {
   Links,
   LiveReload,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -16,6 +17,10 @@ import { theme } from "./components/MantineTheme";
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
+
+export const meta: MetaFunction = () => {
+  return [{ title: "DIVX aptitude quiz master" }];
+};
 
 export default function App() {
   return (
