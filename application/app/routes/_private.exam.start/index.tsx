@@ -80,9 +80,25 @@ export default function SuccessRoute() {
             </td>
           </tr>
         </table>
-        <div style={{ display: "flex", justifyContent: "center", margin: "32px 0" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "32px 0",
+          }}
+        >
           {/* TODO MantineTheme.tsの変数使う */}
-          <Checkbox defaultChecked color="#0141A0" label="同意する" />
+          <Checkbox
+            defaultChecked
+            color="#0141A0"
+            label="同意する"
+            styles={{
+              label: {
+                fontSize: theme.fontSizes.lg,
+                fontWeight: "700",
+              },
+            }}
+          />
         </div>
       </Paper>
 
