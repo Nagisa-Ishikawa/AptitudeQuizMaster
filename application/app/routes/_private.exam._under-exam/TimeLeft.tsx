@@ -1,7 +1,4 @@
-import { Flex, Space, Text, useMantineTheme } from "@mantine/core";
-import { TimerIcon } from "../../components/Icon/TimerIcon";
-
-import { CircleProgress } from "../../components/Progress/CircleProgress";
+import { TimeLeft as TimeLeftComponent } from "../../components/Progress/TimeLeftProgress";
 import { useCalculateRemainingTime } from "../../hooks/useCalcDate";
 import { useEffect, useState } from "react";
 import { addSeconds } from "date-fns";
@@ -11,7 +8,6 @@ import { FetchedData } from "../_private.exam";
 // 残り時間
 export const TimeLeft: React.FC = () => {
   const data = useOutletContext() as FetchedData;
-  const theme = useMantineTheme();
 
   const [currentTime, setCurrentTime] = useState(new Date());
   if (!data.examinee.examStartDate) {
@@ -35,20 +31,9 @@ export const TimeLeft: React.FC = () => {
   }, []);
 
   return (
-    <Flex align="center">
-      <TimerIcon />
-      <Space w="xs" />
-      <Text
-        style={{
-          color: theme.colors.textColor[theme.primaryShade as number],
-          fontSize: theme.fontSizes.sm,
-          fontWeight: theme.other.fontWeights.bold,
-        }}
-      >
-        残り時間
-      </Text>
-      <Space w="xs" />
-      <CircleProgress value={100 - remainingPercentage} label={remainingTime} />
-    </Flex>
+    <TimeLeftComponent
+      perOfElapsed={100 - remainingPercentage}
+      leftTime={remainingTime}
+    />
   );
 };

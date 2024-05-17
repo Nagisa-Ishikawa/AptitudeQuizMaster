@@ -1,7 +1,5 @@
 import { Flex, Space, Stack, Title, rem, useMantineTheme } from "@mantine/core";
 
-import { TimeLeft } from "./TimeLeft";
-import { BackLink } from "../../components/Link/BackLink";
 import { Legends } from "./Legends";
 import { Questions } from "./Questions";
 
@@ -10,17 +8,7 @@ export default function Index() {
   const theme = useMantineTheme();
 
   return (
-    <Stack
-      w={"100%"}
-      style={{ padding: `${rem(30)} ${rem(80)} ${rem(40)} ${rem(80)}` }}
-      gap={rem(24)}
-    >
-      <Flex align="center" justify="space-between">
-        {/* 問題に戻るリンク */}
-        <BackLink text="問題に戻る" to="/exam/question" />
-        {/* 残り時間 */}
-        <TimeLeft />
-      </Flex>
+    <Stack w={"100%"} gap={rem(24)}>
       <Flex
         style={{
           paddingBottom: rem(8),
