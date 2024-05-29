@@ -7,10 +7,35 @@ import {
   useMantineTheme,
   Flex,
 } from "@mantine/core";
-import { useNavigate } from "@remix-run/react";
+import { useNavigate, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
+import { FetchedData } from "../_private.exam";
 
 export default function SuccessRoute() {
+  const data = useOutletContext() as FetchedData;
+  const examPeriodEndDateRaw = data.examinee.examPeriodEndDate;
+  const leftTime = data.exam.timeLimit;
+
+  if (!data.examinee.examPeriodEndDate) {
+    //エラー文言考えなおした方が良いかもしれない。
+    throw new Error("試験を開始してください");
+  }
+
+  const examPeriodEndDate = new Date(examPeriodEndDateRaw);
+
+  const year: number = examPeriodEndDate.getFullYear();
+  const month: number = examPeriodEndDate.getMonth() + 1;
+  const day: number = examPeriodEndDate.getDate();
+  const hours: number = examPeriodEndDate.getHours();
+  const minutes: number = examPeriodEndDate.getMinutes();
+
+  const monthStr: string = month < 10 ? `0${month}` : `${month}`;
+  const dayStr: string = day < 10 ? `0${day}` : `${day}`;
+  const hoursStr: string = hours < 10 ? `0${hours}` : `${hours}`;
+  const minutesStr: string = minutes < 10 ? `0${minutes}` : `${minutes}`;
+
+  const formattedDate: string = `${year}/${monthStr}/${dayStr} ${hoursStr}:${minutesStr}`;
+
   const navigate = useNavigate();
   const theme = useMantineTheme();
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -20,8 +45,8 @@ export default function SuccessRoute() {
   };
 
   const tableData = [
-    { title: "受験期間", text: "0000/00/00 00:00まで" },
-    { title: "制限期間", text: "本試験は合計XXXX分です。" },
+    { title: "受験期間", text: `${formattedDate}まで` },
+    { title: "制限期間", text: `本試験は合計${leftTime}分です。` },
     {
       title: "持ち物",
       text: "筆記用具、計算が必要な問題のための基本的な電卓（プログラマブル電卓やスマートフォンの使用は禁止です）、飲み物等。",
