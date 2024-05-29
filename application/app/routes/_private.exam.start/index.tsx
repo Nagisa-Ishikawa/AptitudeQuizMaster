@@ -71,7 +71,7 @@ export default function SuccessRoute() {
   return (
     <main
       style={{
-        padding: `0 ${rem(80)}`,
+        padding: `0 ${rem(80)} ${rem(120)} ${rem(80)}`,
       }}
     >
       <Paper
@@ -126,7 +126,12 @@ export default function SuccessRoute() {
       </Paper>
 
       <div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Button
             onClick={() => navigate("/exam/list")}
             style={{
