@@ -12,7 +12,13 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
     const questions = Array(22)
       .fill(0)
       .map((_, i) => ({
-        question: "examQuestion.question" + i.toString(),
+        question:
+          "examQuestion.question" +
+          i.toString() +
+          `  
+# h1  
+## h2  
+text`,
         type: i % 3,
         option: JSON.stringify({ sample: "sample" }),
         correctAnswer: JSON.stringify({ sample: "sample" }),

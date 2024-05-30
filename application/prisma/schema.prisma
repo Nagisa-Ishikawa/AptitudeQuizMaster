@@ -56,7 +56,7 @@ model ExamQuestion {
   jsonVersion               Int       @map("json_version")
   examId                    Int?       @map("exam_id")
   exam                      Exam?      @relation(fields: [examId], references: [id])
-  examAnswers               ExamineeAnswer[]
+  examineeAnswers               ExamineeAnswer[]
   deletedAt                 DateTime?  @map("deleted_at")
   createdAt                 DateTime  @map("created_at")
   updatedAt                 DateTime  @map("updated_at")

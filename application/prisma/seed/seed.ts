@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   const now = new Date();
-  console.log("seed開始 NODE_ENV: ", process.env.NODE_ENV);
+  console.log("seed開始🌱 NODE_ENV: ", process.env.NODE_ENV);
   const isProd = process.env.NODE_ENV === "production";
 
   // 既存レコード削除
@@ -27,4 +27,5 @@ main()
   .catch((e) => console.error(e))
   .finally(async () => {
     await prisma.$disconnect();
+    console.log("seed終了🌾");
   });

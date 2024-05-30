@@ -25,7 +25,6 @@ export const TimeLeft: React.FC<Props> = ({
       <Space w="xs" />
       <Text
         style={{
-          color: theme.colors.textColor[theme.primaryShade as number],
           fontSize: theme.fontSizes.sm,
           fontWeight: theme.other.fontWeights.bold,
         }}

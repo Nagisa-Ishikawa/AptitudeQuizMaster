@@ -12,7 +12,7 @@ export type FetchedData = {
 
 // ExamQuestionモデルと、関連があるモデルを含んだ型
 export type LinkedExamQuestion = ExamQuestion & {
-  examAnswers: ExamineeAnswer[];
+  examineeAnswers: ExamineeAnswer[];
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -27,7 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const examQuestions = await prisma.examQuestion.findMany({
     include: {
-      examAnswers: true,
+      examineeAnswers: true,
     },
     where: {
       deletedAt: null,
@@ -48,7 +48,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 /** _private.examパス下共通処理 */
 export default function Index() {
-  const data = useLoaderData<FetchedData[]>();
+  const data = useLoaderData<FetchedData>();
 
   return <Outlet context={data} />;
 }
