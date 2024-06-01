@@ -12,6 +12,7 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
     const questions = Array(22)
       .fill(0)
       .map((_, i) => ({
+        number: i + 1,
         question:
           "examQuestion.question" +
           i.toString() +

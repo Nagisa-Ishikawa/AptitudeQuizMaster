@@ -1,4 +1,10 @@
-import { Exam, ExamQuestion, Examinee, ExamineeAnswer } from "@prisma/client";
+import {
+  Exam,
+  ExamAttempt,
+  ExamQuestion,
+  Examinee,
+  ExamineeAnswer,
+} from "@prisma/client";
 import { LoaderFunction, json } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
 import { prisma } from "../../services/db.server";
@@ -6,13 +12,19 @@ import { authenticator } from "../../services/auth.server";
 
 export type FetchedData = {
   examinee: Examinee;
-  exam: Exam;
+  examAttempt: LinkedExamAttempt;
+};
+
+// 関連データを含んだ型
+export type LinkedExamAttempt = ExamAttempt & {
+  exam: LinkedExam;
+};
+export type LinkedExam = Exam & {
   examQuestions: LinkedExamQuestion[];
 };
 
-// ExamQuestionモデルと、関連があるモデルを含んだ型
 export type LinkedExamQuestion = ExamQuestion & {
-  examineeAnswers: ExamineeAnswer[];
+  examineeAnswer?: ExamineeAnswer;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -21,26 +33,55 @@ export const loader: LoaderFunction = async ({ request }) => {
   const examinee = await prisma.examinee.findUniqueOrThrow({
     where: { id: examineeId as number },
   });
-  const exam = await prisma.exam.findUniqueOrThrow({
-    where: { id: examinee.examId as number, deletedAt: null },
-  });
-
-  const examQuestions = await prisma.examQuestion.findMany({
+  const examAttemptId = (
+    await prisma.examAttempt.findFirstOrThrow({
+      where: {
+        examineeId: examineeId as number,
+      },
+    })
+  ).id;
+  const examAttemptWithAnswers = await prisma.examAttempt.findFirstOrThrow({
     include: {
-      examineeAnswers: true,
-    },
-    where: {
-      deletedAt: null,
       exam: {
-        id: examinee.examId,
+        include: {
+          examQuestions: {
+            where: {
+              deletedAt: null,
+            },
+            include: {
+              examineeAnswers: {
+                where: {
+                  examAttemptId: examAttemptId,
+                },
+              },
+            },
+          },
+        },
       },
     },
+    where: {
+      examineeId: examineeId as number,
+    },
   });
+
+  const examQuestionsWithAnswer = examAttemptWithAnswers.exam.examQuestions.map(
+    (question) => ({
+      ...question,
+      examineeAnswer: question.examineeAnswers[0],
+    })
+  );
+
+  const examAttempt: LinkedExamAttempt = {
+    ...examAttemptWithAnswers,
+    exam: {
+      ...examAttemptWithAnswers.exam,
+      examQuestions: examQuestionsWithAnswer,
+    },
+  };
 
   const data = {
     examinee: examinee,
-    exam: exam,
-    examQuestions: examQuestions,
+    examAttempt: examAttempt,
   };
 
   return json(data);

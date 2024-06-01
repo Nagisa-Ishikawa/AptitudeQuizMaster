@@ -9,11 +9,13 @@ import { StarIcon } from "../../components/Icon/StarIcon";
 export const Questions: React.FC = () => {
   const theme = useMantineTheme();
   const data = useOutletContext() as FetchedData;
-  console.log("🤔data?.examQuestions :", data?.examQuestions);
+  const examQuestions = data.examAttempt.exam.examQuestions;
+  console.log("🤔examineeAnswers :", examQuestions);
+
   return (
     <Flex wrap="wrap" gap={rem(16)} style={{ maxWidth: rem(784) }}>
-      {data?.examQuestions?.map((x, i) => {
-        const answer = x.examineeAnswers?.[0];
+      {examQuestions.map((x, i) => {
+        const answer = x.examineeAnswer;
         const hasAnswer = !!answer;
         const isMarked = answer?.isMarked;
 

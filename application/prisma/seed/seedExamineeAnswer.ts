@@ -7,7 +7,7 @@ export const seedExamineeAnswer = async (isProd: boolean, now: Date) => {
 
   const exams = await prisma.exam.findMany({
     include: {
-      examinees: true,
+      examAttempts: true,
       examQuestions: true,
     },
   });
@@ -18,10 +18,12 @@ export const seedExamineeAnswer = async (isProd: boolean, now: Date) => {
 
     if (questions.length === 0) return;
 
-    exam.examinees.forEach((examinee) => {
-      questions.forEach((question) => {
+    exam.examAttempts.forEach((examAttempt) => {
+      questions.forEach((question, i) => {
+        if (i % 5 === 0) return;
+
         seed.push({
-          examineeId: examinee.id,
+          examAttemptId: examAttempt.id,
           examQuestionId: question.id,
           isMarked: question.id % 3 ? false : true,
           answer:

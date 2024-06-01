@@ -10,12 +10,12 @@ export const TimeLeft: React.FC = () => {
   const data = useOutletContext() as FetchedData;
 
   const [currentTime, setCurrentTime] = useState(new Date());
-  if (!data.examinee.examStartDate) {
+  if (!data?.examAttempt?.examStartDate) {
     throw new Error("試験を開始してください");
   }
-  const examStartDate = new Date(data.examinee.examStartDate);
+  const examStartDate = new Date(data.examAttempt.examStartDate);
 
-  const timeLimit = data.exam.timeLimit;
+  const timeLimit = data.examAttempt.exam.timeLimit;
 
   const [remainingTime, remainingPercentage] = useCalculateRemainingTime(
     examStartDate,

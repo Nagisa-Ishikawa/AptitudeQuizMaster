@@ -3,6 +3,7 @@ import { seedExam } from "./seedExam";
 import { seedExamQuestion } from "./seedExamQuestion";
 import { seedExaminee } from "./seedExaminee";
 import { seedExamineeAnswer } from "./seedExamineeAnswer";
+import { seedExamAttempt } from "./seedExamAttempt";
 const prisma = new PrismaClient();
 
 async function main() {
@@ -12,6 +13,7 @@ async function main() {
 
   // 既存レコード削除
   await prisma.examineeAnswer.deleteMany({});
+  await prisma.examAttempt.deleteMany({});
   await prisma.examinee.deleteMany({});
   await prisma.examQuestion.deleteMany({});
   await prisma.exam.deleteMany({});
@@ -20,6 +22,7 @@ async function main() {
   await seedExam(isProd, now);
   await seedExamQuestion(isProd, now);
   await seedExaminee(isProd, now);
+  await seedExamAttempt(isProd, now);
   await seedExamineeAnswer(isProd, now);
 }
 
