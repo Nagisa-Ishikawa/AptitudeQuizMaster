@@ -111,7 +111,10 @@ export default function SuccessRoute() {
             style={{ width: rem(320), height: rem(76), borderRadius: rem(50) }}
             disabled={!isChecked}
             styles={{
-              label: { fontSize: theme.fontSizes.lg, fontWeight: "700" },
+              label: {
+                fontSize: theme.fontSizes.lg,
+                fontWeight: theme.other.fontWeights.bold,
+              },
             }}
           >
             試験を開始
