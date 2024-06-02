@@ -10,27 +10,20 @@ import { useNavigate, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
 import { FetchedData } from "../_private.exam";
 import CustomPaper from "../../components/paper/Paper";
+import { format } from "date-fns";
 
 export default function SuccessRoute() {
   const data = useOutletContext() as FetchedData;
   const examPeriodEndDateRaw = data.examinee.examPeriodEndDate;
-  const leftTime = data.exam.timeLimit;
 
-  if (!data.examinee.examPeriodEndDate) {
+  if (!examPeriodEndDateRaw) {
     throw new Error("試験を開始してください");
   }
 
+  const leftTime = data.exam.timeLimit;
+
   const examPeriodEndDate = new Date(examPeriodEndDateRaw);
-  const year: number = examPeriodEndDate.getFullYear();
-  const month: number = examPeriodEndDate.getMonth() + 1;
-  const day: number = examPeriodEndDate.getDate();
-  const hours: number = examPeriodEndDate.getHours();
-  const minutes: number = examPeriodEndDate.getMinutes();
-  const monthStr: string = month < 10 ? `0${month}` : `${month}`;
-  const dayStr: string = day < 10 ? `0${day}` : `${day}`;
-  const hoursStr: string = hours < 10 ? `0${hours}` : `${hours}`;
-  const minutesStr: string = minutes < 10 ? `0${minutes}` : `${minutes}`;
-  const formattedDate: string = `${year}/${monthStr}/${dayStr} ${hoursStr}:${minutesStr}`;
+  const formattedDate = format(examPeriodEndDate, "yyyy/MM/dd HH:mm");
 
   const navigate = useNavigate();
   const theme = useMantineTheme();
@@ -72,26 +65,28 @@ export default function SuccessRoute() {
           試験を開始する前に、以下の注意事項をご確認ください。すべての内容を理解し、同意の上で試験を始めてください。
         </p>
         <Table verticalSpacing={rem(8)} withRowBorders={false}>
-          {tableData.map((item, index) => (
-            <Table.Tr key={index}>
-              <Table.Td
-                style={{
-                  paddingRight: rem(10),
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {item.title}
-              </Table.Td>
-              <Table.Td
-                style={{
-                  paddingRight: rem(8),
-                }}
-              >
-                :
-              </Table.Td>
-              <Table.Td>{item.text}</Table.Td>
-            </Table.Tr>
-          ))}
+          <Table.Tbody>
+            {tableData.map((item, index) => (
+              <Table.Tr key={index}>
+                <Table.Td
+                  style={{
+                    paddingRight: rem(10),
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {item.title}
+                </Table.Td>
+                <Table.Td
+                  style={{
+                    paddingRight: rem(8),
+                  }}
+                >
+                  :
+                </Table.Td>
+                <Table.Td>{item.text}</Table.Td>
+              </Table.Tr>
+            ))}
+          </Table.Tbody>
         </Table>
         <Flex align="center" style={{ marginTop: rem(32) }} justify="center">
           <Checkbox
