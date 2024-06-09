@@ -1,4 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import { questionType } from "../../app/consts/questionType";
+import { QuestionOptionEntity } from "../../app/entities/QuestionOptionEntity";
 
 const prisma = new PrismaClient();
 
@@ -21,7 +23,30 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
 ## h2  
 text`,
         type: i % 3,
-        option: JSON.stringify({ sample: "sample" }),
+        option:
+          i % 3 === questionType.checkBox
+            ? JSON.stringify({
+                checkBox: {
+                  choices: [
+                    { value: "0", label: "国語" },
+                    { value: "1", label: "数学" },
+                    { value: "2", label: "理科" },
+                    { value: "3", label: "社会" },
+                  ],
+                },
+              } as QuestionOptionEntity)
+            : i % 3 === questionType.radio
+            ? JSON.stringify({
+                radio: {
+                  choices: [
+                    { value: "aaa", label: "火事" },
+                    { value: "bbb", label: "地震" },
+                    { value: "ccc", label: "津波" },
+                  ],
+                },
+              } as QuestionOptionEntity)
+            : undefined,
+
         correctAnswer: JSON.stringify({ sample: "sample" }),
         jsonVersion: 1,
         examId: exam.id,

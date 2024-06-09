@@ -17,8 +17,8 @@ export const seedExamAttempt = async (isProd: boolean, now: Date) => {
         .map(() => ({
           examineeId: examinee.id,
           examId: exam.id,
-          examStartDate: addDays(now, 1),
-          examEndDate: addDays(now, 2),
+          examStartDate: now,
+          examEndDate: undefined,
           createdAt: now,
           updatedAt: now,
         }));

@@ -33,6 +33,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const examinee = await prisma.examinee.findUniqueOrThrow({
     where: { id: examineeId as number },
   });
+
   const examAttemptId = (
     await prisma.examAttempt.findFirstOrThrow({
       where: {
@@ -40,7 +41,8 @@ export const loader: LoaderFunction = async ({ request }) => {
       },
     })
   ).id;
-  const examAttemptWithAnswers = await prisma.examAttempt.findFirstOrThrow({
+
+  const linkedExamAttempt = await prisma.examAttempt.findFirstOrThrow({
     include: {
       exam: {
         include: {
@@ -64,7 +66,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     },
   });
 
-  const examQuestionsWithAnswer = examAttemptWithAnswers.exam.examQuestions.map(
+  const linkedExamQuestions = linkedExamAttempt.exam.examQuestions.map(
     (question) => ({
       ...question,
       examineeAnswer: question.examineeAnswers[0],
@@ -72,10 +74,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   );
 
   const examAttempt: LinkedExamAttempt = {
-    ...examAttemptWithAnswers,
+    ...linkedExamAttempt,
     exam: {
-      ...examAttemptWithAnswers.exam,
-      examQuestions: examQuestionsWithAnswer,
+      ...linkedExamAttempt.exam,
+      examQuestions: linkedExamQuestions,
     },
   };
 

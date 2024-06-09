@@ -10,14 +10,15 @@ export const Questions: React.FC = () => {
   const theme = useMantineTheme();
   const data = useOutletContext() as FetchedData;
   const examQuestions = data.examAttempt.exam.examQuestions;
-  console.log("🤔examineeAnswers :", examQuestions);
+
+  // TODO: 試験開始時、空のexamineeanswerを作成する
 
   return (
     <Flex wrap="wrap" gap={rem(16)} style={{ maxWidth: rem(784) }}>
       {examQuestions.map((x, i) => {
-        const answer = x.examineeAnswer;
+        const answer = x.examineeAnswer?.answer;
         const hasAnswer = !!answer;
-        const isMarked = answer?.isMarked;
+        const isMarked = x.examineeAnswer?.isMarked;
 
         return (
           <Center

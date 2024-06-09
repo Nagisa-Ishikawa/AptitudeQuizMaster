@@ -20,7 +20,7 @@ export default function Index() {
         <Flex align="center" justify="space-between">
           {/* リンク */}
           {location.pathname === pages.examQuestionList.path ? (
-            <BackLink text="問題に戻る" to={`${pages.examQuestion.path}/0`} />
+            <BackLink text="問題に戻る" to={`${pages.examQuestion.path}/1`} />
           ) : (
             <BackLink text="一覧を見る" to={pages.examQuestionList.path} />
           )}
