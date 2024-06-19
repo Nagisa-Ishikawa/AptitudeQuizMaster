@@ -9,33 +9,55 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import React, { useState } from "react";
-import { FetchedData } from "../_private.exam";
-import { useOutletContext, useParams } from "@remix-run/react";
 import { QuestionOptionEntity } from "../../entities/QuestionOptionEntity";
-import { plainToInstance } from "class-transformer";
 import { questionType } from "../../consts/questionType";
+import { plainToInstance } from "class-transformer";
+import { LinkedExamQuestion } from "../_private.exam";
+import { AnswerEntity } from "../../entities/AnswerEntity";
 
-export const InputForAnswer: React.FC = () => {
+type Props = {
+  question: LinkedExamQuestion;
+};
+
+export const InputForAnswer: React.FC<Props> = ({ question }: Props) => {
   const theme = useMantineTheme();
 
-  const { questionNumber } = useParams();
-  const data = useOutletContext() as FetchedData;
-  const questions = data.examAttempt.exam.examQuestions;
-  const question =
-    questions.find((x) => x.number === Number(questionNumber)) || questions[0];
   const option = question.option
     ? plainToInstance(
         QuestionOptionEntity,
         JSON.parse(question.option as string)
       )
     : undefined;
-  const [value, setValue] = useState<string[]>([]);
+  const answer = question.examineeAnswer?.answer
+    ? plainToInstance(
+        AnswerEntity,
+        JSON.parse(question.examineeAnswer?.answer as string)
+      )
+    : undefined;
+
+  const [checkBoxValue, setCheckBoxValue] = useState<string[]>(
+    answer?.checkBox?.values || []
+  );
+  const [radioValue, setRadioValue] = useState<string>(
+    answer?.radio?.value || ""
+  );
 
   return (
     <>
-      {question.type === questionType.text && <Textarea />}
+      {/* テキスト */}
+      {question.type === questionType.text && (
+        <Textarea
+          name="answerText"
+          placeholder="回答を入力してください"
+          autosize
+          minRows={5}
+          defaultValue={answer?.text?.value}
+        />
+      )}
+      {/* ラジオボタン */}
       {question.type === questionType.radio && (
-        <Radio.Group name="answer">
+        <Radio.Group value={radioValue} onChange={setRadioValue}>
+          <input type="hidden" name="answerRadio" value={radioValue} />
           <Group mt="xs">
             {option?.radio?.choices.map((x, i) => (
               <Radio.Card radius="md" value={x.value} key={i}>
@@ -56,18 +78,22 @@ export const InputForAnswer: React.FC = () => {
           </Group>
         </Radio.Group>
       )}
+      {/* チェックボックス */}
       {question.type === questionType.checkBox && (
-        <Checkbox.Group value={value} onChange={setValue}>
+        <Checkbox.Group value={checkBoxValue} onChange={setCheckBoxValue}>
           <Group mt="xs">
             {option?.checkBox?.choices.map((x, i) => (
-              <Checkbox.Card radius="md" key={i} value={x.value}>
+              <Checkbox.Card key={i} radius="md" value={x.value}>
                 <Flex align="center" gap={rem(8)} p={rem(10)}>
-                  <Checkbox.Indicator
+                  <Checkbox
+                    key={i}
                     color={
                       theme.colors.primaryColorPalette[
                         theme.primaryShade as number
                       ]
                     }
+                    value={x.value}
+                    name="answerCheckBox"
                   />
                   <Text style={{ fontWeight: theme.other.fontWeights.bold }}>
                     {x.label}

@@ -50,6 +50,10 @@ export const loader: LoaderFunction = async ({ request }) => {
             where: {
               deletedAt: null,
             },
+            orderBy: {
+              number: "asc",
+            },
+
             include: {
               examineeAnswers: {
                 where: {

@@ -1,15 +1,25 @@
 import { Flex, rem, Text, useMantineTheme } from "@mantine/core";
-import React from "react";
+import React, { useState } from "react";
 import { StarIcon } from "../../components/Icon/StarIcon";
-import { useOutletContext } from "@remix-run/react";
-import { FetchedData } from "../_private.exam";
+import { LinkedExamQuestion } from "../_private.exam";
 
-export const CheckLaterMark: React.FC = () => {
-  const data = useOutletContext() as FetchedData;
+type Props = {
+  question: LinkedExamQuestion;
+};
+
+export const CheckLaterMark: React.FC<Props> = ({ question }: Props) => {
   const theme = useMantineTheme();
+  const [isMarked, setIsMarked] = useState(question.examineeAnswer?.isMarked);
+
   return (
-    <Flex align="center" gap={rem(2)}>
-      <StarIcon isStarred={false} />
+    <Flex
+      align="center"
+      gap={rem(2)}
+      style={{ cursor: "pointer" }}
+      onClick={() => setIsMarked((x) => !x)}
+    >
+      <input type="hidden" name="isMarked" value={String(isMarked)} />
+      <StarIcon isStarred={isMarked} />
       <Text
         style={{
           fontWeight: theme.other.fontWeights.bold,

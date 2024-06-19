@@ -6,8 +6,8 @@ import { Expose } from "class-transformer";
  */
 export class QuestionOptionEntity {
   @Expose()
-  radio?: { choices: { label: string; value: string }[] };
+  public radio?: { choices: { label: string; value: string }[] };
 
   @Expose()
-  checkBox?: { choices: { label: string; value: string }[] };
+  public checkBox?: { choices: { label: string; value: string }[] };
 }
