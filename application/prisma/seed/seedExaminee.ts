@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import { addMinutes } from "date-fns";
+
 const prisma = new PrismaClient();
 
 export const seedExaminee = async (isProd: boolean, now: Date) => {
@@ -15,10 +15,6 @@ export const seedExaminee = async (isProd: boolean, now: Date) => {
         name: exam.title + "受験太郎" + i.toString(),
         email: exam.title + "@" + i.toString(),
         password: "a",
-        examId: exam.id,
-        examPeriodStartDate: addMinutes(now, i * 100),
-        examPeriodEndDate: addMinutes(now, i * 200),
-        examStartDate: now,
         createdAt: now,
         updatedAt: now,
       }));

@@ -1,5 +1,6 @@
 import { Button } from "@mantine/core";
 import { useNavigate } from "@remix-run/react";
+import { pages } from "../../consts/pages";
 
 export default function SuccessRoute() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ export default function SuccessRoute() {
           <Button type="submit" color="secondaryColorPallet">
             サインアウト
           </Button>
-          <Button onClick={() => navigate("/exam/list")}>試験を開始する</Button>
+          <Button onClick={() => navigate(pages.examQuestionList.path)}>
+            試験を開始する
+          </Button>
         </form>
       </div>
     </main>

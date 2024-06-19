@@ -1,14 +1,10 @@
 
 めも
 - examinees
-  - いち受験でいちユーザ振り出す
-    - 同じ人が何度も受験した場合、都度振り出される
   - 今のところcognitoは検討していない
     - 金かかる
     - そこまでセキュリティガチらなくていい
-    - ユーザの発行が手間
     - ユーザ設定をずっと使うわけではないので、パスワード再設定機能等がオーバースペック
-  - 同じ人が何度も受験することは想定するように
   - 人事アプリとの連携を念頭に置く
 - exams
   - 過去に受験した試験内容を変えてしまわないよう、論理削除で扱う
@@ -31,15 +27,17 @@ erDiagram
 		string name
 		string email
 		string password "hash値"
-		number exam_id "受験する試験"
-		datetime exam_period_start_date "受験可能期間開始日"
-		datetime exam_period_end_date　"受験可能期間終了日"
+	}
+	exam_attempts{
+		number id "受験"
+		number examinee_id "受験者"
+		number exam_id "試験"
 		datetime exam_start_date "受験開始日"
 		datetime exam_end_date "受験終了日"
 	}
 	examinee_answers {
 		number id "試験の解答"
-		number examinee_id "解答者"
+		number exam_attempt_id "受験"
 		number exam_question_id "設問"
 		json answer "解答"
 		boolean is_marked "後で見るマーク"
@@ -60,8 +58,9 @@ erDiagram
 		datetime deleted_at
 	}
 
-	examinees }o--|| exams : ""
-	examinees ||--o| examinee_answers: ""
+	examinees ||--|{ exam_attempts : ""
+	exam_attempts ||--o| examinee_answers: ""
+	exam_attempts }o--|| exams: ""
 	exams ||--o{ exam_questions : "has"
 	examinee_answers }o--|| exam_questions : ""
 	

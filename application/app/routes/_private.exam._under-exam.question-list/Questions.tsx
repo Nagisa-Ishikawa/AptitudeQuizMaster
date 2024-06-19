@@ -1,20 +1,27 @@
 import { Center, Flex, Text, rem, useMantineTheme } from "@mantine/core";
 
-import { useOutletContext } from "@remix-run/react";
+import { useNavigate, useOutletContext } from "@remix-run/react";
 import React from "react";
 import { FetchedData } from "../_private.exam";
 import { StarIcon } from "../../components/Icon/StarIcon";
+import { pages } from "../../consts/pages";
 
 // 問題一覧
 export const Questions: React.FC = () => {
   const theme = useMantineTheme();
   const data = useOutletContext() as FetchedData;
+  const examQuestions = data.examAttempt.exam.examQuestions;
+  const navigate = useNavigate();
+
+  // TODO: 試験開始時、空のexamineeanswerを作成する
 
   return (
     <Flex wrap="wrap" gap={rem(16)} style={{ maxWidth: rem(784) }}>
-      {data?.examQuestions?.map((x, i) => {
-        const hasAnswer = x.examAnswers?.filter((x) => x.answer).length > 0;
-        const isMarked = x.examAnswers?.[x.examAnswers.length - 1]?.isMarked;
+      {examQuestions.map((x, i) => {
+        const answer = x.examineeAnswer?.answer;
+        const hasAnswer = !!answer;
+        const isMarked = x.examineeAnswer?.isMarked;
+        const number = i + 1;
 
         return (
           <Center
@@ -30,6 +37,9 @@ export const Questions: React.FC = () => {
               borderRadius: rem(20),
               cursor: "pointer",
               position: "relative",
+            }}
+            onClick={() => {
+              navigate(`${pages.examQuestion.path}/${number}`);
             }}
           >
             {isMarked && <StarIcon size={rem(64)} />}
@@ -50,7 +60,7 @@ export const Questions: React.FC = () => {
                 fontWeight: theme.other.fontWeights.bold,
               }}
             >
-              {i + 1}
+              {number}
             </Text>
           </Center>
         );

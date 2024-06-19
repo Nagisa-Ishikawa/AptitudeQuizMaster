@@ -1,4 +1,10 @@
-import { Exam, ExamQuestion, Examinee, ExamineeAnswer } from "@prisma/client";
+import {
+  Exam,
+  ExamAttempt,
+  ExamQuestion,
+  Examinee,
+  ExamineeAnswer,
+} from "@prisma/client";
 import { LoaderFunction, json } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
 import { prisma } from "../../services/db.server";
@@ -6,13 +12,19 @@ import { authenticator } from "../../services/auth.server";
 
 export type FetchedData = {
   examinee: Examinee;
-  exam: Exam;
+  examAttempt: LinkedExamAttempt;
+};
+
+// 関連データを含んだ型
+export type LinkedExamAttempt = ExamAttempt & {
+  exam: LinkedExam;
+};
+export type LinkedExam = Exam & {
   examQuestions: LinkedExamQuestion[];
 };
 
-// ExamQuestionモデルと、関連があるモデルを含んだ型
 export type LinkedExamQuestion = ExamQuestion & {
-  examAnswers: ExamineeAnswer[];
+  examineeAnswer?: ExamineeAnswer;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -21,26 +33,61 @@ export const loader: LoaderFunction = async ({ request }) => {
   const examinee = await prisma.examinee.findUniqueOrThrow({
     where: { id: examineeId as number },
   });
-  const exam = await prisma.exam.findUniqueOrThrow({
-    where: { id: examinee.examId as number, deletedAt: null },
-  });
 
-  const examQuestions = await prisma.examQuestion.findMany({
+  const examAttemptId = (
+    await prisma.examAttempt.findFirstOrThrow({
+      where: {
+        examineeId: examineeId as number,
+      },
+    })
+  ).id;
+
+  const linkedExamAttempt = await prisma.examAttempt.findFirstOrThrow({
     include: {
-      examAnswers: true,
-    },
-    where: {
-      deletedAt: null,
       exam: {
-        id: examinee.examId,
+        include: {
+          examQuestions: {
+            where: {
+              deletedAt: null,
+            },
+            orderBy: {
+              number: "asc",
+            },
+
+            include: {
+              examineeAnswers: {
+                where: {
+                  examAttemptId: examAttemptId,
+                },
+              },
+            },
+          },
+        },
       },
     },
+    where: {
+      examineeId: examineeId as number,
+    },
   });
+
+  const linkedExamQuestions = linkedExamAttempt.exam.examQuestions.map(
+    (question) => ({
+      ...question,
+      examineeAnswer: question.examineeAnswers[0],
+    })
+  );
+
+  const examAttempt: LinkedExamAttempt = {
+    ...linkedExamAttempt,
+    exam: {
+      ...linkedExamAttempt.exam,
+      examQuestions: linkedExamQuestions,
+    },
+  };
 
   const data = {
     examinee: examinee,
-    exam: exam,
-    examQuestions: examQuestions,
+    examAttempt: examAttempt,
   };
 
   return json(data);
@@ -48,7 +95,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 /** _private.examパス下共通処理 */
 export default function Index() {
-  const data = useLoaderData<FetchedData[]>();
+  const data = useLoaderData<FetchedData>();
 
   return <Outlet context={data} />;
 }

@@ -26,9 +26,9 @@ const primaryColorPalette: MantineColorsTuple = [
   "#83b0eb",
   "#699fe6",
   primaryColor,
-  "#013c97",
-  "#013282",
-  "#01286d",
+  "#002f76",
+  "#00245f",
+  "#002159",
 ];
 const secondaryColorPallet: MantineColorsTuple = [
   "#FFFFFF",
