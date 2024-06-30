@@ -9,7 +9,9 @@ type Props = {
 
 export const CheckLaterMark: React.FC<Props> = ({ question }: Props) => {
   const theme = useMantineTheme();
-  const [isMarked, setIsMarked] = useState(question.examineeAnswer?.isMarked);
+  const [isMarked, setIsMarked] = useState(
+    question.examineeAnswer?.isMarked || false
+  );
 
   return (
     <Flex

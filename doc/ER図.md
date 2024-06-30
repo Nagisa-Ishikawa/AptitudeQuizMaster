@@ -28,6 +28,14 @@ erDiagram
 		string email
 		string password "hash値"
 	}
+	examinee_tags {
+		number id "受験者につけるタグ"
+		number examinee_id
+		number examinee_tag_master_id
+	}
+	examinee_tag_masters {
+		number id "受験者につけるタグのマスタ"
+	}
 	exam_attempts{
 		number id "受験"
 		number examinee_id "受験者"
