@@ -176,18 +176,18 @@ export const action: ActionFunction = async ({ request }) => {
   const isMarked = formData.get("isMarked") === "true";
 
   // 回答 insert or update
-  const examineeAnswer = await prisma.examineeAnswer.upsert({
+  await prisma.examineeAnswer.upsert({
     where: {
       id: examAnswerId,
     },
     update: {
-      answer: JSON.stringify(answer),
+      answer: JSON.stringify(answer) ?? null,
       isMarked: isMarked,
     },
     create: {
       examAttemptId: examAttemptId,
       examQuestionId: examQuestionId,
-      answer: JSON.stringify(answer),
+      answer: JSON.stringify(answer) ?? null,
       isMarked: isMarked,
       createdAt: now,
       updatedAt: now,
