@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2024-07-08T10:21:33.221Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="HGE158N8m17KskwNBms5" version="24.6.4" type="device">
+  <diagram id="k0by66G6NU6gl-WKmSGM" name="ページ1">
+    <mxGraphModel dx="1198" dy="691" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-1" value="受験生側ログイン画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-2" value="受験開始画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="720" y="640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-3" value="回答画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-4" value="試験終了画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1920" y="640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-5" value="あなたの成績&lt;div&gt;（デザイン優先度低）&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2520" y="640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-6" value="受験者側画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="120" y="50" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-7" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="80" as="sourcePoint" />
+            <mxPoint x="2000" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-8" value="企業側画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1090" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-9" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="1120" as="sourcePoint" />
+            <mxPoint x="2600" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-10" value="企業側ログイン画面&lt;div&gt;（デザイン優先度低&lt;/div&gt;&lt;div&gt;受験者と同じで、企業側だよってのがわかればいいかも）&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1640" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-12" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1199" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-13" value="共通" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1159" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-15" value="サイドバー" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1239" width="100" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-16" value="ヘッダ　受験者と同じ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1199" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-17" value="サイドバー" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="1159" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-18" value="&lt;div&gt;・ログイン画面にはない&lt;/div&gt;・シンプルで、メニューの分類ごとに分かれている&lt;div&gt;こんな感じで&lt;br&gt;&lt;div&gt;- 受験者&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 受験者作成&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 受験履歴&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 成績&lt;/div&gt;&lt;div&gt;&lt;div&gt;- 問題&lt;/div&gt;&lt;/div&gt;&lt;div&gt;- 試験&lt;/div&gt;&lt;div&gt;- 設定&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- 下らへんにログインユーザー名を出す　アイコンは不要&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="1199" width="320" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-19" value="とくになし" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2080" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-23" value="以後、ヘッダー・サイドバー略" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1499" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-24" value="ホーム" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2040" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="160" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-26" value="共通" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="130" y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-28" value="ヘッダ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="160" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zN_7OzC-4_wIDPigh8bY-29" value="以後、ヘッダー略" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="460" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BG62AUH-wRsbt14OVaal-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2520" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="BG62AUH-wRsbt14OVaal-2" value="ホーム" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2480" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OjUTvFWbkhc-5GFYd0Ob-1" value="要求があれば機能を追加する&lt;div&gt;一旦は素うどんにしたいので何も置かない&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="2080" width="320" height="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
