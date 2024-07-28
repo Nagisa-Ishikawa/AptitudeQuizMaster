@@ -56,6 +56,14 @@ erDiagram
 		number time_limit "制限時間(分)"
 		datetime deleted_at
 	}
+	exam_tags {
+		number id "試験につけるタグ"
+		number exam_id
+		number exam_tag_master_id
+	}
+	exam_tag_masters {
+		number id "試験につけるタグのマスタ"
+	}
 	exam_questions {
 		number id "試験の設問"
 		string question "問題文"
@@ -65,12 +73,28 @@ erDiagram
 		number json_version "設問定義のバージョン"
 		datetime deleted_at
 	}
+	exam_question_tags {
+		number id "タグ紐づけ"
+		number examinee_id
+		number examinee_tag_master_id
+	}
+	exam_question_tag_masters {
+		number id "タグのマスタ"
+	}
 
 	examinees ||--|{ exam_attempts : ""
 	exam_attempts ||--o| examinee_answers: ""
 	exam_attempts }o--|| exams: ""
 	exams ||--o{ exam_questions : "has"
 	examinee_answers }o--|| exam_questions : ""
+
+	examinees ||--o{ examinee_tags : ""
+	examinee_tags }o--|| examinee_tag_masters : ""
+	exam_question_tags ||--o{ exam_questions : ""
+	exam_question_tags }o--|| exam_question_tag_masters : ""
+	exam_tags ||--o{ exams : ""
+	exam_tags }o--|| exam_tag_masters : ""
+	
 	
 
 ```
