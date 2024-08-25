@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" version="24.7.5">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" version="24.7.7">
   <diagram id="k0by66G6NU6gl-WKmSGM" name="ページ1">
-    <mxGraphModel dx="1014" dy="1783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1217" dy="1905" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -53,10 +53,10 @@
           <mxGeometry x="120" y="1199" width="400" height="40" as="geometry" />
         </mxCell>
         <mxCell id="zN_7OzC-4_wIDPigh8bY-17" value="サイドバー" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="680" y="1159" width="140" height="30" as="geometry" />
+          <mxGeometry x="600" y="1159" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="zN_7OzC-4_wIDPigh8bY-18" value="&lt;div&gt;・ログイン画面にはない&lt;/div&gt;・シンプルで、メニューの分類ごとに分かれている&lt;div&gt;こんな感じで&lt;br&gt;&lt;div&gt;- 受験者&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 受験者作成&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 受験履歴&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 成績&lt;/div&gt;&lt;div&gt;&lt;div&gt;- 問題&lt;/div&gt;&lt;/div&gt;&lt;div&gt;- 試験&lt;/div&gt;&lt;div&gt;- 設定&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- 下らへんにログインユーザー名を出す　アイコンは不要&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="680" y="1199" width="320" height="241" as="geometry" />
+          <mxGeometry x="600" y="1199" width="320" height="241" as="geometry" />
         </mxCell>
         <mxCell id="zN_7OzC-4_wIDPigh8bY-19" value="なし" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="120" y="2080" width="400" height="280" as="geometry" />
@@ -86,28 +86,28 @@
           <mxGeometry x="120" y="2480" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="OjUTvFWbkhc-5GFYd0Ob-1" value="要求があれば機能を追加する&lt;div&gt;一旦は素うどんにしたいので何も置かない&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="680" y="2080" width="320" height="180" as="geometry" />
+          <mxGeometry x="600" y="2080" width="320" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="OjUTvFWbkhc-5GFYd0Ob-2" value="■フィルター&lt;br&gt;- email or nameフィルター&lt;br&gt;- タグフィルター&lt;br&gt;&amp;nbsp; -https://mantine.dev/core/tags-input/#accept-value-on-blur これ使う前提&lt;br&gt;&amp;nbsp; - クリックするとタグを選べる&lt;br&gt;&amp;nbsp; - タグを追加した後、バツボタンでタグを消せる&lt;br&gt;&lt;br&gt;多分将来的には受験時期のフィルターとか受験済みの人一括削除とかが来るんだろうけど優先度低&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- id&lt;br&gt;- タグ&lt;br&gt;&amp;nbsp; - 「新卒」「経験者」「未経験者」みたいな、受験者の属性を管理するタグ&lt;br&gt;&lt;div&gt;- 名前&lt;br&gt;- メアド&lt;br&gt;- 成績画面へ遷移ボタン&lt;br&gt;&amp;nbsp; - その受験者の成績画面へ遷移　アイコンとかでもOK&lt;/div&gt;- 編集ボタン&lt;br&gt;- 削除ボタン&lt;div&gt;&lt;br&gt;■受験者追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;br&gt;こういうやつ&lt;/div&gt;&lt;div&gt;https://mantine.dev/core/pagination/&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="640" y="2520" width="320" height="380" as="geometry" />
+        <mxCell id="OjUTvFWbkhc-5GFYd0Ob-2" value="■フィルター&lt;br&gt;- idフィルター&lt;br&gt;- email or nameフィルター&lt;br&gt;- タグフィルター&lt;br&gt;&amp;nbsp; -https://mantine.dev/core/tags-input/#accept-value-on-blur これ使う前提&lt;br&gt;&amp;nbsp; - クリックするとタグを選べる&lt;br&gt;&amp;nbsp; - タグを追加した後、バツボタンでタグを消せる&lt;br&gt;&lt;br&gt;多分将来的には受験時期のフィルターとか受験済みの人一括削除とかが来るんだろうけど優先度低&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- id&lt;br&gt;- タグ&lt;br&gt;&amp;nbsp; - 「新卒」「経験者」「未経験者」みたいな、受験者の属性を管理するタグ&lt;br&gt;&lt;div&gt;- 名前&lt;br&gt;- メアド&lt;br&gt;- 成績画面へ遷移ボタン&lt;br&gt;&amp;nbsp; - その受験者の成績画面へ遷移　アイコンとかでもOK&lt;/div&gt;&lt;div&gt;- 受験者追加ボタン&lt;/div&gt;&lt;div&gt;　- 受験追加画面を別タブで開く（受験者を選択した状態で）&lt;br&gt;&lt;/div&gt;- 編集ボタン&lt;br&gt;- 削除ボタン&lt;div&gt;&lt;br&gt;■受験者追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;br&gt;こういうやつ&lt;/div&gt;&lt;div&gt;https://mantine.dev/core/pagination/&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="2520" width="350" height="380" as="geometry" />
         </mxCell>
         <mxCell id="bsYNKNFRyK9_930fr4la-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1180" y="2520" width="200" height="200" as="geometry" />
+          <mxGeometry x="1060" y="2520" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="bsYNKNFRyK9_930fr4la-2" value="Create・Updateモーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1180" y="2480" width="140" height="30" as="geometry" />
+          <mxGeometry x="1060" y="2480" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bsYNKNFRyK9_930fr4la-3" value="モーダルは全体的に幅広めにしたい&lt;br&gt;&lt;br&gt;■モーダル閉じるボタン&lt;div&gt;- 右上のバツ印でもなんでも&lt;/div&gt;&lt;div&gt;- なんなら背景クリックすればモーダル消すって仕様にしてもよい&lt;br&gt;&lt;br&gt;■input&lt;br&gt;- ラベル&lt;br&gt;&amp;nbsp; - 必須項目は必須マークとかアスタリスクとかつける&lt;br&gt;- 入力欄&lt;br&gt;&lt;br&gt;- * name&lt;br&gt;- * email&lt;br&gt;- tag&lt;br&gt;&amp;nbsp; - https://mantine.dev/core/tags-input/#with-suggestions 　これ使う前提&lt;br&gt;&amp;nbsp; - タグを既存のから選択するか、新規作成できる&lt;br&gt;&amp;nbsp; - タグ作成時に色とかつけてもいいかも？優先度低&lt;br&gt;- note&lt;br&gt;&amp;nbsp; - メモ&lt;br&gt;&amp;nbsp; - 広めのテキストエリア&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1500" y="2520" width="230" height="270" as="geometry" />
+        <mxCell id="bsYNKNFRyK9_930fr4la-3" value="モーダルは全体的に幅広めにしたい&lt;div&gt;将来的には一括登録的なのほしい　まあ優先度低&lt;br&gt;&lt;br&gt;■モーダル閉じるボタン&lt;div&gt;- 右上のバツ印でもなんでも&lt;/div&gt;&lt;div&gt;- なんなら背景クリックすればモーダル消すって仕様にしてもよい&lt;br&gt;&lt;br&gt;■input&lt;br&gt;- ラベル&lt;br&gt;&amp;nbsp; - 必須項目は必須マークとかアスタリスクとかつける&lt;br&gt;- 入力欄&lt;br&gt;&lt;br&gt;- * name&lt;br&gt;- * email&lt;br&gt;- tag&lt;br&gt;&amp;nbsp; - https://mantine.dev/core/tags-input/#with-suggestions 　これ使う前提&lt;br&gt;&amp;nbsp; - タグを既存のから選択するか、新規作成できる&lt;br&gt;&amp;nbsp; - タグ作成時に色とかつけてもいいかも？優先度低&lt;br&gt;- note&lt;br&gt;&amp;nbsp; - メモ&lt;br&gt;&amp;nbsp; - 広めのテキストエリア&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="2520" width="230" height="270" as="geometry" />
         </mxCell>
         <mxCell id="Y3Y5p0N6ZpjQIikqNfGl-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1830" y="2520" width="200" height="200" as="geometry" />
+          <mxGeometry x="1710" y="2520" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="Y3Y5p0N6ZpjQIikqNfGl-6" value="Deleteモーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1830" y="2480" width="140" height="30" as="geometry" />
+          <mxGeometry x="1710" y="2480" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Y3Y5p0N6ZpjQIikqNfGl-7" value="&lt;div&gt;■このユーザを削除しますか？　的文言&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;■ユーザの情報（優先度低）&lt;br&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;- note&lt;br&gt;- 未受験の試験&lt;br&gt;- 受験済みの試験&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2150" y="2520" width="220" height="180" as="geometry" />
+          <mxGeometry x="2030" y="2520" width="220" height="180" as="geometry" />
         </mxCell>
         <mxCell id="Y3Y5p0N6ZpjQIikqNfGl-10" value="追加" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="400" y="2550" width="80" height="40" as="geometry" />
@@ -137,7 +137,7 @@
           <mxGeometry x="160" y="3320" width="320" height="40" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-6" value="&lt;div&gt;受験者をクリックした時、詳細画面に遷移ではなくなんと下からドロワーが出てくるんですね&lt;/div&gt;&lt;div&gt;https://mantine.dev/core/drawer/&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="640" y="3080" width="320" height="240" as="geometry" />
+          <mxGeometry x="600" y="3080" width="320" height="240" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-7" value="ドロワー" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="120" y="3180" width="400" height="180" as="geometry" />
@@ -152,45 +152,45 @@
           <mxGeometry x="210" y="3115" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="3080" width="620" height="390" as="geometry" />
+          <mxGeometry x="1040" y="3080" width="620" height="390" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-11" value="ドロワー内容" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="3040" width="140" height="30" as="geometry" />
+          <mxGeometry x="1040" y="3040" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2ZWetD6m9sAQcYfEBP4A-12" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;■受験者基本情報&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;- note&lt;/div&gt;&lt;div&gt;&lt;br&gt;■受験履歴&lt;br&gt;- 試験情報&lt;br&gt;&amp;nbsp; - 試験id&lt;br&gt;&amp;nbsp; - 試験名&lt;br&gt;&amp;nbsp; &amp;nbsp; - クリックで成績画面へ&lt;br&gt;&amp;nbsp; - 受験ステート&lt;br&gt;&amp;nbsp; &amp;nbsp; - バッジとかで可愛くしてもろて　https://mantine.dev/core/badge/&lt;/div&gt;&lt;div&gt;&amp;nbsp; - メール送信履歴&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;- 送信したメールの内容とか確認できるようにしときたいけど、一旦はパスワード発行メール1種類しかないので送信数だけでヨシ&lt;br&gt;&amp;nbsp; - メールボタン&lt;br&gt;&amp;nbsp; &amp;nbsp; - 受験案内・パスワード発行メール送信が送れる&lt;/div&gt;&lt;div&gt;&lt;br&gt;基本情報と受験履歴をヨコじゃなくてタテに置いたほうがいいかも？&lt;br&gt;ドロワーはスクロールする前提&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="3080" width="320" height="330" as="geometry" />
+        <mxCell id="2ZWetD6m9sAQcYfEBP4A-12" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;■受験者基本情報&lt;br&gt;&lt;/span&gt;- id&lt;br&gt;&amp;nbsp; [n]の形式で出す&lt;/div&gt;&lt;div&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;- note&lt;/div&gt;&lt;div&gt;&lt;br&gt;■受験履歴&lt;br&gt;- 試験情報&lt;br&gt;&amp;nbsp; - 試験id&lt;br&gt;&amp;nbsp; - 試験名&lt;br&gt;&amp;nbsp; &amp;nbsp; - クリックで成績画面へ&lt;br&gt;&amp;nbsp; - 受験ステート&lt;br&gt;&amp;nbsp; &amp;nbsp; - バッジとかで可愛くしてもろて　https://mantine.dev/core/badge/&lt;/div&gt;&lt;div&gt;&amp;nbsp; - メール送信履歴&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;- 送信したメールの内容とか確認できるようにしときたいけど、一旦はパスワード発行メール1種類しかないので送信数だけでヨシ&lt;br&gt;&amp;nbsp; - メールボタン&lt;br&gt;&amp;nbsp; &amp;nbsp; - 受験案内・パスワード発行メール送信が送れる&lt;/div&gt;&lt;div&gt;&lt;br&gt;基本情報と受験履歴をヨコじゃなくてタテに置いたほうがいいかも？&lt;br&gt;ドロワーはスクロールする前提&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="3080" width="320" height="330" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-13" value="受験者" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="160" y="2550" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2ZWetD6m9sAQcYfEBP4A-14" value="基本情報&lt;br&gt;&lt;div&gt;&lt;br&gt;尾留伝 大橋&lt;br&gt;oruden@example.com&lt;br&gt;( 新卒 ) ( 2025新卒 )&lt;br&gt;&lt;br&gt;&lt;br&gt;採りたいけど非言語分野の回答がヤバい&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1190" y="3100" width="240" height="160" as="geometry" />
+        <mxCell id="2ZWetD6m9sAQcYfEBP4A-14" value="基本情報&lt;br&gt;&lt;div&gt;&lt;br&gt;[100] 尾留伝 大橋&lt;br&gt;oruden@example.com&lt;br&gt;( 新卒 ) ( 2025新卒 )&lt;br&gt;&lt;br&gt;&lt;br&gt;採りたいけど非言語分野の回答がヤバい&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="3100" width="240" height="160" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-18" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1450" y="3140" width="290" height="330" as="geometry" />
+          <mxGeometry x="1330" y="3140" width="290" height="330" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-19" value="受験履歴" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1460" y="3100" width="240" height="30" as="geometry" />
+          <mxGeometry x="1340" y="3100" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2ZWetD6m9sAQcYfEBP4A-20" value="12&lt;br&gt;2025年新卒向け試験&lt;br&gt;（受験済み）&lt;div&gt;メール送信数： 2&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1460" y="3150" width="240" height="50" as="geometry" />
+        <mxCell id="2ZWetD6m9sAQcYfEBP4A-20" value="[2] 2025年新卒向け試験&lt;br&gt;（受験済み）&lt;div&gt;メール送信数： 2&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="3150" width="240" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="2ZWetD6m9sAQcYfEBP4A-22" value="18&lt;br&gt;社内テスト用&lt;br&gt;（未受験）（試験期間中）&lt;br&gt;メール送信数：1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1460" y="3270" width="240" height="50" as="geometry" />
+        <mxCell id="2ZWetD6m9sAQcYfEBP4A-22" value="[18] 社内テスト用&lt;br&gt;（未受験）（試験期間中）&lt;br&gt;メール送信数：1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="3270" width="240" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="2ZWetD6m9sAQcYfEBP4A-23" value="19&lt;br&gt;社内テスト用 2&lt;br&gt;（未受験）（試験期間外）&lt;br&gt;メール送信数：1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1460" y="3380" width="240" height="50" as="geometry" />
+        <mxCell id="2ZWetD6m9sAQcYfEBP4A-23" value="[19] 社内テスト用 2&lt;br&gt;（未受験）（試験期間外）&lt;br&gt;メール送信数：1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="3380" width="240" height="50" as="geometry" />
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-24" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1475" y="3250" as="sourcePoint" />
-            <mxPoint x="1715" y="3250" as="targetPoint" />
+            <mxPoint x="1355" y="3250" as="sourcePoint" />
+            <mxPoint x="1595" y="3250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2ZWetD6m9sAQcYfEBP4A-25" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1480" y="3360" as="sourcePoint" />
-            <mxPoint x="1720" y="3360" as="targetPoint" />
+            <mxPoint x="1360" y="3360" as="sourcePoint" />
+            <mxPoint x="1600" y="3360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="oB426RifMvSdbvtEAGv8-1" value="回答画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
@@ -202,11 +202,11 @@
         <mxCell id="bP6xk0DdPbtMNDP1m7rt-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="120" y="3640" width="400" height="280" as="geometry" />
         </mxCell>
-        <mxCell id="bP6xk0DdPbtMNDP1m7rt-2" value="■設問管理画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="bP6xk0DdPbtMNDP1m7rt-2" value="■問題管理画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="120" y="3600" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bP6xk0DdPbtMNDP1m7rt-3" value="■フィルター&lt;br&gt;- 試験フィルター&lt;br&gt;- tag&lt;br&gt;- question&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- id&lt;br class=&quot;Apple-interchange-newline&quot;&gt;- tag&lt;br&gt;&amp;nbsp; - 「言語」「非言語」とかの分類用のタグ&lt;br&gt;&lt;div&gt;- question&lt;br&gt;&amp;nbsp; - 最大2行まで表示&lt;br&gt;&amp;nbsp; - マウスホバーで問題文の全文が見れる吹き出しが出る&lt;br&gt;- type&lt;br&gt;- time_limit&lt;br&gt;&amp;nbsp; 1問の回答時間&lt;br&gt;- 編集ボタン&lt;br&gt;- 削除ボタン&lt;br&gt;&lt;br&gt;&lt;br&gt;■追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="640" y="3640" width="320" height="380" as="geometry" />
+        <mxCell id="bP6xk0DdPbtMNDP1m7rt-3" value="■フィルター&lt;br&gt;- idフィルター&lt;br&gt;- 試験フィルター&lt;br&gt;- tag&lt;br&gt;- question&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- id&lt;br class=&quot;Apple-interchange-newline&quot;&gt;- tag&lt;br&gt;&amp;nbsp; - 「言語」「非言語」とかの分類用のタグ&lt;br&gt;&lt;div&gt;- question&lt;br&gt;&amp;nbsp; - 見切れる分は...で略する&lt;br&gt;&amp;nbsp; - マウスホバーで問題文の全文が見れる吹き出しが出る&lt;br&gt;- type&lt;br&gt;- time_limit&lt;br&gt;&amp;nbsp; 1問の回答時間&lt;br&gt;- 編集ボタン&lt;br&gt;- 削除ボタン&lt;br&gt;&lt;br&gt;&lt;br&gt;■追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="3640" width="320" height="380" as="geometry" />
         </mxCell>
         <mxCell id="bP6xk0DdPbtMNDP1m7rt-4" value="追加" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="400" y="3670" width="80" height="40" as="geometry" />
@@ -221,289 +221,613 @@
           <mxGeometry x="160" y="3880" width="320" height="40" as="geometry" />
         </mxCell>
         <mxCell id="3HC2Cp4gwj4xktPx99CC-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="3640" width="200" height="200" as="geometry" />
+          <mxGeometry x="1040" y="3640" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="3HC2Cp4gwj4xktPx99CC-4" value="Create・Updateモーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="3600" width="140" height="30" as="geometry" />
+          <mxGeometry x="1040" y="3600" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3HC2Cp4gwj4xktPx99CC-5" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■input&lt;br&gt;- tag&lt;br&gt;- * question&lt;br&gt;&amp;nbsp; - 問題文&lt;br&gt;- * type&lt;br&gt;&amp;nbsp; - タブでtypeを選択（radio, select, text）&lt;br&gt;&amp;nbsp; - * option&lt;br&gt;&amp;nbsp; &amp;nbsp; - 選択肢&lt;br&gt;&amp;nbsp; - correct_answer&lt;br&gt;&amp;nbsp; &amp;nbsp; - 正答&lt;br&gt;- time_limit (秒)&lt;br&gt;- note&lt;br&gt;&amp;nbsp; - メモ&lt;br&gt;&amp;nbsp; - 広めのテキストエリア&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="3640" width="230" height="270" as="geometry" />
+        <mxCell id="3HC2Cp4gwj4xktPx99CC-5" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■input&lt;br&gt;- tag&lt;br&gt;- * question&lt;br&gt;&amp;nbsp; - 問題文&lt;br&gt;- * type&lt;br&gt;&amp;nbsp; - タブでtypeを選択（radio, select, text）&lt;br&gt;&amp;nbsp; - * option&lt;br&gt;&amp;nbsp; &amp;nbsp; - 選択肢&lt;br&gt;&amp;nbsp; - correct_answer&lt;br&gt;&amp;nbsp; &amp;nbsp; - 正答&lt;br&gt;- time_limit (秒)&lt;br&gt;- note&lt;br&gt;&amp;nbsp; - メモ&lt;br&gt;&amp;nbsp; - 広めのテキストエリア&lt;br&gt;&lt;br&gt;■作成ボタン or 完了ボタン&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="3640" width="230" height="270" as="geometry" />
         </mxCell>
         <mxCell id="3HC2Cp4gwj4xktPx99CC-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1810" y="3640" width="200" height="200" as="geometry" />
+          <mxGeometry x="1690" y="3640" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="3HC2Cp4gwj4xktPx99CC-7" value="Deleteモーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1810" y="3600" width="140" height="30" as="geometry" />
+          <mxGeometry x="1690" y="3600" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3HC2Cp4gwj4xktPx99CC-8" value="&lt;div&gt;■この設問をアーカイブしますか？&lt;br&gt;・試験に出題されなくなります&lt;br&gt;・受験済みの受験者の成績に反映されなくなります&lt;br&gt;&lt;br&gt;的文言&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;■情報（優先度低）&lt;br&gt;- question&lt;br&gt;- type&lt;br&gt;- option&lt;br&gt;- tag&lt;br&gt;- currect_answer&lt;br&gt;- time_limit&lt;br&gt;- note&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2130" y="3640" width="220" height="180" as="geometry" />
+        <mxCell id="3HC2Cp4gwj4xktPx99CC-8" value="&lt;div&gt;■この設問をアーカイブしますか？&lt;br&gt;・試験に出題されなくなります&lt;br&gt;・受験済みの受験者の成績に反映されなくなります&lt;br&gt;&lt;br&gt;的文言&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;■情報（優先度低）&lt;br&gt;- question&lt;br&gt;- type&lt;br&gt;- option&lt;br&gt;- tag&lt;br&gt;- currect_answer&lt;br&gt;- time_limit&lt;br&gt;- note&lt;br&gt;&lt;br&gt;■作成ボタン or 完了ボタン&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1970" y="3640" width="220" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="E4xDCeF54RdpkPRGIwYA-2" value="設問Create・Updateモーダル詳細　ラジオボタン" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="3930" width="320" height="30" as="geometry" />
+        <mxCell id="E4xDCeF54RdpkPRGIwYA-2" value="設問Create・Updateモーダル詳細　ラジオボタン選択時" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="3930" width="320" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="4000" width="400" height="290" as="geometry" />
+          <mxGeometry x="1040" y="4000" width="400" height="290" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-4" value="”ほのお&quot;と読める&lt;span style=&quot;background-color: initial;&quot;&gt;漢字はどれか&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1320" y="4000" width="170" height="20" as="geometry" />
+          <mxGeometry x="1200" y="4000" width="170" height="20" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-5" value="* 問題文" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="3990" width="70" height="30" as="geometry" />
+          <mxGeometry x="1080" y="3990" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-6" value="●ラジオボタン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="4082" width="90" height="20" as="geometry" />
+          <mxGeometry x="1080" y="4082" width="90" height="20" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-7" value="* 回答形式" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="4050" width="70" height="30" as="geometry" />
+          <mxGeometry x="1080" y="4050" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-8" value="○チェックボックス" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;" parent="1" vertex="1">
-          <mxGeometry x="1290" y="4082" width="110" height="20" as="geometry" />
+          <mxGeometry x="1170" y="4082" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-9" value="○テキスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1400" y="4082" width="120" height="20" as="geometry" />
+          <mxGeometry x="1280" y="4082" width="120" height="20" as="geometry" />
         </mxCell>
         <mxCell id="E4xDCeF54RdpkPRGIwYA-11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="4102" width="320" height="188" as="geometry" />
+          <mxGeometry x="1080" y="4102" width="320" height="188" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-1" value="火" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1280" y="4135" width="160" height="20" as="geometry" />
+          <mxGeometry x="1160" y="4135" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-2" value="炎" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1280" y="4165" width="160" height="20" as="geometry" />
+          <mxGeometry x="1160" y="4165" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-3" value="* 選択肢1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1210" y="4130" width="70" height="30" as="geometry" />
+          <mxGeometry x="1090" y="4130" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-4" value="* 選択肢2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1210" y="4160" width="70" height="30" as="geometry" />
+          <mxGeometry x="1090" y="4160" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-5" value="災" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1280" y="4200" width="160" height="20" as="geometry" />
+          <mxGeometry x="1160" y="4200" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-6" value="* 選択肢3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1210" y="4195" width="70" height="30" as="geometry" />
+          <mxGeometry x="1090" y="4195" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-7" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1450" y="4135" width="20" height="20" as="geometry" />
+          <mxGeometry x="1330" y="4135" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-10" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1450" y="4170" width="20" height="20" as="geometry" />
+          <mxGeometry x="1330" y="4170" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-11" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1450" y="4200" width="20" height="20" as="geometry" />
+          <mxGeometry x="1330" y="4200" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-12" value="正答" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="4102" width="30" height="30" as="geometry" />
+          <mxGeometry x="1360" y="4102" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-17" value="＋" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1350" y="4240" width="20" height="20" as="geometry" />
+          <mxGeometry x="1230" y="4240" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-18" value="選択肢を追加" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1210" y="4230" width="80" height="30" as="geometry" />
+          <mxGeometry x="1090" y="4230" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-19" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="4000" width="400" height="290" as="geometry" />
+          <mxGeometry x="1600" y="4000" width="400" height="290" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-20" value="”そら&quot;と読める&lt;span style=&quot;background-color: initial;&quot;&gt;漢字はどれか&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1880" y="4000" width="160" height="20" as="geometry" />
+          <mxGeometry x="1760" y="4000" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-21" value="* 問題文" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1760" y="3990" width="70" height="30" as="geometry" />
+          <mxGeometry x="1640" y="3990" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-22" value="○ラジオボタン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1760" y="4082" width="90" height="20" as="geometry" />
+          <mxGeometry x="1640" y="4082" width="90" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-23" value="* 回答形式" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1760" y="4050" width="70" height="30" as="geometry" />
+          <mxGeometry x="1640" y="4050" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-24" value="●チェックボックス" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;" parent="1" vertex="1">
-          <mxGeometry x="1850" y="4082" width="110" height="20" as="geometry" />
+          <mxGeometry x="1730" y="4082" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-25" value="○テキスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1960" y="4082" width="120" height="20" as="geometry" />
+          <mxGeometry x="1840" y="4082" width="120" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1760" y="4102" width="320" height="188" as="geometry" />
+          <mxGeometry x="1640" y="4102" width="320" height="188" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-27" value="空" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="4135" width="160" height="20" as="geometry" />
+          <mxGeometry x="1720" y="4135" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-28" value="宙" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="4165" width="160" height="20" as="geometry" />
+          <mxGeometry x="1720" y="4165" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-29" value="* 選択肢1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1770" y="4130" width="70" height="30" as="geometry" />
+          <mxGeometry x="1650" y="4130" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-30" value="* 選択肢2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1770" y="4160" width="70" height="30" as="geometry" />
+          <mxGeometry x="1650" y="4160" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-31" value="剃" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="4200" width="160" height="20" as="geometry" />
+          <mxGeometry x="1720" y="4200" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-32" value="* 選択肢3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1770" y="4195" width="70" height="30" as="geometry" />
+          <mxGeometry x="1650" y="4195" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-33" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2010" y="4135" width="20" height="20" as="geometry" />
+          <mxGeometry x="1890" y="4135" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-34" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2010" y="4170" width="20" height="20" as="geometry" />
+          <mxGeometry x="1890" y="4170" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-35" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2010" y="4200" width="20" height="20" as="geometry" />
+          <mxGeometry x="1890" y="4200" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-36" value="正答" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2040" y="4102" width="30" height="30" as="geometry" />
+          <mxGeometry x="1920" y="4102" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-37" value="☑︎" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2045" y="4132" width="20" height="30" as="geometry" />
+          <mxGeometry x="1925" y="4132" width="20" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-38" value="☑︎" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2045" y="4165" width="20" height="30" as="geometry" />
+          <mxGeometry x="1925" y="4165" width="20" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-39" value="□" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2045" y="4195" width="20" height="30" as="geometry" />
+          <mxGeometry x="1925" y="4195" width="20" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-40" value="＋" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1910" y="4240" width="20" height="20" as="geometry" />
+          <mxGeometry x="1790" y="4240" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-41" value="選択肢を追加" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1770" y="4230" width="80" height="30" as="geometry" />
+          <mxGeometry x="1650" y="4230" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="04iO3gaZqpDQR3jB9z5x-42" value="チェックボックス" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="3930" width="120" height="30" as="geometry" />
+        <mxCell id="04iO3gaZqpDQR3jB9z5x-42" value="チェックボックス選択時" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="3930" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-43" value="●" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1485" y="4170" width="20" height="20" as="geometry" />
+          <mxGeometry x="1365" y="4170" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-45" value="○" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1485" y="4200" width="20" height="20" as="geometry" />
+          <mxGeometry x="1365" y="4200" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-48" value="○" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1485" y="4135" width="20" height="20" as="geometry" />
+          <mxGeometry x="1365" y="4135" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-49" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2280" y="4000" width="400" height="290" as="geometry" />
+          <mxGeometry x="2160" y="4000" width="400" height="290" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-50" value="弊社への志望動機" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="4000" width="160" height="20" as="geometry" />
+          <mxGeometry x="2320" y="4000" width="160" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-51" value="* 問題文" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2320" y="3990" width="70" height="30" as="geometry" />
+          <mxGeometry x="2200" y="3990" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-52" value="○ラジオボタン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2320" y="4082" width="90" height="20" as="geometry" />
+          <mxGeometry x="2200" y="4082" width="90" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-53" value="* 回答形式" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2320" y="4050" width="70" height="30" as="geometry" />
+          <mxGeometry x="2200" y="4050" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-54" value="○チェックボックス" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;" parent="1" vertex="1">
-          <mxGeometry x="2410" y="4082" width="110" height="20" as="geometry" />
+          <mxGeometry x="2290" y="4082" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-55" value="●テキスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2520" y="4082" width="120" height="20" as="geometry" />
+          <mxGeometry x="2400" y="4082" width="120" height="20" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-56" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2320" y="4102" width="320" height="188" as="geometry" />
+          <mxGeometry x="2200" y="4102" width="320" height="188" as="geometry" />
         </mxCell>
-        <mxCell id="04iO3gaZqpDQR3jB9z5x-72" value="テキスト" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2280" y="3930" width="120" height="30" as="geometry" />
+        <mxCell id="04iO3gaZqpDQR3jB9z5x-72" value="テキスト選択時" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2160" y="3930" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-73" value="□" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2580" y="4120" width="20" height="30" as="geometry" />
+          <mxGeometry x="2460" y="4120" width="20" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-74" value="コード形式にする" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2340" y="4120" width="150" height="30" as="geometry" />
+          <mxGeometry x="2220" y="4120" width="150" height="30" as="geometry" />
         </mxCell>
         <mxCell id="04iO3gaZqpDQR3jB9z5x-76" value="テキストのオプションはいまのとこあんま考えてない&lt;br&gt;&lt;br&gt;配置とか、タブにするか他の形式にするかとか、可知さんがイケてると思う感じにしてもろて・・・" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="2720" y="4000" width="150" height="140" as="geometry" />
+          <mxGeometry x="2600" y="4000" width="150" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-1" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-1" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1140" y="4020" as="sourcePoint" />
-            <mxPoint x="1560" y="3990" as="targetPoint" />
+            <mxPoint x="1020" y="4020" as="sourcePoint" />
+            <mxPoint x="1440" y="3990" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1250" y="3990" />
-              <mxPoint x="1350" y="4000" />
-              <mxPoint x="1450" y="4020" />
+              <mxPoint x="1130" y="3990" />
+              <mxPoint x="1230" y="4000" />
+              <mxPoint x="1330" y="4020" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-2" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-2" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1140" y="4010" as="sourcePoint" />
-            <mxPoint x="1560" y="3980" as="targetPoint" />
+            <mxPoint x="1020" y="4010" as="sourcePoint" />
+            <mxPoint x="1440" y="3980" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1250" y="3980" />
-              <mxPoint x="1350" y="3990" />
-              <mxPoint x="1450" y="4010" />
+              <mxPoint x="1130" y="3980" />
+              <mxPoint x="1230" y="3990" />
+              <mxPoint x="1330" y="4010" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-7" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-7" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2260" y="4020" as="sourcePoint" />
-            <mxPoint x="2680" y="3990" as="targetPoint" />
+            <mxPoint x="2140" y="4020" as="sourcePoint" />
+            <mxPoint x="2560" y="3990" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="2370" y="3990" />
-              <mxPoint x="2470" y="4000" />
-              <mxPoint x="2570" y="4020" />
+              <mxPoint x="2250" y="3990" />
+              <mxPoint x="2350" y="4000" />
+              <mxPoint x="2450" y="4020" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-8" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-8" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2260" y="4010" as="sourcePoint" />
-            <mxPoint x="2680" y="3980" as="targetPoint" />
+            <mxPoint x="2140" y="4010" as="sourcePoint" />
+            <mxPoint x="2560" y="3980" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="2370" y="3980" />
-              <mxPoint x="2470" y="3990" />
-              <mxPoint x="2570" y="4010" />
+              <mxPoint x="2250" y="3980" />
+              <mxPoint x="2350" y="3990" />
+              <mxPoint x="2450" y="4010" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-11" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-11" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1710" y="4025" as="sourcePoint" />
-            <mxPoint x="2130" y="3995" as="targetPoint" />
+            <mxPoint x="1590" y="4025" as="sourcePoint" />
+            <mxPoint x="2010" y="3995" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1820" y="3995" />
-              <mxPoint x="1920" y="4005" />
-              <mxPoint x="2020" y="4025" />
+              <mxPoint x="1700" y="3995" />
+              <mxPoint x="1800" y="4005" />
+              <mxPoint x="1900" y="4025" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-12" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" edge="1" parent="1">
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-12" value="" style="curved=1;endArrow=none;html=1;rounded=0;endFill=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1710" y="4015" as="sourcePoint" />
-            <mxPoint x="2130" y="3985" as="targetPoint" />
+            <mxPoint x="1590" y="4015" as="sourcePoint" />
+            <mxPoint x="2010" y="3985" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1820" y="3985" />
-              <mxPoint x="1920" y="3995" />
-              <mxPoint x="2020" y="4015" />
+              <mxPoint x="1700" y="3985" />
+              <mxPoint x="1800" y="3995" />
+              <mxPoint x="1900" y="4015" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-13" value="中略" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1570" y="3970" width="120" height="30" as="geometry" />
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-13" value="中略" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="3970" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-15" value="&lt;div&gt;💌&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1700" y="3155" width="90" height="40" as="geometry" />
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-20" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2120" y="3080" width="200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-16" value="&lt;div&gt;💌&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1700" y="3270" width="90" height="40" as="geometry" />
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-21" value="メール送信確認モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2120" y="3040" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-17" value="&lt;div&gt;💌&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1700" y="3380" width="90" height="40" as="geometry" />
+        <mxCell id="hHuOPPxw-Q0kMheYTdAM-22" value="&lt;div&gt;■受験者に&lt;span style=&quot;background-color: initial;&quot;&gt;受験案内・パスワード発行メールを送信しますか？的な文言&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2400" y="3080" width="220" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-20" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2240" y="3080" width="200" height="200" as="geometry" />
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="4480" width="400" height="280" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-21" value="メール送信確認モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="2240" y="3040" width="140" height="30" as="geometry" />
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-2" value="■試験管理画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="4440" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="hHuOPPxw-Q0kMheYTdAM-22" value="&lt;div&gt;■受験者に&lt;span style=&quot;background-color: initial;&quot;&gt;受験案内・パスワード発行メールを送信しますか？的な文言&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="2560" y="3080" width="220" height="180" as="geometry" />
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-3" value="■フィルター&lt;br&gt;- id&lt;br&gt;- tag&lt;br&gt;- title&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- id&lt;br class=&quot;Apple-interchange-newline&quot;&gt;- tag&lt;br&gt;&amp;nbsp; - 「新卒」「中途」「ハイクラス」とかの分類用のタグ&lt;br&gt;&lt;div&gt;- title&lt;br&gt;- 問題数&lt;br&gt;- 試験時間&lt;br&gt;- 受験者数（未）&lt;/div&gt;- 受験者数（済）&lt;br&gt;&lt;div&gt;- 受験者追加ボタン&lt;/div&gt;&lt;div&gt;　- 受験追加画面を別タブで開く（試験を選択した状態で）&lt;br&gt;- メニュー&lt;br&gt;&lt;/div&gt;&lt;div&gt;　- 編集ボタン&lt;br&gt;　- 削除ボタン&lt;br&gt;&lt;br&gt;&lt;br&gt;■追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="4480" width="410" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-4" value="追加" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="400" y="4510" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-5" value="試験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="160" y="4510" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-6" value="リスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="4560" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="w_8scfmVYwfCsPU4lYIi-7" value="&amp;nbsp;ページャー" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="4720" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-13" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="4480" width="400" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-14" value="■試験create・update画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="4440" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-15" value="試験はモーダルではなく、試験作成画面が新しいタブで開く&lt;div&gt;&lt;br&gt;■input&lt;br&gt;- title&lt;br&gt;- tag&lt;br&gt;- question&lt;br&gt;&amp;nbsp; - 問題追加、削除、&lt;span style=&quot;background-color: initial;&quot;&gt;並び替えができる&lt;br&gt;&amp;nbsp; - 並びかえできるコンポーネントを使う　これ　&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;https://ui.mantine.dev/category/dnd/&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; -&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;問題リストの表示内容は管理画面の問題一覧と同じ（編集ボタンはなし）&lt;br&gt;&lt;br&gt;■問題追加ボタン&lt;br&gt;押下すると問題追加モーダルを開く&lt;br&gt;&lt;br&gt;■試験情報&lt;br&gt;- questionで入れた問題のトータルの時間や問題数を表示&lt;br&gt;- tagのパーセンテージ表示とかもしたいけど素うどんなので略&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="4480" width="410" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-17" value="試験作成" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4490" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-22" value="* 試験名" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4550" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-23" value="入社試験" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="4555" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-26" value="* 問題" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4650" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yn_MHxduMrpezGlEB1aM-27" value="試験より先に問題を作ってね的文言" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4515" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-1" value="出題する問題リスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4680" width="200" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-2" value="試験情報&lt;br&gt;&lt;br&gt;試験時間 : 0時間35分20秒&lt;br&gt;問題数: 30問" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="4680" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-7" value="問題追加ボタン&lt;br&gt;&lt;br&gt;この辺のコンポーネントの配置とか全然思いつかない　託しました　全てを" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="4810" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-12" value="タグ" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="4590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-13" value="（中途）（未経験者）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="4595" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2040" y="4480" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-16" value="問題追加モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2040" y="4440" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-17" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■試験に追加する問題を選択してください　という文言&lt;br&gt;&lt;br&gt;■問題検索&lt;br&gt;- id&lt;br&gt;- 試験（すでにどの試験で使われたか）&lt;br&gt;- tag&lt;br&gt;- question&lt;br&gt;- type&lt;br&gt;&lt;br&gt;■問題リスト&lt;br&gt;- 表示内容は問題管理画面とおおむね一緒&lt;br&gt;&amp;nbsp; - 削除、編集ボタンはない&lt;br&gt;&amp;nbsp; - チェックボックスがある&lt;br&gt;&lt;br&gt;■追加ボタン&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2320" y="4480" width="230" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-18" value="メールボタン" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1540" y="3260" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_YXjIZVdPvHgr67L3VNg-19" value="メールボタン" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1540" y="3370" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="5120" width="620" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-3" value="ドロワー内容" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="5080" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-4" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;■試験情報&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- name&lt;br&gt;- 問題数&lt;br&gt;- 試験時間&lt;br&gt;- 受験者数　受験済み・受験予定&lt;/div&gt;&lt;div&gt;&lt;br&gt;■受験履歴&lt;br&gt;- 受験履歴情報&lt;br&gt;&amp;nbsp; - 受験者id&lt;br&gt;&amp;nbsp; - 受験者名&lt;br&gt;&amp;nbsp; &amp;nbsp; - 結果クリックで成績画面へ&lt;br&gt;&amp;nbsp; - 受験ステート&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; - メール送信数&lt;br&gt;&amp;nbsp; - メールボタン&lt;br&gt;&amp;nbsp; &amp;nbsp; - 受験案内・パスワード発行メール送信が送れる&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="5120" width="320" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-5" value="基本情報&lt;br&gt;&lt;div&gt;&lt;br&gt;[2] 2025作成中新卒向け試験&lt;br&gt;問題数： 20問&lt;br&gt;試験時間：00:50:30&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="5140" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="5290" width="290" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-7" value="受験履歴" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="5250" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb1wRUhITqYVkk_RxUyR-11" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1380" y="5390" as="sourcePoint" />
+            <mxPoint x="1620" y="5390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rmGJF0Zt8cSgE2G8ZeM9-1" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;受験予定受験者数：100&lt;br&gt;受験済み受験者数：200&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="5140" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rmGJF0Zt8cSgE2G8ZeM9-8" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1380" y="5490" as="sourcePoint" />
+            <mxPoint x="1620" y="5490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-4" value="[100] 尾留伝 大橋&lt;br&gt;（受験済み）&lt;div&gt;メール送信数： 2&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1375" y="5300" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-5" value="[100] 尾留伝 大橋&lt;br&gt;（未受験）（試験期間中）&lt;br&gt;メール送信数：1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1375" y="5420" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-6" value="メールボタン" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1575" y="5410" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="5640" width="400" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-10" value="■受験管理画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="5600" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-11" value="&lt;div&gt;■フィルター&lt;br&gt;- 受験&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - ステータス&lt;br&gt;&amp;nbsp; - 受験日（期間指定できるDataPicker使う）&lt;br&gt;- 受験者&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - name&lt;br&gt;&amp;nbsp; - tag&lt;/div&gt;&lt;div&gt;- 試験&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - title&lt;br&gt;&amp;nbsp; - tag&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- id&lt;br class=&quot;Apple-interchange-newline&quot;&gt;&lt;div&gt;- 受験者&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - name&lt;br&gt;&amp;nbsp; - tag&lt;/div&gt;&lt;div&gt;- 試験&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - title&lt;br&gt;&amp;nbsp; - tag&lt;/div&gt;&lt;div&gt;- メール送信数&lt;br&gt;- 受験ステータス&lt;br&gt;&amp;nbsp; - 未受験・受験済&lt;br&gt;&amp;nbsp; - 受験済であれば回答送信時刻、成績画面遷移ボタンも表示&lt;br&gt;&amp;nbsp; &amp;nbsp; - のちのちステータスが増えそうな予感がするので、回答送信時刻ではなくステータスで表示&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;br&gt;■追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="5640" width="320" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="URPveABHm_1Tmzu5fd6Z-13" value="受験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="160" y="5670" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dsRx7Q2OpMPTavlW-dJ2-2" value="リスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="5720" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dsRx7Q2OpMPTavlW-dJ2-5" value="&amp;nbsp;ページャー" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="6040" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-3" value="試験から追加画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="5600" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-4" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■試験input&lt;br&gt;クリックで試験追加モーダル開く&lt;br&gt;&lt;br&gt;■受験者追加ボタン&lt;br&gt;受験者追加モーダルひらく&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;id, name, email&lt;br&gt;&lt;br&gt;■受験者情報&lt;br&gt;- 受験者数&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="5640" width="230" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-34" value="&lt;div&gt;試験から追加&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="5670" width="77" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-36" value="&lt;div&gt;受験者から追加&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="393" y="5670" width="87" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-43" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="5640" width="400" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-44" value="受験追加" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="5650" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-45" value="* 試験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="5710" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-46" value="[11] 2026入社試験" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="5715" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-47" value="* 受験者" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="5750" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-48" value="受験より先に受験者と試験を作ってね的文言" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="5675" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-49" value="受験する受験者のリスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="5780" width="200" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-50" value="合計受験者数：10" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="5780" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-51" value="受験者追加ボタン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="5910" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-59" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1231" y="5825" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-62" value="[33] 相澤美子" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1095" y="5820" width="105" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-65" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1231" y="5855" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yIKPSF9XvD0R93M018Hm-66" value="[90]持田陽介" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1095" y="5850" width="125" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1840" y="5640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-2" value="受験者追加モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1840" y="5600" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-3" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■受験対象の受験者を選択してください　という文言&lt;br&gt;&lt;br&gt;■検索&lt;br&gt;- id&lt;br&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;- 過去にこの試験を受けた回数&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- 表示内容は受験者管理画面とおおむね一緒&lt;br&gt;&amp;nbsp; - 削除、編集ボタンはない&lt;br&gt;&amp;nbsp; - チェックボックスがある&lt;br&gt;&lt;br&gt;■追加ボタン&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2120" y="5640" width="230" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="5640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-6" value="試験追加モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="5600" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-7" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■受験対象の試験を選択してください　という文言&lt;br&gt;&lt;br&gt;■検索&lt;br&gt;- id&lt;br&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;- この&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- 表示内容は受験者管理画面とおおむね一緒&lt;br&gt;&amp;nbsp; - 削除、編集ボタンはない&lt;br&gt;&amp;nbsp; - チェックボックスがある&lt;br&gt;&lt;br&gt;■追加ボタン&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2760" y="5640" width="230" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-8" value="受験者から追加画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="6200" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-9" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■受験者input&lt;br&gt;クリックで試験追加モーダル開く&lt;br&gt;&lt;br&gt;■受験者追加ボタン&lt;br&gt;受験者追加モーダルひらく&lt;br&gt;&lt;br&gt;■試験リスト&lt;br&gt;id, name&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="6240" width="230" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-10" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="6240" width="400" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-11" value="受験追加" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="6250" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-12" value="* 受験者" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="6310" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-13" value="[33] 相澤美子 aizawa@aaa.com" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="6315" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-14" value="* 試験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="6350" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-15" value="受験より先に受験者と試験を作ってね的文言" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="6275" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-16" value="試験のリスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="6380" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-18" value="試験追加ボタン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1190" y="6560" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-19" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="6425" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-20" value="[11] 2026入社試験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1095" y="6420" width="105" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-21" value="×" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="6455" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-22" value="[2] 社内テスト用試験" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1095" y="6450" width="125" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-24" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="6760" width="400" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-25" value="■成績集計画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="6720" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-27" value="成績" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="160" y="6790" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-34" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="6850" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-36" value="グラフ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="160" y="7050" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-37" value="グラフ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="333" y="7050" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="6760" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-41" value="受験選択モーダル" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="6720" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-42" value="機能持たせすぎ？&lt;br&gt;■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■成績を見たい受験履歴を選択してください的文言&lt;br&gt;&lt;br&gt;■検索&lt;br&gt;- 受験&lt;br&gt;&amp;nbsp;- id&lt;br&gt;&amp;nbsp;- 受験期間 from ~ to&lt;br class=&quot;Apple-interchange-newline&quot;&gt;&lt;div&gt;- 受験者&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - name&lt;br&gt;&amp;nbsp; - tag&lt;/div&gt;&lt;div&gt;- 試験&lt;br&gt;&amp;nbsp; - id&lt;br&gt;&amp;nbsp; - title&lt;br&gt;&amp;nbsp; - tag&lt;/div&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- 表示内容は受験者管理画面とおおむね一緒&lt;br&gt;&amp;nbsp; - 機能ボタンはない&lt;br&gt;&amp;nbsp; - 集計対象に追加チェックボックスがある&lt;br&gt;&amp;nbsp; - マークチェックボックスがある&lt;br&gt;&lt;br&gt;■追加ボタン&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="6760" width="360" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-43" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;■&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;受験新着&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-align: center;&quot;&gt;- 直近に完了した受験5件を表示&lt;br&gt;- 表示内容は受験管理画面のリストとだいたい一緒&lt;br&gt;&lt;br&gt;■集計対象を編集するボタン&lt;br&gt;押下で受験選択モーダルひらく&lt;br&gt;&lt;br&gt;■集計対象&lt;/span&gt;&lt;/div&gt;- 「マーク」のカラムがあり、チェックボックスがあり、チェックを入れるとフォーカスされる（グラフ上で目立つ）&lt;br style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;text-align: center;&quot;&gt;- 表示内容は受験管理画面のリストとだいたい一緒&lt;br&gt;&lt;br&gt;■グラフ・表&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="6760" width="320" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="-dMVP9XODwWcgh__ky2K-47" value="集計対象" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="160" y="6910" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="6954" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--2" value="受験新着" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="6820" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="333" y="7170" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7170" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--6" value="集計対象を編集する" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="393" y="6920" width="87" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--8" value="グラフ・表" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="7210" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--10" value="こんな感じで考えているが、大津さんとの話し合いで一番変わりそうな部分なので一旦デザイン不要&lt;br&gt;&lt;br&gt;&lt;div&gt;- 得点表&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 列：&lt;br&gt;&amp;nbsp; &amp;nbsp; - 問題のタグごと&lt;br&gt;&amp;nbsp; &amp;nbsp; - 全問題&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 行：&lt;br&gt;&amp;nbsp; &amp;nbsp; - マークした人の点数&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;　- 平均点&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- 箱ヒゲ図&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 横軸：タグ&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 縦軸：得点&lt;/div&gt;&lt;div&gt;- レーダーチャート（優先度低）&lt;/div&gt;&lt;div&gt;&amp;nbsp; - 項目：タグ&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="7240" width="360" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="120" y="7560" width="400" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--12" value="■回答閲覧画面" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="7520" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--13" value="回答閲覧" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7590" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7650" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--18" value="[7076] 田原秀樹 tahara@example.com&lt;br&gt;[60] 新卒向け試験_2024.01.01作成" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7754" width="320" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--19" value="受験新着" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7620" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--22" value="対象を編集する" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="393" y="7720" width="87" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--23" value="対象" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7715" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--24" value="リスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7880" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--26" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;■&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;受験新着&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-align: center;&quot;&gt;- 直近に完了した受験5件を表示&lt;br&gt;- 表示内容は受験管理画面のリストとだいたい一緒&lt;br&gt;&lt;br&gt;■対象を編集するボタン&lt;br&gt;押下で受験選択モーダルひらく&lt;br&gt;&lt;br&gt;■集計対象&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;text-align: center;&quot;&gt;- 表示内容は受験管理画面のリストとだいたい一緒&lt;br&gt;&lt;br&gt;&lt;/span&gt;■得点表&lt;br&gt;&lt;span style=&quot;text-align: center;&quot;&gt;- 表示内容は成績集計画面の表とだいたい一緒&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- 問題管理画面の内容 + 受験者の回答が表示される&lt;br&gt;&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="7560" width="320" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="U3OF6DP7kyrL3MkwFBY--28" value="得点表" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="7810" width="320" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
