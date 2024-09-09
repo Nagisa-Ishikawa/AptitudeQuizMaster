@@ -13,8 +13,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Modelはここから下に追加していく
-// 注： 開発時、modelを更新したら、ローカルでもコンテナ内でもmake generate & make migrateする
+// ---Modelはここから下に追加していく---
+// 注： 開発時にmodelを更新したら、ローカルでもコンテナ内でもmake generate & make migrateする
+// そうしないと、ローカルのprisma clientが最新のmodelを認識しないため、linterがエラーを出してしまう
 
 model Examinee {
   id        Int      @id @default(autoincrement())
