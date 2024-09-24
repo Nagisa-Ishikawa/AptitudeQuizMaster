@@ -13,67 +13,177 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Modelはここから下に追加していく
-// 注： 開発時、modelを更新したら、ローカルでもコンテナ内でもmake generate & make migrateする
+// ---Modelはここから下に追加していく---
+// 注： 開発時にmodelを更新したら、ローカルでもコンテナ内でもmake generate & make migrateする
+// そうしないと、ローカルのprisma clientが最新のmodelを認識しないため、linterがエラーを出してしまう
 
 model Examinee {
-  id                        Int      @id @default(autoincrement())
-  name                      String
-  email                     String
-  password                  String
-  examId                    Int      @map("exam_id")
-  examPeriodStartDate       DateTime @map("exam_period_start_date")
-  examPeriodEndDate         DateTime @map("exam_period_end_date")
-  examStartDate             DateTime? @map("exam_start_date")
-  examEndDate               DateTime? @map("exam_end_date")
-  exam                      Exam     @relation(fields: [examId], references: [id])
-  examAnswers               ExamineeAnswer[]
-  createdAt                 DateTime @map("created_at")
-  updatedAt                 DateTime @map("updated_at")
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String
+  password String
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  ExamAttempt     ExamAttempt[]
+  ExamineeTagging ExamineeTagging[]
 
   @@map("examinees")
 }
 
+model ExamAttempt {
+  id         Int       @id @default(autoincrement())
+  examineeId Int       @map("examinee_id")
+  examId     Int       @map("exam_id")
+  startDate  DateTime? @map("start_date")
+  endDate    DateTime? @map("end_date")
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  exam           Exam             @relation(fields: [examId], references: [id])
+  examinee       Examinee         @relation(fields: [examineeId], references: [id])
+  ExamineeAnswer ExamineeAnswer[]
+
+  @@map("exam_attempts")
+}
+
 model Exam {
-  id                        Int      @id @default(autoincrement())
-  title                     String
-  timeLimit                 Int      @map("time_limit")
-  examinees                 Examinee[]
-  examQuestions             ExamQuestion[]
-  deletedAt                 DateTime? @map("deleted_at")
-  createdAt                 DateTime @map("created_at")
-  updatedAt                 DateTime @map("updated_at")
+  id    Int    @id @default(autoincrement())
+  title String
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examQuestions ExamQuestion[]
+  examAttempts  ExamAttempt[]
+  ExamTagging   ExamTagging[]
 
   @@map("exams")
 }
 
 model ExamQuestion {
-  id                        Int      @id @default(autoincrement())
-  question                  String
-  type                      Int
-  option                    Json?
-  correctAnswer             Json?      @map("collect_answer")
-  jsonVersion               Int       @map("json_version")
-  examId                    Int?       @map("exam_id")
-  exam                      Exam?      @relation(fields: [examId], references: [id])
-  examAnswers               ExamineeAnswer[]
-  deletedAt                 DateTime?  @map("deleted_at")
-  createdAt                 DateTime  @map("created_at")
-  updatedAt                 DateTime  @map("updated_at")
+  id            Int    @id @default(autoincrement())
+  number        Int
+  question      String
+  timeLimit     Int    @map("time_limit")
+  type          Int
+  option        Json?
+  correctAnswer Json?  @map("collect_answer")
+  jsonVersion   Int    @map("json_version")
+  examId        Int?   @map("exam_id")
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  exam                Exam?                 @relation(fields: [examId], references: [id])
+  examineeAnswers     ExamineeAnswer[]
+  ExamQuestionTagging ExamQuestionTagging[]
 
   @@map("exam_questions")
 }
 
 model ExamineeAnswer {
-  id                        Int      @id @default(autoincrement())
-  examineeId                Int      @map("examinee_id")
-  examQuestionId            Int      @map("exam_question_id")
-  answer                    Json?
-  isMarked                  Boolean   @map("is_marked")
-  examinee                  Examinee  @relation(fields: [examineeId], references: [id])
-  examQuestion              ExamQuestion  @relation(fields: [examQuestionId], references: [id])
-  createdAt                 DateTime  @map("created_at")
-  updatedAt                 DateTime  @map("updated_at")
+  id             Int   @id @default(autoincrement())
+  examQuestionId Int   @map("exam_question_id")
+  examAttemptId  Int   @map("exam_attempt_id")
+  answer         Json?
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examQuestion ExamQuestion @relation(fields: [examQuestionId], references: [id])
+  examAttempt  ExamAttempt  @relation(fields: [examAttemptId], references: [id])
 
   @@map("examinee_answers")
+}
+
+model ExamineeTagging {
+  id            Int @id @default(autoincrement())
+  examineeId    Int @map("examinee_id")
+  examineeTagId Int @map("examinee_tag_id")
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examinee    Examinee    @relation(fields: [examineeId], references: [id])
+  examineeTag ExamineeTag @relation(fields: [examineeTagId], references: [id])
+
+  @@map("examinee_tagging")
+}
+
+model ExamineeTag {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examineeTaggings ExamineeTagging[]
+
+  @@map("examinee_tags")
+}
+
+model ExamTagging {
+  id        Int @id @default(autoincrement())
+  examId    Int @map("exam_id")
+  examTagId Int @map("exam_tag_id")
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  exam    Exam    @relation(fields: [examId], references: [id])
+  examTag ExamTag @relation(fields: [examTagId], references: [id])
+
+  @@map("exam_tagging")
+}
+
+model ExamTag {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examTaggings ExamTagging[]
+
+  @@map("exam_tags")
+}
+
+model ExamQuestionTagging {
+  id                Int @id @default(autoincrement())
+  examQuestionId    Int @map("exam_question_id")
+  examQuestionTagId Int @map("exam_question_tag_id")
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examQuestion    ExamQuestion    @relation(fields: [examQuestionId], references: [id])
+  examQuestionTag ExamQuestionTag @relation(fields: [examQuestionTagId], references: [id])
+
+  @@map("exam_question_tagging")
+}
+
+model ExamQuestionTag {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  examQuestionTaggings ExamQuestionTagging[]
+
+  @@map("exam_question_tags")
 }

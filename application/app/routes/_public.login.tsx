@@ -4,7 +4,6 @@ import { Form, useActionData } from "@remix-run/react";
 import {
   Image,
   BackgroundImage,
-  Button,
   Center,
   Stack,
   rem,
@@ -21,6 +20,7 @@ import { Notification } from "../components/Notification/Notification";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
 import { useDisclosure } from "@mantine/hooks";
 import { useEffect, useState } from "react";
+import { ButtonA } from "../components/Button/ButtonA";
 
 export default function LoginRoute() {
   const data = useActionData<typeof action>();
@@ -92,7 +92,7 @@ export default function LoginRoute() {
                 />
               </Stack>
               <Center>
-                <Button
+                <ButtonA
                   type="submit"
                   h={rem(76)}
                   w={rem(320)}
@@ -100,7 +100,7 @@ export default function LoginRoute() {
                   style={{ fontSize: theme.fontSizes.xlll }}
                 >
                   ログイン
-                </Button>
+                </ButtonA>
               </Center>
             </Stack>
           </Form>

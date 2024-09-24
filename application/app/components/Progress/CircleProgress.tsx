@@ -9,7 +9,7 @@ type Props = {
 };
 
 /**
- * 試験の残り時間を表すのに使うプログレス
+ * 円のプログレス
  */
 export const CircleProgress: React.FC<Props> = ({ value, label }: Props) => {
   const theme = useMantineTheme();

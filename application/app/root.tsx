@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import "@mantine/core/styles.css";
 
 import { cssBundleHref } from "@remix-run/css-bundle";
