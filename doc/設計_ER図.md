@@ -36,11 +36,11 @@ examinee_answers {
 exams {
 	number id "試験"
 	string title
-	number time_limit "制限時間(分)"
 }
 exam_questions {
 	number id "試験の設問"
 	string question "問題文"
+	number time_limit "制限時間(分)"
 	number type "設問タイプ"
 	json option "チェックボックスの選択肢などの情報"
 	json collect_answer "正答"

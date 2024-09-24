@@ -2,6 +2,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+// 受験者回答作成
 export const seedExamineeAnswer = async (isProd: boolean, now: Date) => {
   if (isProd) return;
 
@@ -25,7 +26,6 @@ export const seedExamineeAnswer = async (isProd: boolean, now: Date) => {
         seed.push({
           examAttemptId: examAttempt.id,
           examQuestionId: question.id,
-          isMarked: question.id % 3 ? false : true,
           answer:
             question.id % 4 ? undefined : JSON.stringify({ sample: "sample" }),
           createdAt: now,
