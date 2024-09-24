@@ -7,16 +7,14 @@ import {
   Text,
   Grid,
   Button,
-  Progress,
 } from "@mantine/core";
 import { useOutletContext, useParams } from "@remix-run/react";
 import { FetchedData } from "../_private.exam";
 import { InputForAnswer } from "./InputForAnswer";
-import { CheckLaterMark } from "./CheckLaterMark";
+
 import { useRef } from "react";
 import { Question } from "./Question";
 import { pages } from "../../consts/pages";
-import { EditIcon } from "../../components/Icon/EditIcon";
 import { ActionFunction, redirect } from "@remix-run/node";
 import { prisma } from "../../services/db.server";
 import { AnswerEntity } from "../../entities/AnswerEntity";
@@ -58,16 +56,14 @@ export default function Index() {
         }}
       >
         <Flex align="center" justify="space-between">
-          {/* 問題タイトル */}
+          {/* 問題番号 */}
           <Text
             style={{
               fontWeight: theme.other.fontWeights.bold,
             }}
           >
-            {question.number}. 語彙（言語分野）
+            {question.number}問目
           </Text>
-          {/* 後で見返すマーク */}
-          <CheckLaterMark question={question} />
         </Flex>
 
         <Divider my="md" />
@@ -86,42 +82,11 @@ export default function Index() {
       </Paper>
       <Flex
         align="center"
-        justify="space-between"
+        justify="flex-end"
         mt={rem(32)}
         gap={rem(20)}
         wrap="wrap"
       >
-        <Button
-          h={rem(60)}
-          w={rem(240)}
-          color={theme.colors.bodyColorPallet[theme.primaryShade as number]}
-          style={{
-            color: theme.colors.textColor[theme.primaryShade as number],
-            borderColor:
-              theme.colors.secondaryColor[theme.primaryShade as number],
-          }}
-          type="submit"
-          name="action"
-          value="previous"
-        >
-          前に戻る
-        </Button>
-        <Flex align="center" gap={rem(8)} ml="auto" mr="auto">
-          <EditIcon />
-          <Text
-            style={{
-              fontWeight: theme.other.fontWeights.bold,
-              fontSize: theme.fontSizes.sm,
-            }}
-          >
-            問題数
-          </Text>
-          <Progress
-            value={(Number(questionNumber) * 100) / questions.length}
-            w={rem(400)}
-            color={theme.colors.primaryColor[theme.primaryShade as number]}
-          />
-        </Flex>
         <Button
           h={rem(60)}
           w={rem(240)}
