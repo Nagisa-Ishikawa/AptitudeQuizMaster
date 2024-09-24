@@ -4,6 +4,7 @@ import { QuestionOptionEntity } from "../../app/entities/QuestionOptionEntity";
 
 const prisma = new PrismaClient();
 
+// 試験問題作成
 export const seedExamQuestion = async (isProd: boolean, now: Date) => {
   if (isProd) return;
 
@@ -22,6 +23,7 @@ export const seedExamQuestion = async (isProd: boolean, now: Date) => {
 # h1  
 ## h2  
 text`,
+        timeLimit: 20 + (i % 3),
         type: i % 3,
         option:
           i % 3 === questionType.checkBox
