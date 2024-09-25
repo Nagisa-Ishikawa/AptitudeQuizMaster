@@ -8,18 +8,16 @@ export default function Index() {
   const data = useOutletContext() as FetchedData;
 
   return (
-    <main>
-      <Stack
-        w={"100%"}
-        style={{ padding: `${rem(30)} ${rem(80)} ${rem(40)} ${rem(80)}` }}
-        gap={rem(24)}
-      >
-        <Flex align="center" justify="flex-end">
-          {/* 残り時間 */}
-          <TimeLeft />
-        </Flex>
-        <Outlet context={data} />
-      </Stack>
-    </main>
+    <Stack
+      w={"100%"}
+      style={{ padding: `${rem(30)} ${rem(80)} ${rem(40)} ${rem(80)}` }}
+      gap={rem(24)}
+    >
+      <Flex align="center" justify="flex-end">
+        {/* 残り時間 */}
+        <TimeLeft />
+      </Flex>
+      <Outlet context={data} />
+    </Stack>
   );
 }

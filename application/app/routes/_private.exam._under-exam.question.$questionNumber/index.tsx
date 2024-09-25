@@ -1,7 +1,6 @@
 import {
   Divider,
   Flex,
-  Paper,
   rem,
   useMantineTheme,
   Text,
@@ -19,6 +18,7 @@ import { ActionFunction, redirect } from "@remix-run/node";
 import { prisma } from "../../services/db.server";
 import { AnswerEntity } from "../../entities/AnswerEntity";
 import { questionType } from "../../consts/questionType";
+import { Paper } from "../../components/Paper";
 
 export default function Index() {
   const { questionNumber } = useParams();
@@ -46,15 +46,7 @@ export default function Index() {
       />
       <input type="hidden" name="questionType" value={question.type} />
 
-      <Paper
-        style={{
-          padding: `${rem(40)}`,
-          borderRadius: rem(0),
-          border: `${rem(2)} solid ${
-            theme.colors.primaryColor[theme.primaryShade as number]
-          }`,
-        }}
-      >
+      <Paper>
         <Flex align="center" justify="space-between">
           {/* 問題番号 */}
           <Text
@@ -138,7 +130,6 @@ export const action: ActionFunction = async ({ request }) => {
           } as AnswerEntity)
         : undefined;
   }
-  const isMarked = formData.get("isMarked") === "true";
 
   // 回答 insert or update
   await prisma.examineeAnswer.upsert({
@@ -147,13 +138,11 @@ export const action: ActionFunction = async ({ request }) => {
     },
     update: {
       answer: JSON.stringify(answer) ?? null,
-      isMarked: isMarked,
     },
     create: {
       examAttemptId: examAttemptId,
       examQuestionId: examQuestionId,
       answer: JSON.stringify(answer) ?? null,
-      isMarked: isMarked,
       createdAt: now,
       updatedAt: now,
     },

@@ -16,7 +16,7 @@ import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
 import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
-import { Notification } from "../components/Notification/Notification";
+import { Notification } from "../components/Notification";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
 import { useDisclosure } from "@mantine/hooks";
 import { useEffect, useState } from "react";
@@ -50,8 +50,9 @@ export default function LoginRoute() {
   };
 
   return (
-    <>
+    <main style={{ height: "100%" }}>
       {isError && (
+        // TODO: なんかうまくいってない なんとかしてー
         <Notification
           title={"ログインに失敗しました"}
           onClose={() => setIsError(false)}
@@ -106,7 +107,7 @@ export default function LoginRoute() {
           </Form>
         </Center>
       </BackgroundImage>
-    </>
+    </main>
   );
 }
 
