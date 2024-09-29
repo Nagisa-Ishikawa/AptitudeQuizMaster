@@ -30,6 +30,7 @@ examinee_answers {
 	number id "受験者の解答"
 	number exam_attempt_id "受験"
 	number exam_question_id "設問"
+	datetime started_at "解答開始日時"
 	json answer "解答内容"
 }
 

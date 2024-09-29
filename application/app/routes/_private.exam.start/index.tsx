@@ -13,6 +13,8 @@ import { FetchedData } from "../_private.exam";
 import { Paper } from "../../components/Paper";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { pages } from "../../consts/pages";
+import { ActionFunction, redirect } from "@remix-run/node";
+import { prisma } from "../../services/db.server";
 
 export default function Index() {
   const data = useOutletContext() as FetchedData;
@@ -81,7 +83,7 @@ export default function Index() {
 
       <Center>
         <ButtonA
-          onClick={() => navigate(`${pages.examQuestion.path}/1`)}
+          onClick={() => navigate(`${pages.examQuestion.path}/0`)}
           disabled={!isChecked}
           h={rem(76)}
           w={rem(320)}
@@ -96,3 +98,18 @@ export default function Index() {
     </>
   );
 }
+
+export const action: ActionFunction = async () => {
+  const now = new Date();
+
+  await prisma.examAttempt.update({
+    where: {
+      id: 1,
+    },
+    data: {
+      startDate: now,
+    },
+  });
+
+  return redirect(`${pages.examQuestion.path}/1`);
+};

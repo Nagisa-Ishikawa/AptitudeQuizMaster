@@ -89,9 +89,10 @@ model ExamQuestion {
 }
 
 model ExamineeAnswer {
-  id             Int   @id @default(autoincrement())
-  examQuestionId Int   @map("exam_question_id")
-  examAttemptId  Int   @map("exam_attempt_id")
+  id             Int       @id @default(autoincrement())
+  examQuestionId Int       @map("exam_question_id")
+  examAttemptId  Int       @map("exam_attempt_id")
+  startDate      DateTime? @map("start_date")
   answer         Json?
 
   createdAt DateTime  @map("created_at")

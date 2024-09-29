@@ -22,7 +22,6 @@ export type LinkedExamAttempt = ExamAttempt & {
 export type LinkedExam = Exam & {
   examQuestions: LinkedExamQuestion[];
 };
-
 export type LinkedExamQuestion = ExamQuestion & {
   examineeAnswer?: ExamineeAnswer;
 };
