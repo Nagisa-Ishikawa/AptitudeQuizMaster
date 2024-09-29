@@ -83,7 +83,7 @@ export default function Index() {
 
       <Center>
         <ButtonA
-          onClick={() => navigate(`${pages.examQuestion.path}/0`)}
+          onClick={() => navigate(pages.examQuestion.path)}
           disabled={!isChecked}
           h={rem(76)}
           w={rem(320)}

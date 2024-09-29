@@ -1,5 +1,5 @@
 import { Divider, Flex, rem, useMantineTheme, Text, Grid } from "@mantine/core";
-import { useLoaderData, useParams } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { FetchedData, loader as parentLoader } from "../_private.exam";
 import { InputForAnswer } from "./InputForAnswer";
 
@@ -20,8 +20,8 @@ import { AnswerEntity } from "../../entities/AnswerEntity";
 import { questionType } from "../../consts/questionType";
 
 export default function Index() {
-  const { questionNumber } = useParams();
-
+  // TODO: 画面移動しようとした時に警告
+  // TODO: 値入れてない時にボタン押せないようにする
   const theme = useMantineTheme();
   const data = useLoaderData<FetchedData>() as unknown as FetchedData;
 
@@ -30,74 +30,60 @@ export default function Index() {
   }
 
   const formRef = useRef<HTMLFormElement>(null);
+  const questionIndex = findFirstNotStartedQuestionIndex(data.examAttempt);
   const questions = data.examAttempt.exam.examQuestions;
-  const question = questions[Number(questionNumber)] || questions[0];
-  const unanswerIndex = findFirstNotStartedQuestionIndex(data.examAttempt);
-
-  // 回答開始前の問題がない場合、完了ページにリダイレクト
-  if (unanswerIndex === -1) return redirect(pages.examResult.path);
-  console.log("🤔unanswerIndex :", unanswerIndex);
-
-  // 回答開始済み問題は再度アクセス禁止のため、アクセスしようとした場合、回答開始前の問題にリダイレクト
-  if (Number(questionNumber) < unanswerIndex)
-    return redirect(`${pages.examQuestion.path}/${unanswerIndex + 1}`);
+  const question = questions[questionIndex];
 
   return (
-    <>
-      <form ref={formRef} method="POST">
-        <input
-          type="hidden"
-          name="answerId"
-          value={question.examineeAnswer?.id}
-        />
-        <input type="hidden" name="attemptId" value={data.examAttempt.id} />
-        <input type="hidden" name="questionId" value={question.id} />
-        <input
-          type="hidden"
-          name="questionNumber"
-          value={Number(questionNumber)}
-        />
-        <input type="hidden" name="questionType" value={question.type} />
+    <form ref={formRef} method="POST">
+      <input
+        type="hidden"
+        name="answerId"
+        value={question.examineeAnswer?.id}
+      />
+      <input type="hidden" name="attemptId" value={data.examAttempt.id} />
+      <input type="hidden" name="questionId" value={question.id} />
+      <input type="hidden" name="questionIndex" value={questionIndex} />
+      <input type="hidden" name="questionType" value={question.type} />
 
-        <Paper>
-          <Flex align="center" justify="space-between">
-            {/* 問題番号 */}
-            <Text
-              style={{
-                fontWeight: theme.other.fontWeights.bold,
-              }}
-            >
-              {question.number + 1}問目
-            </Text>
-          </Flex>
-
-          <Divider my="md" />
-
-          <Grid grow gutter="xs">
-            <Grid.Col span={5}>
-              {/* 問題文 */}
-              <Question question={question} />
-            </Grid.Col>
-            <Grid.Col span={2}>{/* スペーサー */}</Grid.Col>
-            <Grid.Col span={5}>
-              {/* 回答欄 */}
-              <InputForAnswer question={question} />
-            </Grid.Col>
-          </Grid>
-        </Paper>
-        <Flex
-          align="center"
-          justify="flex-end"
-          mt={rem(32)}
-          gap={rem(20)}
-          wrap="wrap"
-        >
-          <ButtonA h={rem(60)} w={rem(240)} type="submit">
-            次へ
-          </ButtonA>
+      <Paper>
+        <Flex align="center" justify="space-between">
+          {/* 問題番号 */}
+          <Text
+            style={{
+              fontWeight: theme.other.fontWeights.bold,
+            }}
+          >
+            {question.number + 1}問目
+          </Text>
         </Flex>
-      </form>
-    </>
+
+        <Divider my="md" />
+
+        <Grid grow gutter="xs">
+          <Grid.Col span={5}>
+            {/* 問題文 */}
+            <Question question={question} />
+          </Grid.Col>
+          <Grid.Col span={2}>{/* スペーサー */}</Grid.Col>
+          <Grid.Col span={5}>
+            {/* 回答欄 */}
+            <InputForAnswer question={question} />
+          </Grid.Col>
+        </Grid>
+      </Paper>
+      <Flex
+        align="center"
+        justify="flex-end"
+        mt={rem(32)}
+        gap={rem(20)}
+        wrap="wrap"
+      >
+        <ButtonA h={rem(60)} w={rem(240)} type="submit">
+          次へ
+        </ButtonA>
+      </Flex>
+    </form>
   );
 }
 
@@ -109,14 +95,23 @@ export const loader: LoaderFunction = async ({ params, request, context }) => {
   if (!("json" in parentResponse)) {
     throw new Error("親ローダーからのレスポンスが予期しない形式です");
   }
-  const { questionNumber } = params;
-
   const now = new Date();
   const data = (await parentResponse.json()) as FetchedData;
+  const questionIndex = findFirstNotStartedQuestionIndex(data.examAttempt);
+
+  // 回答開始前の問題がない場合、完了ページにリダイレクト
+  if (questionIndex === -1) return redirect(pages.examResult.path);
 
   // 回答開始時間を記録
   const questions = data.examAttempt.exam.examQuestions;
-  const question = questions[Number(questionNumber)] || questions[0];
+  const question = questions[questionIndex];
+
+  const examineeAnswer = await prisma.examineeAnswer.findFirst({
+    where: { examAttemptId: data.examAttempt.id, examQuestionId: question.id },
+  });
+  if (examineeAnswer) {
+    return redirect(pages.examQuestion.path);
+  }
 
   await prisma.examineeAnswer.create({
     data: {
@@ -138,7 +133,6 @@ export const action: ActionFunction = async ({ request }) => {
   const examAnswerId = Number(formData.get("answerId"));
   const examAttemptId = Number(formData.get("attemptId"));
   const examQuestionId = Number(formData.get("questionId"));
-  const questionNumber = Number(formData.get("questionNumber"));
   const type = Number(formData.get("questionType"));
 
   const answerText =
@@ -186,5 +180,5 @@ export const action: ActionFunction = async ({ request }) => {
     },
   });
 
-  return redirect(`${pages.examQuestion.path}/${questionNumber + 1}`);
+  return redirect(pages.examQuestion.path);
 };
