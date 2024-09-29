@@ -1,5 +1,5 @@
 import { TimeLeft as TimeLeftComponent } from "../../components/Progress/TimeLeftProgress";
-import { useCalculateRemainingTime } from "../../hooks/useCalcDate";
+import { calculateRemainingTime } from "../../functions/calculateRemainingTime";
 import { useEffect, useState } from "react";
 import { addSeconds } from "date-fns";
 import { useOutletContext } from "@remix-run/react";
@@ -15,9 +15,12 @@ export const TimeLeft: React.FC = () => {
   }
   const examStartDate = new Date(data.examAttempt.startDate);
 
-  const timeLimit = data.examAttempt.exam.timeLimit;
+  const timeLimit = data.examAttempt.exam.examQuestions.reduce(
+    (acc, cur) => acc + cur.timeLimit,
+    0
+  );
 
-  const [remainingTime, remainingPercentage] = useCalculateRemainingTime(
+  const [remainingTime, remainingPercentage] = calculateRemainingTime(
     examStartDate,
     currentTime,
     timeLimit

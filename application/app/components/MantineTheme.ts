@@ -8,6 +8,7 @@ import {
   Text,
   Title,
   Input,
+  Checkbox,
 } from "@mantine/core";
 
 const primaryColor = "#0141A0";
@@ -101,6 +102,16 @@ export const theme = createTheme({
     Text: Text.extend({
       defaultProps: {
         c: textColor,
+      },
+    }),
+    Checkbox: Checkbox.extend({
+      styles: {
+        label: {
+          cursor: "pointer",
+        },
+      },
+      defaultProps: {
+        color: "primaryColor",
       },
     }),
     ThemeIcon: ThemeIcon.extend({

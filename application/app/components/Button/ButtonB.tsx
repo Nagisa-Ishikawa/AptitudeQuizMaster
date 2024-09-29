@@ -1,8 +1,13 @@
-import { useMantineTheme, Button, ButtonProps } from "@mantine/core";
+import {
+  useMantineTheme,
+  Button,
+  ButtonProps,
+  PolymorphicComponentProps,
+} from "@mantine/core";
 
 type Props = {
   type?: "submit" | "reset" | "button";
-} & ButtonProps;
+} & PolymorphicComponentProps<"button", ButtonProps>;
 
 /**
  * グレーのボタン

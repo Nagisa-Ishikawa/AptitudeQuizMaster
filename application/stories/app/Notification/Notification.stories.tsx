@@ -1,4 +1,4 @@
-import { Notification } from "../../../app/components/Notification/Notification";
+import { Notification } from "../../../app/components/Notification";
 
 export default {
   title: "App/Notification/Notification",

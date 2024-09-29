@@ -85,16 +85,7 @@ export const InputForAnswer: React.FC<Props> = ({ question }: Props) => {
             {option?.checkBox?.choices.map((x, i) => (
               <Checkbox.Card key={i} radius="md" value={x.value}>
                 <Flex align="center" gap={rem(8)} p={rem(10)}>
-                  <Checkbox
-                    key={i}
-                    color={
-                      theme.colors.primaryColorPalette[
-                        theme.primaryShade as number
-                      ]
-                    }
-                    value={x.value}
-                    name="answerCheckBox"
-                  />
+                  <Checkbox key={i} value={x.value} name="answerCheckBox" />
                   <Text style={{ fontWeight: theme.other.fontWeights.bold }}>
                     {x.label}
                   </Text>
