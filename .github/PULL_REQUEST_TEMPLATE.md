@@ -2,7 +2,7 @@
 TODO:以下の設定をしてください
 
 - Reviewers
-  - レビュワーを設定する
+  - Webルーレットで決まったレビュワーを設定する
 - Assignees
   - 自分を設定する
 - Labels
