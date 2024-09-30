@@ -1,9 +1,3 @@
-
-# MUST開発るぅる
-- 簡素に・簡潔に・簡単に
-  - コードもdocも、そんな感じにする
-  - シンプルにしないと悪いことがいっぱい起きるため
-
 # 技術構成
 
 - パッケージ管理
@@ -18,67 +12,81 @@
   - prisma
   - postgres
 
+
 # セットアップ
 
 - 誰かから.envファイルをもらい、applicationディレクトリ下に配置
 - ローカルにNode.jsをインストール
   - バージョンは.node-version参照
-- コンテナ起動
-  - `docker-compose up`
-- appコンテナ接続
-  - `docker exec -it aptitude-quiz-master-app bash`
-- appコンテナでマイグレーション
-  - (appコンテナに接続したまま)`npx prisma migrate dev`
-- appコンテナでseed
-  -  (appコンテナに接続したまま)`npx tsx prisma/seed/seed.ts`
-- ブラウザでアクセスできたらOK！
+- AptitudeQuizMasterディレクトリに移動、以下を実施
+  - コンテナ起動
+    - `docker-compose up`
+  - appコンテナ接続
+    - `docker exec -it aptitude-quiz-master-app bash`
+    - 接続したまま以下を実行
+      - マイグレーション
+        - `npx prisma migrate dev`
+      - 型定義生成
+        - `npx prisma generate`
+      - seed
+        - `npx tsx prisma/seed/seed.ts`
+- ローカルに戻り、 AptitudeQuizMaster/applicationディレクトリに移動
+  - 依存関係インストール
+    - `npm install`
+  - 型定義生成
+    - `npx prisma generate`
+- ブラウザでアクセス・ログインできたらOK
   - `http://localhost:3000`
   - テストデータのログイン情報
     - email: `exam.title1@0`
     - password: `a`
 
 
+## 注意事項
+
+- node_modulesはdockerコンテナ内とローカルで共有していない
+  - 新しくライブラリを追加したら、コンテナとローカルの両方で`npm install`する
+  - prismaから生成した型定義はnode_modulesに入るため、prisma更新したらapp-shコンテナとローカル(applicationディレクトリ)の両方で`make migrate`・`make generate`する
+
+
 # フォルダ構成
 - AptitudeQuizMaster
-  - doc
-    - ER図とか仕様書を入れる
-  - application  
-    アプリのフォルダ  
-    同じ階層にdocやinfraフォルダを掘るのを想定して一段階掘ってる
+  - .github
+    - githubの設定置き場
+  - .vscode
+    - vscodeの設定置き場
+  - application
     - app
       - components  
-        - いろんなところで使いそうなUIパーツのみを格納するフォルダ
-        - コンポーネントを追加したらstoriesも更新する
+        - UIコンポーネント置き場
+        - 処理を持たせてはいけない。見た目だけのコンポーネントにすること
       - routes  
-        - ページルーティングするフォルダ  
+        - ルーティング兼フロント兼バックエンド  
           - ここのフォルダに追加したファイルの名前で、ウェブページが追加される 
-          - remixのルーティングはちょっと独特なので要予習  
-          - remixはルーティングも描画もdb接続も同じファイルでやるので、ここをメインでいじることになりそう
+          - remixのルーティングはちょっとだいぶ独特なので要予習  
         - root.tsx            
           - ルートコンポーネント  
           - 全てのコンポーネントはここから読み込まれる
     - prisma
       - schema.prisma  
-        - prismaのスキーマファイル  
-        - ここでDBのテーブル定義を行い、`make migrate`コマンドでDBに反映する  `make generate`コマンドでtsの型の定義を生成する
+        - prismaのスキーマ定義
+        - ここでDBのテーブル定義を行う
+          - `make migrate`コマンドでDBに反映する
+          - `make generate`コマンドでtsの型の定義を生成する
     - stories  
-      - storybookのファイルを格納するフォルダ 
+      - storybook（componentのサンプル表示する機能）関連置き場
       - `make story`でstorybook開始
+  - doc
+    - ドキュメント置き場
 
 
 # コマンド
 
-よく使いそうなコマンドはMakefileに足してるのでそちら参照
-「このコマンドって何ですか？説明してください」ってGPTにぶち込んでください
+よく使いそうなコマンドは各Makefileに足してる
 
 
 # コーディング規約
 
-# その他
+既存と足並み揃える感じでよしなにおねがします
 
-## 注意事項
-
-- node_modulesはdockerコンテナ内とローカルで共有していない
-  - 新しくライブラリを追加したら、コンテナとローカルの両方で`npm install`する
-  - prismaから生成した型定義はnode_modulesに入るため、prisma更新したらコンテナとローカルの両方で`make migrate`する
 
