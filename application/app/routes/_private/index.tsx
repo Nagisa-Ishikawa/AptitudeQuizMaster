@@ -2,7 +2,6 @@ import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { authenticator } from "../../services/auth.server";
 import { rem, useMantineTheme } from "@mantine/core";
-
 import { Header } from "./Header";
 
 // ログインしていなければログイン画面に遷移
