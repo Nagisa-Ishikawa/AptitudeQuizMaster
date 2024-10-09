@@ -1,4 +1,4 @@
-dc = docker-compose
+dc = docker compose
 # コンテナ立ち上げ
 up:
 	$(dc) up
