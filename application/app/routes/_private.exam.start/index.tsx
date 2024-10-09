@@ -111,5 +111,5 @@ export const action: ActionFunction = async () => {
     },
   });
 
-  return redirect(`${pages.examQuestion.path}/1`);
+  return redirect(pages.examQuestion.path);
 };

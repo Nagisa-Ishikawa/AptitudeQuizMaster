@@ -473,7 +473,7 @@
           <mxGeometry x="120" y="3580" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="w_8scfmVYwfCsPU4lYIi-3" value="■フィルター&lt;br&gt;- id&lt;br&gt;- tag&lt;br&gt;- title&lt;br&gt;&lt;br&gt;■ソート&lt;br&gt;&lt;br&gt;■リスト&lt;br&gt;- id&lt;br class=&quot;Apple-interchange-newline&quot;&gt;- tag&lt;br&gt;&amp;nbsp; - 「新卒」「中途」「ハイクラス」とかの分類用のタグ&lt;br&gt;&lt;div&gt;- title&lt;br&gt;- 問題数&lt;br&gt;- 試験時間&lt;br&gt;- 受験者数（未）&lt;/div&gt;- 受験者数（済）&lt;br&gt;&lt;div&gt;- 受験者追加ボタン&lt;/div&gt;&lt;div&gt;　- 受験追加画面を別タブで開く（試験を選択した状態で）&lt;br&gt;- メニュー&lt;br&gt;&lt;/div&gt;&lt;div&gt;　- 編集ボタン&lt;br&gt;　- 削除ボタン&lt;br&gt;&lt;br&gt;&lt;br&gt;■追加ボタン&lt;br&gt;&lt;br&gt;■ページャー&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="560" y="3620" width="410" height="280" as="geometry" />
+          <mxGeometry x="560" y="3620" width="350" height="280" as="geometry" />
         </mxCell>
         <mxCell id="w_8scfmVYwfCsPU4lYIi-4" value="追加" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="400" y="3650" width="80" height="40" as="geometry" />
@@ -841,9 +841,6 @@
         <mxCell id="3JCkYcKISiA3bbSLVVQs-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="2352.5" y="2235" width="75" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="hj4P2-AxwqHl3_H8WBlO-1" value="フィルターで1ページあたりの掲載件数を変更できるように" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="700" y="1610" width="210" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="hj4P2-AxwqHl3_H8WBlO-4" value="受験者登録時に、同時に受験も1件まで登録できるように" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1460" y="2020" width="180" height="30" as="geometry" />
         </mxCell>
@@ -996,6 +993,9 @@
         </mxCell>
         <mxCell id="FFihk7DhONrFjzrwCEb2-27" value="■モーダル閉じるボタン&lt;div&gt;&lt;br&gt;■集計対象の受験者を選択してください　という文言&lt;br&gt;&lt;br&gt;■検索&lt;br&gt;- id&lt;br&gt;- name&lt;br&gt;- email&lt;br&gt;- tag&lt;br&gt;&lt;br&gt;■受験者リスト&lt;br&gt;- 表示内容は受験者管理画面とおおむね一緒 + 選択ボタン&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- 選択ボタンをクリックで、回答閲覧画面の対象に選択される&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1080" y="6700" width="290" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="FFihk7DhONrFjzrwCEb2-29" value="設定画面に切り出し　表示件数変更" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="120" y="7220" width="210" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
