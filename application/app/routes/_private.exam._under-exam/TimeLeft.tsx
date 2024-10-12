@@ -1,8 +1,8 @@
+import { useOutletContext } from "@remix-run/react";
+import { addSeconds } from "date-fns";
+import { useEffect, useState } from "react";
 import { TimeLeft as TimeLeftComponent } from "../../components/Progress/TimeLeftProgress";
 import { calculateRemainingTime } from "../../functions/calculateRemainingTime";
-import { useEffect, useState } from "react";
-import { addSeconds } from "date-fns";
-import { useOutletContext } from "@remix-run/react";
 import { FetchedData } from "../_private.exam";
 
 // 残り時間

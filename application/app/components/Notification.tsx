@@ -1,7 +1,7 @@
 import {
   Notification as MantineNotification,
-  rem,
   Portal,
+  rem,
 } from "@mantine/core";
 import React from "react";
 

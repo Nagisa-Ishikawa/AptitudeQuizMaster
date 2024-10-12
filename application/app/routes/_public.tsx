@@ -1,5 +1,5 @@
-import { Outlet } from "@remix-run/react";
 import { useMantineTheme } from "@mantine/core";
+import { Outlet } from "@remix-run/react";
 
 /**
  * _publicパス下共通layout

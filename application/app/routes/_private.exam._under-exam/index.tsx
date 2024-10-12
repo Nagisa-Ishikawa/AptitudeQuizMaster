@@ -1,6 +1,6 @@
+import { Flex, Stack, rem } from "@mantine/core";
 import { Outlet, useOutletContext } from "@remix-run/react";
 import { FetchedData } from "../_private.exam";
-import { Flex, Stack, rem } from "@mantine/core";
 import { TimeLeft } from "./TimeLeft";
 
 /** _private.exam._under-examパス下共通処理 */
