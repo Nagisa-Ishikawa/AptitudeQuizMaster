@@ -1,6 +1,6 @@
 import React from "react";
-import OnIcon from "../../../public/images/icons/visibility_on.svg";
 import OffIcon from "../../../public/images/icons/visibility_off.svg";
+import OnIcon from "../../../public/images/icons/visibility_on.svg";
 
 import { Image, ThemeIcon } from "@mantine/core";
 

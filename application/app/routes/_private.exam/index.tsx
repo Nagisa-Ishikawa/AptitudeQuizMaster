@@ -7,8 +7,8 @@ import {
 } from "@prisma/client";
 import { LoaderFunction, json } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { prisma } from "../../services/db.server";
 import { authenticator } from "../../services/auth.server";
+import { prisma } from "../../services/db.server";
 
 export type FetchedData = {
   examinee: Examinee;

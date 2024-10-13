@@ -1,14 +1,14 @@
 import {
-  colorsTuple,
   Button,
-  MantineColorsTuple,
-  createTheme,
-  rem,
-  ThemeIcon,
-  Text,
-  Title,
-  Input,
   Checkbox,
+  colorsTuple,
+  createTheme,
+  Input,
+  MantineColorsTuple,
+  rem,
+  Text,
+  ThemeIcon,
+  Title,
 } from "@mantine/core";
 
 const primaryColor = "#0141A0";

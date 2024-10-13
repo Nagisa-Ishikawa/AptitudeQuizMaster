@@ -1,8 +1,8 @@
 import { Flex } from "@mantine/core";
+import { useNavigate } from "@remix-run/react";
 import React from "react";
 import { NavigateBeforeIcon } from "../Icon/NavigateBeforeIcon";
 import { Link } from "./Link";
-import { useNavigate } from "@remix-run/react";
 
 type Props = {
   text: string;

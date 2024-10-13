@@ -1,20 +1,20 @@
 import {
-  Table,
+  Center,
   Checkbox,
   rem,
-  useMantineTheme,
-  Center,
-  Text,
   Space,
+  Table,
+  Text,
+  useMantineTheme,
 } from "@mantine/core";
+import { ActionFunction, redirect } from "@remix-run/node";
 import { useNavigate, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
-import { FetchedData } from "../_private.exam";
-import { Paper } from "../../components/Paper";
 import { ButtonA } from "../../components/Button/ButtonA";
+import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
-import { ActionFunction, redirect } from "@remix-run/node";
 import { prisma } from "../../services/db.server";
+import { FetchedData } from "../_private.exam";
 
 export default function Index() {
   const data = useOutletContext() as FetchedData;

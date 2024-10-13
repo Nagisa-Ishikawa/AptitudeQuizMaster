@@ -1,8 +1,8 @@
 import { Button } from "@mantine/core";
+import { Exam } from "@prisma/client";
 import { LoaderFunctionArgs, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { prisma } from "../services/db.server";
-import { Exam } from "@prisma/client";
 
 /**
  * remixでは、GETメソッドはloaderという関数で行う

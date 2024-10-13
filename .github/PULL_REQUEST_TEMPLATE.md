@@ -1,10 +1,9 @@
 <!-- 
-TODO:以下の設定をしてください
-
-- Reviewers
-  - Webルーレットで決まったレビュワーを設定する
-  - https://jp.piliapp.com/random/wheel/
-    - 項目:
+- [ ] TODO:以下の設定をしてください
+  - Reviewers
+    - Webルーレットで決まったレビュワーを設定する
+    - https://jp.piliapp.com/random/wheel/
+      - 項目:
 安部友弘(divx)
 蓮沼淳史
 幡江美遥
@@ -13,15 +12,16 @@ TODO:以下の設定をしてください
 長元幸輝
 米田愛恵
 毛利togo
-- Assignees
-  - 自分を設定する
-- Labels, Projects, Milestone, Development
-  - 設定不要
+  - Assignees
+    - 自分を設定する
+  - Labels, Projects, Milestone
+    - 設定不要
+  - Development
+    - issueを指定する
 -->
 
-# issue名・task名・URL
-
 # 実装概要
+<!-- 実装前からissue解消するために、どこをどういじったかの概要を書く -->
 
 # レビュー観点
-
+<!-- 特に見てほしいポイントを書く（セルフチェック・AIチェックはしておく） -->

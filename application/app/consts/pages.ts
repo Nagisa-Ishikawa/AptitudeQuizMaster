@@ -6,6 +6,10 @@ export const pages: Record<
     path: string;
   }
 > = {
+  // 受験者用画面
   login: { name: "ログイン", path: "/login" },
+  examStart: { name: "試験開始", path: "/exam/start" },
   examQuestion: { name: "問題", path: "/exam/question" },
+
+  // 企業用画面
 };

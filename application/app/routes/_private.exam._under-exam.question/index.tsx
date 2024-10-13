@@ -1,23 +1,23 @@
-import { Divider, Flex, rem, useMantineTheme, Text, Grid } from "@mantine/core";
+import { Divider, Flex, Grid, rem, Text, useMantineTheme } from "@mantine/core";
 import { useLoaderData } from "@remix-run/react";
 import { FetchedData, loader as parentLoader } from "../_private.exam";
 import { InputForAnswer } from "./InputForAnswer";
 
-import { useRef } from "react";
-import { Question } from "./Question";
-import { pages } from "../../consts/pages";
 import {
   ActionFunction,
   json,
   LoaderFunction,
   redirect,
 } from "@remix-run/node";
-import { Paper } from "../../components/Paper";
+import { useRef } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
+import { Paper } from "../../components/Paper";
+import { pages } from "../../consts/pages";
+import { questionType } from "../../consts/questionType";
+import { AnswerEntity } from "../../entities/AnswerEntity";
 import { findFirstNotStartedQuestionIndex } from "../../functions/findFirstNotStartedQuestionIndex";
 import { prisma } from "../../services/db.server";
-import { AnswerEntity } from "../../entities/AnswerEntity";
-import { questionType } from "../../consts/questionType";
+import { Question } from "./Question";
 
 export default function Index() {
   // TODO: 画面移動しようとした時に警告

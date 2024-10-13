@@ -1,26 +1,27 @@
-import type { ActionFunctionArgs } from "@remix-run/node";
-import { StatusCodes } from "http-status-codes";
-import { Form, useActionData } from "@remix-run/react";
 import {
-  Image,
   BackgroundImage,
   Center,
+  Image,
+  Input,
+  PasswordInput,
   Stack,
   rem,
   useMantineTheme,
-  PasswordInput,
-  Input,
 } from "@mantine/core";
-import { authenticator } from "../services/auth.server";
+import { useDisclosure } from "@mantine/hooks";
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { Form, useActionData } from "@remix-run/react";
+import { StatusCodes } from "http-status-codes";
+import { useEffect, useState } from "react";
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
+import { ButtonA } from "../components/Button/ButtonA";
 import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
-import { Notification } from "../components/Notification";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
-import { useDisclosure } from "@mantine/hooks";
-import { useEffect, useState } from "react";
-import { ButtonA } from "../components/Button/ButtonA";
+import { Notification } from "../components/Notification";
+import { pages } from "../consts/pages";
+import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {
   const data = useActionData<typeof action>();
@@ -114,7 +115,7 @@ export default function LoginRoute() {
 export async function action({ request }: ActionFunctionArgs) {
   return await authenticator
     .authenticate("examinee-login", request, {
-      successRedirect: "/exam/start",
+      successRedirect: pages.examStart.path,
       throwOnError: true,
     })
     .catch((e) => {

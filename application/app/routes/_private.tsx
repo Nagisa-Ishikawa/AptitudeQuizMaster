@@ -1,8 +1,8 @@
+import { Flex, Image, rem, useMantineTheme } from "@mantine/core";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
-import { authenticator } from "../../services/auth.server";
-import { rem, useMantineTheme } from "@mantine/core";
-import { Header } from "./Header";
+import Logo from "../../public/images/logo.svg";
+import { authenticator } from "../services/auth.server";
 
 // ログインしていなければログイン画面に遷移
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -19,7 +19,19 @@ export default function Index() {
 
   return (
     <>
-      <Header />
+      <header>
+        <Flex
+          h={80}
+          align="center"
+          style={{
+            backgroundColor:
+              theme.colors.secondaryColor[theme.primaryShade as number],
+          }}
+        >
+          <Image src={Logo} alt="divxロゴ" h={60} w={160} ml={40} />
+        </Flex>
+      </header>
+
       <main
         style={{
           height: `calc(100% - ${rem(80)})`, // 100% - ヘッダーの高さ

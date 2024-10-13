@@ -8,12 +8,12 @@ import {
   rem,
   useMantineTheme,
 } from "@mantine/core";
-import React, { useState } from "react";
-import { QuestionOptionEntity } from "../../entities/QuestionOptionEntity";
-import { questionType } from "../../consts/questionType";
 import { plainToInstance } from "class-transformer";
-import { LinkedExamQuestion } from "../_private.exam";
+import React, { useState } from "react";
+import { questionType } from "../../consts/questionType";
 import { AnswerEntity } from "../../entities/AnswerEntity";
+import { QuestionOptionEntity } from "../../entities/QuestionOptionEntity";
+import { LinkedExamQuestion } from "../_private.exam";
 
 type Props = {
   question: LinkedExamQuestion;

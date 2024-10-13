@@ -1,6 +1,7 @@
-import "reflect-metadata";
 import "@mantine/core/styles.css";
+import "reflect-metadata";
 
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
@@ -12,7 +13,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { theme } from "./components/MantineTheme";
 
 export const links: LinksFunction = () => [
