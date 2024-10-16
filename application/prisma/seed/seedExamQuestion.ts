@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import { questionType } from "../../app/consts/questionType";
-import { QuestionOptionEntity } from "../../app/entities/QuestionOptionEntity";
+import {
+  QuestionOptionEntity,
+  questionType,
+} from "../../app/entities/QuestionOptionEntity";
 
 const prisma = new PrismaClient();
 

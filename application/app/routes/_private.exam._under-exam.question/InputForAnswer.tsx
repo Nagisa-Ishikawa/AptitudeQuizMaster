@@ -10,9 +10,12 @@ import {
 } from "@mantine/core";
 import { plainToInstance } from "class-transformer";
 import React, { useState } from "react";
-import { questionType } from "../../consts/questionType";
+
 import { AnswerEntity } from "../../entities/AnswerEntity";
-import { QuestionOptionEntity } from "../../entities/QuestionOptionEntity";
+import {
+  QuestionOptionEntity,
+  questionType,
+} from "../../entities/QuestionOptionEntity";
 import { LinkedExamQuestion } from "../_private.exam";
 
 type Props = {

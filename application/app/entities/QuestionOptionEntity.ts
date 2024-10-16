@@ -11,3 +11,15 @@ export class QuestionOptionEntity {
   @Expose()
   public checkBox?: { choices: { label: string; value: string }[] };
 }
+
+/**
+ * 回答タイプ
+ */
+export const questionType = {
+  /** テキスト */
+  text: 0,
+  /** ラジオボタン */
+  radio: 1,
+  /** チェックボックス */
+  checkBox: 2,
+};
