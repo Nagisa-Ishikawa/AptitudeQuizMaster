@@ -1,5 +1,5 @@
 /** 各画面へのパスを書く */
-export const pages: Record<
+export const Pages: Record<
   string,
   {
     name: string;
@@ -12,4 +12,6 @@ export const pages: Record<
   examQuestion: { name: "問題", path: "/exam/question" },
 
   // 企業用画面
+  corpLogin: { name: "企業ログイン", path: "/corp/login" },
+  // ぜんぜん作ってない
 };

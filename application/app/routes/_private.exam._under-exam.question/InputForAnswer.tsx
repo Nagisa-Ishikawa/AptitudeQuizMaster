@@ -10,7 +10,6 @@ import {
 } from "@mantine/core";
 import { plainToInstance } from "class-transformer";
 import React, { useState } from "react";
-
 import { AnswerEntity } from "../../entities/AnswerEntity";
 import {
   QuestionOptionEntity,
