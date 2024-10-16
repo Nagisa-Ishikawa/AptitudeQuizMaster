@@ -18,10 +18,11 @@ datasource db {
 // そうしないと、ローカルのprisma clientが最新のmodelを認識しないため、linterがエラーを出してしまう
 
 model Examinee {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   name     String
   email    String
   password String
+  note     String?
 
   createdAt DateTime  @map("created_at")
   updatedAt DateTime  @map("updated_at")
