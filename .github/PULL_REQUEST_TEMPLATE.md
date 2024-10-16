@@ -4,14 +4,13 @@
     - Webルーレットで決まったレビュワーを設定する
     - https://jp.piliapp.com/random/wheel/
       - 項目:
-安部友弘(divx)
-蓮沼淳史
-幡江美遥
-稲村純
-石川渚
-長元幸輝
-米田愛恵
-毛利togo
+安部友弘(T0m0hir0ABE)
+蓮沼淳史(hedgehog248)
+幡江美遥(hataemiharu)
+稲村純(j-inamura)
+石川渚(Nagisa-Ishikawa)
+長元幸輝(nagamoto03)
+毛利togo(もうりとうご)
   - Assignees
     - 自分を設定する
   - Labels, Projects, Milestone
