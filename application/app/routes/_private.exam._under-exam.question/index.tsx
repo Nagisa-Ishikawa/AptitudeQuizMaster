@@ -9,7 +9,7 @@ import { useLoaderData } from "@remix-run/react";
 import { useRef } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { Paper } from "../../components/Paper";
-import { Pages } from "../../consts/Pages";
+import { pages } from "../../consts/Pages";
 import { AnswerEntity } from "../../entities/AnswerEntity";
 import { questionType } from "../../entities/QuestionOptionEntity";
 import { findFirstNotStartedQuestionIndex } from "../../functions/findFirstNotStartedQuestionIndex";
@@ -99,7 +99,7 @@ export const loader: LoaderFunction = async ({ params, request, context }) => {
   const questionIndex = findFirstNotStartedQuestionIndex(data.examAttempt);
 
   // 回答開始前の問題がない場合、完了ページにリダイレクト
-  if (questionIndex === -1) return redirect(Pages.examResult.path);
+  if (questionIndex === -1) return redirect(pages.examResult.path);
 
   // 回答開始時間を記録
   const questions = data.examAttempt.exam.examQuestions;
@@ -109,7 +109,7 @@ export const loader: LoaderFunction = async ({ params, request, context }) => {
     where: { examAttemptId: data.examAttempt.id, examQuestionId: question.id },
   });
   if (examineeAnswer) {
-    return redirect(Pages.examQuestion.path);
+    return redirect(pages.examQuestion.path);
   }
 
   await prisma.examineeAnswer.create({
@@ -179,5 +179,5 @@ export const action: ActionFunction = async ({ request }) => {
     },
   });
 
-  return redirect(Pages.examQuestion.path);
+  return redirect(pages.examQuestion.path);
 };

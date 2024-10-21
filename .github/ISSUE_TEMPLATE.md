@@ -2,9 +2,7 @@
 - [ ] TODO:以下の設定をしてください
   - Assignees
     - （決まってれば）設定する
-  - Labels
-    - 分類ラベル、納期ラベル、重要度ラベルをそれぞれ設定する
-  - Projects, Milestone, Development
+  - Labels, Projects, Milestone, Development
     - 設定不要
 
 - [ ] TODO:issue作成後、issueの親子関係や詳細ステータス等、追記事項があればnotionに追記してください

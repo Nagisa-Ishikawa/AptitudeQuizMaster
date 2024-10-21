@@ -20,7 +20,7 @@ import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
 import { Notification } from "../components/Notification";
-import { Pages } from "../consts/Pages";
+import { pages } from "../consts/Pages";
 import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {
@@ -115,7 +115,7 @@ export default function LoginRoute() {
 export async function action({ request }: ActionFunctionArgs) {
   return await authenticator
     .authenticate("examinee-login", request, {
-      successRedirect: Pages.examStart.path,
+      successRedirect: pages.examStart.path,
       throwOnError: true,
     })
     .catch((e) => {
