@@ -12,7 +12,7 @@ import { useNavigate, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { Paper } from "../../components/Paper";
-import { Pages } from "../../consts/Pages";
+import { pages } from "../../consts/Pages";
 import { prisma } from "../../services/db.server";
 import { FetchedData } from "../_private.exam";
 
@@ -83,7 +83,7 @@ export default function Index() {
 
       <Center>
         <ButtonA
-          onClick={() => navigate(Pages.examQuestion.path)}
+          onClick={() => navigate(pages.examQuestion.path)}
           disabled={!isChecked}
           h={rem(76)}
           w={rem(320)}
@@ -111,5 +111,5 @@ export const action: ActionFunction = async () => {
     },
   });
 
-  return redirect(Pages.examQuestion.path);
+  return redirect(pages.examQuestion.path);
 };

@@ -1,5 +1,5 @@
 /** 各画面へのパスを書く */
-export const Pages: Record<
+export const pages: Record<
   string,
   {
     name: string;

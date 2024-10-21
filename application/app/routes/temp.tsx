@@ -1,8 +1,7 @@
 import { useMantineTheme } from "@mantine/core";
-import { TagsInput } from "../components/Tag/TagsInput";
 
 /**
- * TODO: 後で消す
+ * TODO: （石川）後で消す
  */
 export default function Index() {
   const theme = useMantineTheme();
@@ -14,8 +13,6 @@ export default function Index() {
         backgroundColor: theme.colors.bodyColor[theme.primaryShade as number],
         color: theme.colors.textColor[theme.primaryShade as number],
       }}
-    >
-      <TagsInput defaultOption={["新卒", "既卒"]} />
-    </main>
+    ></main>
   );
 }
