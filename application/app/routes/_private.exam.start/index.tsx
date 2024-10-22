@@ -12,7 +12,7 @@ import { useNavigate, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { Paper } from "../../components/Paper";
-import { pages } from "../../consts/Pages";
+import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
 import { FetchedData } from "../_private.exam";
 

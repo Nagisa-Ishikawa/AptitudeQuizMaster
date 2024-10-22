@@ -20,7 +20,7 @@ import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
 import { Notification } from "../components/Notification";
-import { pages } from "../consts/Pages";
+import { pages } from "../consts/pages";
 import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {

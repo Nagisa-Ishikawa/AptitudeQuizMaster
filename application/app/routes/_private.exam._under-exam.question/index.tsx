@@ -9,7 +9,7 @@ import { useLoaderData } from "@remix-run/react";
 import { useRef } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { Paper } from "../../components/Paper";
-import { pages } from "../../consts/Pages";
+import { pages } from "../../consts/pages";
 import { AnswerEntity } from "../../entities/AnswerEntity";
 import { questionType } from "../../entities/QuestionOptionEntity";
 import { findFirstNotStartedQuestionIndex } from "../../functions/findFirstNotStartedQuestionIndex";
