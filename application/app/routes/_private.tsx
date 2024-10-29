@@ -2,12 +2,13 @@ import { Flex, Image, rem, useMantineTheme } from "@mantine/core";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import Logo from "../../public/images/logo.svg";
+import { pages } from "../consts/pages";
 import { authenticator } from "../services/auth.server";
 
-// ログインしていなければログイン画面に遷移
 export async function loader({ request }: LoaderFunctionArgs) {
+  // _privateパス下はログイン必須、ログインしてなければログイン画面に遷移
   return await authenticator.isAuthenticated(request, {
-    failureRedirect: "/",
+    failureRedirect: pages.login.path,
   });
 }
 

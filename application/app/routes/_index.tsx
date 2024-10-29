@@ -1,5 +1,5 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { pages } from "../consts/Pages";
+import { pages } from "../consts/pages";
 import { authenticator } from "../services/auth.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
