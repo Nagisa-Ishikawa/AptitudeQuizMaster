@@ -9,13 +9,12 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
-import { StatusCodes } from "http-status-codes";
 import { useEffect, useState } from "react";
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
 import { ButtonA } from "../components/Button/ButtonA";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
@@ -30,6 +29,12 @@ export default function LoginRoute() {
   useEffect(() => {
     setIsError(data?.error);
   }, [data]);
+
+  useEffect(() => {
+    if (isError) {
+      throw new Error("ログイン...失敗!!");
+    }
+  }, [isError]);
 
   const theme = useMantineTheme();
   const [visible, { toggle }] = useDisclosure(false);
@@ -51,11 +56,12 @@ export default function LoginRoute() {
   };
 
   return (
+    <ErrorBoundary>
     <main style={{ height: "100%" }}>
       {isError && (
         // TODO: なんかうまくいってない なんとかしてー
         <Notification
-          title={"ログインに失敗しました"}
+          title={"やーいログイン失敗してやんの〜wwww"}
           onClose={() => setIsError(false)}
           mode="error"
         />
@@ -109,6 +115,7 @@ export default function LoginRoute() {
         </Center>
       </BackgroundImage>
     </main>
+    </ErrorBoundary>
   );
 }
 
