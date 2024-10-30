@@ -63,6 +63,7 @@ const bodyColorPallet: MantineColorsTuple = [
  * 各コンポーネントの色は必ずcolorsで決めたパレットから使う
  */
 export const theme = createTheme({
+  primaryColor: "primaryColor",
   colors: {
     primaryColor: colorsTuple(primaryColor),
     primaryColorPalette: primaryColorPalette,

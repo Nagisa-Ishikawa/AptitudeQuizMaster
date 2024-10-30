@@ -5,6 +5,7 @@ import {
   Pill,
   PillsInput,
   rem,
+  Text,
   useCombobox,
   useMantineTheme,
 } from "@mantine/core";
@@ -23,10 +24,10 @@ export type Item = {
 };
 
 /**
- * タグを入力するコンポーネント
+ * タグを入力するコンポーネント（タグの新規作成可能）
  * MantineのTagsInputではタグごとの色情報の付与が実現できなかったので、PillsInputとComboboxを組み合わせて作ってる
  */
-export const TagsInput: React.FC<Props> = ({
+export const AdditionalTagsInput: React.FC<Props> = ({
   values,
   setValues,
   options,
@@ -68,6 +69,7 @@ export const TagsInput: React.FC<Props> = ({
               ]
         );
       }}
+      styles={{ option: {} }}
     >
       {/* タグ */}
       <Combobox.DropdownTarget>
@@ -134,8 +136,33 @@ export const TagsInput: React.FC<Props> = ({
                 </Group>
               </Combobox.Option>
             ))
+          ) : !values.some((cur) => cur.name === text.trim()) &&
+            text.trim().length > 0 ? (
+            // 表示可能なオプションがないが、タグが作成可能である
+            <Combobox.Option
+              value={text.trim()}
+              onClick={() => {
+                setText("");
+              }}
+            >
+              <Group align="center" gap={rem(8)} style={{ cursor: "pointer" }}>
+                <Pill
+                  style={{
+                    height: rem(30),
+                    fontSize: theme.fontSizes.xss,
+                    fontWeight: theme.other.fontWeights.bold,
+                    padding: `${rem(4)} ${rem(12)}`,
+                  }}
+                >
+                  {text}
+                </Pill>
+                <Text style={{ fontSize: theme.fontSizes.xs }}>
+                  タグを新規作成する
+                </Text>
+              </Group>
+            </Combobox.Option>
           ) : (
-            // オプション表示不可
+            // オプション表示不可、タグ作成も不可
             <Combobox.Empty>Nothing found...</Combobox.Empty>
           )}
         </Combobox.Options>
