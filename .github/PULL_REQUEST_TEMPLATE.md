@@ -9,7 +9,6 @@
 幡江美遥(hataemiharu)
 稲村純(j-inamura)
 石川渚(Nagisa-Ishikawa)
-長元幸輝(nagamoto03)
 毛利togo(もうりとうご)
   - Assignees
     - 自分を設定する
