@@ -67,28 +67,28 @@ export default function Index() {
           <ActionIcon
             variant={"transparent"}
             size={rem(24)}
-            area-label={"redo icon"}
+            aria-label={"redo icon"}
           >
             <RedoIcon size={rem(24)} />
           </ActionIcon>
           <ActionIcon
             variant={"transparent"}
             size={rem(24)}
-            area-label={"add icon"}
+            aria-label={"add icon"}
           >
             <AddIcon size={rem(24)} />
           </ActionIcon>
           <ActionIcon
             variant={"transparent"}
             size={rem(24)}
-            area-label={"edit icon"}
+            aria-label={"edit icon"}
           >
             <EditIcon size={rem(24)} />
           </ActionIcon>
           <ActionIcon
             variant={"transparent"}
             size={rem(24)}
-            area-label={"delete icon"}
+            aria-label={"delete icon"}
           >
             <DeleteIcon size={rem(24)} />
           </ActionIcon>
