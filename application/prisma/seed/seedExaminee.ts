@@ -47,6 +47,7 @@ export const seedExamineeTag = async (
     (x, i) =>
       ({
         name: x,
+        color: i % 2 === 0 ? "red" : "blue",
         deletedAt: i % 3 === 0 ? now : null,
         createdAt: now,
         updatedAt: now,

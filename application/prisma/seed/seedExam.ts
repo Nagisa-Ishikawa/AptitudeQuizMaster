@@ -40,6 +40,7 @@ const seedExamTag = async (isProd: boolean, now: Date, exams: Exam[]) => {
     (x, i) =>
       ({
         name: x,
+        color: i % 2 === 0 ? "red" : "blue",
         deletedAt: i % 5 === 0 ? now : null,
         createdAt: now,
         updatedAt: now,
