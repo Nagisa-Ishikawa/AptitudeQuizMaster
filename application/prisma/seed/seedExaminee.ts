@@ -1,4 +1,5 @@
 import { Examinee, Prisma, PrismaClient } from "@prisma/client";
+import { examineeTagColors } from "~/consts/tags";
 
 const prisma = new PrismaClient();
 
@@ -47,7 +48,7 @@ export const seedExamineeTag = async (
     (x, i) =>
       ({
         name: x,
-        color: i % 2 === 0 ? "red" : "blue",
+        color: examineeTagColors[i % examineeTagColors.length],
         deletedAt: i % 3 === 0 ? now : null,
         createdAt: now,
         updatedAt: now,
