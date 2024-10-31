@@ -63,6 +63,7 @@ const bodyColorPallet: MantineColorsTuple = [
  * 各コンポーネントの色は必ずcolorsで決めたパレットから使う
  */
 export const theme = createTheme({
+  primaryColor: "primaryColor",
   colors: {
     primaryColor: colorsTuple(primaryColor),
     primaryColorPalette: primaryColorPalette,
@@ -77,7 +78,8 @@ export const theme = createTheme({
   },
   fontFamily: "YuGothic",
   fontSizes: {
-    xs: rem(12),
+    xss: rem(12),
+    xs: rem(14),
     sm: rem(16),
     md: rem(18),
     lg: rem(20),
