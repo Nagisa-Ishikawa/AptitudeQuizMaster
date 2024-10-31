@@ -1,5 +1,5 @@
 import { Exam, Prisma, PrismaClient } from "@prisma/client";
-import { examineeTagColors } from "~/consts/tags";
+import { examineeTagColors } from "../../app/consts/tags";
 const prisma = new PrismaClient();
 
 // 試験作成
