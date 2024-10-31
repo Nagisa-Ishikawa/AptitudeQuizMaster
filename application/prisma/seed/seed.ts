@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 import { PrismaClient } from "@prisma/client";
 import { seedExam } from "./seedExam";
+import { seedExamAttempt } from "./seedExamAttempt";
 import { seedExamQuestion } from "./seedExamQuestion";
 import { seedExaminee } from "./seedExaminee";
 import { seedExamineeAnswer } from "./seedExamineeAnswer";
-import { seedExamAttempt } from "./seedExamAttempt";
 
 const prisma = new PrismaClient();
 
