@@ -18,6 +18,9 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Examinee } from "@prisma/client";
+import { json, LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
@@ -31,37 +34,29 @@ import { FilterIcon } from "../../components/Icon/FilterIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { RedoIcon } from "../../components/Icon/RedoIcon";
 import { Paper } from "../../components/Paper";
+import { prisma } from "../../services/db.server";
+
+type ExamineeData = Examinee & {
+  tags: string[];
+};
 
 export default function Index() {
+  const examinees = useLoaderData<ExamineeData[]>();
+
   const [tagValue, setTagValue] = useState<string[]>([]);
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
 
-  // ダミーデータ（バックエンドと繋いだら消す）
-  const elements = [
-    {
-      id: 1,
-      name: "田中太郎",
-      tags: "タグ1, タグ2",
-      email: "test@test",
-    },
-    {
-      id: 2,
-      name: "田中次郎",
-      tags: "タグ3, タグ4",
-      email: "test2@test",
-    },
-  ];
-  const totalCount = elements.length;
-  const totalPages = 10;
+  const totalCount = examinees.length;
+  const totalPages = 10; // 仮の値
 
-  const rows = elements.map((element) => (
-    <Table.Tr key={element.id} onClick={drawerOpen}>
-      <Table.Td>{element.id}</Table.Td>
-      <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.tags}</Table.Td>
-      <Table.Td>{element.email}</Table.Td>
+  const rows = examinees.map((examinee) => (
+    <Table.Tr key={examinee.id} onClick={drawerOpen}>
+      <Table.Td>{examinee.id}</Table.Td>
+      <Table.Td>{examinee.name}</Table.Td>
+      <Table.Td>{examinee.tags}</Table.Td>
+      <Table.Td>{examinee.email}</Table.Td>
       <Table.Td>
         <Group gap={rem(32)}>
           <ActionIcon
@@ -210,3 +205,44 @@ export default function Index() {
     </>
   );
 }
+
+export const loader: LoaderFunction = async () => {
+  try {
+    const examinees = await prisma.examinee.findMany({
+      where: {
+        deletedAt: null,
+      },
+      include: {
+        ExamineeTagging: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            examineeTag: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        id: "asc",
+      },
+    });
+
+    const examineesData = examinees.map((examinee) => {
+      return {
+        ...examinee,
+        tags: examinee.ExamineeTagging.map(
+          (tagging) => tagging.examineeTag.name
+        ).join(", "),
+      };
+    });
+
+    return json(examineesData);
+  } catch (error) {
+    console.error(error);
+    throw new Error("データを取得できませんでした");
+  }
+};
