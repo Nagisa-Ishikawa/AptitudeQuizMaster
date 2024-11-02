@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { PrismaClient } from "@prisma/client";
+import { seedEmployer } from "./seedEmployer";
 import { seedExam } from "./seedExam";
 import { seedExamAttempt } from "./seedExamAttempt";
 import { seedExamQuestion } from "./seedExamQuestion";
@@ -25,8 +26,10 @@ async function main() {
   await prisma.examinee.deleteMany({});
   await prisma.examQuestion.deleteMany({});
   await prisma.exam.deleteMany({});
+  await prisma.employer.deleteMany({});
 
   // レコード挿入
+  await seedEmployer(isProd, now);
   await seedExam(isProd, now);
   await seedExamQuestion(isProd, now);
   await seedExaminee(isProd, now);

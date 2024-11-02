@@ -18,6 +18,20 @@ datasource db {
 //     そうしないと、ローカルのprisma clientが最新のmodelを認識しないため、linterがエラーを出してしまう
 // 注: 開発時にmodelを更新したら、必要に応じてseed.tsも更新する
 
+model Employer {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  note     String?
+
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime  @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@map("employers")
+}
+
 model Examinee {
   id       Int     @id @default(autoincrement())
   name     String

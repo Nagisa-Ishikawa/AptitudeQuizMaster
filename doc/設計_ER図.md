@@ -4,14 +4,20 @@
   - ER図からは省略
   - 全部論理削除で扱う
 - 受験者の回答や設問の設定はjson形式で保存している
-  - jsonの定義は定義書作るまではコード見てもろて
+  - json定義についてはentitiesフォルダ内のコード見てもろて
 - 試験や問題のバージョニングは不要
   - 最新のだけで出問したり集計したりでOK
-- 設問タイプについて、0: テキスト、1: ラジオボタン、2: チェックボックス
 
 
 ```mermaid
 erDiagram
+
+employers {
+	number id "企業"
+	string name
+	string email "unique"
+	string password "hash値"
+}
 
 examinees {
 	number id "受験者"
@@ -42,7 +48,7 @@ exam_questions {
 	number id "試験の設問"
 	string question "問題文"
 	number time_limit "制限時間(分)"
-	number type "設問タイプ"
+	number type "設問タイプ 0: テキスト、1: ラジオボタン、2: チェックボックス"
 	json option "チェックボックスの選択肢などの情報"
 	json collect_answer "正答"
 	number json_version "設問定義のバージョン"
