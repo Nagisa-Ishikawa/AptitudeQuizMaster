@@ -10,11 +10,10 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Form, useActionData } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { StatusCodes } from 'http-status-codes';
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
 import { ButtonA } from "../components/Button/ButtonA";
-import { ErrorBoundary } from "../components/ErrorBoundary";
 import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
@@ -24,17 +23,7 @@ import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {
   const data = useActionData<typeof action>();
-  const [isError, setIsError] = useState<boolean>(!!data?.error);
-
-  useEffect(() => {
-    setIsError(data?.error);
-  }, [data]);
-
-  useEffect(() => {
-    if (isError) {
-      throw new Error("ログイン...失敗!!");
-    }
-  }, [isError]);
+  const isError = !!data?.error;
 
   const theme = useMantineTheme();
   const [visible, { toggle }] = useDisclosure(false);
@@ -56,23 +45,21 @@ export default function LoginRoute() {
   };
 
   return (
-    <ErrorBoundary>
     <main style={{ height: "100%" }}>
       {isError && (
-        // TODO: なんかうまくいってない なんとかしてー
         <Notification
-          title={"やーいログイン失敗してやんの〜wwww"}
-          onClose={() => setIsError(false)}
+          title="ログイン...失敗!!"
+          onClose={() => console.log("Closed notification")}
           mode="error"
         />
       )}
+
       <BackgroundImage src={LoginBackgroundImage} h="100%" w="100%">
         <Center h="100%">
           <Form method="post">
             <Stack w={rem(448)} gap={rem(40)}>
               <Image src={Logo} alt="divxロゴ" />
               <Stack gap={rem(20)}>
-                {/* TODO: 今email認証だけど受験番号の方がいい気がしてきたので受験番号に揃える */}
                 <Input
                   placeholder="受験番号"
                   type="email"
@@ -115,7 +102,6 @@ export default function LoginRoute() {
         </Center>
       </BackgroundImage>
     </main>
-    </ErrorBoundary>
   );
 }
 
