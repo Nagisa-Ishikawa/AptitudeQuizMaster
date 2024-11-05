@@ -15,6 +15,7 @@ const primaryColor = "#0141A0";
 const secondaryColor = "#CCCCCC";
 const highlightColor = "#CA7218";
 const bodyColor = "#FFFFFF";
+const corpBodyColor = "#EEF2F8";
 const textColor = "#121412";
 const lightTextColor = "#676867";
 const noteColor = "#D9D9D9";
@@ -72,6 +73,7 @@ export const theme = createTheme({
     highlightColor: colorsTuple(highlightColor),
     bodyColor: colorsTuple(bodyColor),
     bodyColorPallet: bodyColorPallet,
+    corpBodyColor: colorsTuple(corpBodyColor),
     textColor: colorsTuple(textColor),
     lightTextColor: colorsTuple(lightTextColor),
     noteColor: colorsTuple(noteColor),
