@@ -11,7 +11,8 @@ export default function Index() {
     <main
       style={{
         height: "100%",
-        backgroundColor: theme.colors.bodyColor[theme.primaryShade as number],
+        backgroundColor:
+          theme.colors.corpBodyColor[theme.primaryShade as number],
         color: theme.colors.textColor[theme.primaryShade as number],
       }}
     >
