@@ -11,22 +11,28 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { Form, useActionData } from "@remix-run/react";
 import { StatusCodes } from 'http-status-codes';
+import { useEffect } from "react";
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
 import { ButtonA } from "../components/Button/ButtonA";
 import { HashIcon } from "../components/Icon/HashIcon";
 import { KeyIcon } from "../components/Icon/KeyIcon";
 import { VisibilityIcon } from "../components/Icon/VisibilityIcon";
-import { Notification } from "../components/Notification";
 import { pages } from "../consts/pages";
 import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {
   const data = useActionData<typeof action>();
-  const isError = !!data?.error;
-
   const theme = useMantineTheme();
   const [visible, { toggle }] = useDisclosure(false);
+
+  // isErrorをチェックし、エラーがある場合はthrowする
+  useEffect(() => {
+    if (data?.error) {
+      throw new Error("ログインに失敗しました");
+    }
+  }, [data]);
+
   const inputStyleProps = {
     size: rem(64),
     styles: {
@@ -46,14 +52,6 @@ export default function LoginRoute() {
 
   return (
     <main style={{ height: "100%" }}>
-      {isError && (
-        <Notification
-          title="ログイン...失敗!!"
-          onClose={() => console.log("Closed notification")}
-          mode="error"
-        />
-      )}
-
       <BackgroundImage src={LoginBackgroundImage} h="100%" w="100%">
         <Center h="100%">
           <Form method="post">

@@ -1,7 +1,5 @@
-import "@mantine/core/styles.css";
-import "reflect-metadata";
-
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
@@ -11,8 +9,10 @@ import {
   MetaFunction,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration
 } from "@remix-run/react";
+import "reflect-metadata";
+import { ErrorBoundary } from "./ErrorBoundary";
 import { theme } from "./components/MantineTheme";
 
 export const links: LinksFunction = () => [
@@ -35,7 +35,9 @@ export default function App() {
       </head>
       <body style={{ height: "100%" }}>
         <MantineProvider theme={theme}>
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
