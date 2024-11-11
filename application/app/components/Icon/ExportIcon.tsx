@@ -1,18 +1,17 @@
 import React from "react";
-import Icon from "../../../public/images/icons/file_upload.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
+import uploadIconPath from "../../../public/images/icons/file_upload.svg";
+import { IconComponent } from "./IconComponent";
 
 /** エクスポートアイコン */
-export const ExportIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+export const ExportIcon: React.FC<{
+  size?: string;
+  [key: string]: unknown;
+}> = (props) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="エクスポートアイコン" />
-    </ThemeIcon>
+    <IconComponent
+      iconPath={uploadIconPath}
+      alt="エクスポートアイコン"
+      {...props}
+    />
   );
 };

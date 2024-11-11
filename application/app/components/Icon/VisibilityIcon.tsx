@@ -1,8 +1,7 @@
 import React from "react";
 import OffIcon from "../../../public/images/icons/visibility_off.svg";
 import OnIcon from "../../../public/images/icons/visibility_on.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
+import { IconComponent } from "./IconComponent";
 
 type Props = {
   /**
@@ -20,13 +19,11 @@ export const VisibilityIcon: React.FC<Props> = ({
   ...props
 }: Props) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image
-        w={size}
-        h={size}
-        src={isVisible ? OnIcon : OffIcon}
-        alt={isVisible ? "表示マークアイコン" : "非表示マークアイコン"}
-      />
-    </ThemeIcon>
+    <IconComponent
+      size={size}
+      iconPath={isVisible ? OnIcon : OffIcon}
+      alt={isVisible ? "表示マークアイコン" : "非表示マークアイコン"}
+      {...props}
+    />
   );
 };

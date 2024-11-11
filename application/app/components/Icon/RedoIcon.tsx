@@ -1,18 +1,12 @@
 import React from "react";
-import Icon from "../../../public/images/icons/redo.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
+import redoIconPath from "../../../public/images/icons/redo.svg";
+import { IconComponent } from "./IconComponent";
 
 /** リドゥアイコン */
-export const RedoIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+export const RedoIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
+  props
+) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="リドゥアイコン" />
-    </ThemeIcon>
+    <IconComponent iconPath={redoIconPath} alt="リドゥアイコン" {...props} />
   );
 };

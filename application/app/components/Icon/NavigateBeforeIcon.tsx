@@ -1,13 +1,17 @@
 import React from "react";
-import Icon from "../../../public/images/icons/navigate_before.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
+import navigateBeforeIconPath from "../../../public/images/icons/navigate_before.svg";
+import { IconComponent } from "./IconComponent";
 
 /** 戻るアイコン */
-export const NavigateBeforeIcon: React.FC = () => {
+export const NavigateBeforeIcon: React.FC<{
+  size?: string;
+  [key: string]: unknown;
+}> = (props) => {
   return (
-    <ThemeIcon>
-      <Image src={Icon} alt="戻るアイコン" />
-    </ThemeIcon>
+    <IconComponent
+      iconPath={navigateBeforeIconPath}
+      alt="戻るアイコン"
+      {...props}
+    />
   );
 };

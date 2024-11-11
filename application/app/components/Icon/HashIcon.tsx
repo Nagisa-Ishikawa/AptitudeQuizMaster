@@ -1,18 +1,12 @@
 import React from "react";
-import Icon from "../../../public/images/icons/hash.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
+import hashIconPath from "../../../public/images/icons/hash.svg";
+import { IconComponent } from "./IconComponent";
 
 /** ハッシュマークアイコン */
-export const HashIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+export const HashIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
+  props
+) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="ハッシュアイコン" />
-    </ThemeIcon>
+    <IconComponent iconPath={hashIconPath} alt="ハッシュアイコン" {...props} />
   );
 };

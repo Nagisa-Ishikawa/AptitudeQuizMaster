@@ -1,18 +1,16 @@
 import React from "react";
-import Icon from "../../../public/images/icons/file_download.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
+import importIconPath from "../../../public/images/icons/file_download.svg";
+import { IconComponent } from "./IconComponent";
 
 /** インポートアイコン */
-export const ImportIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+export const ImportIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
+  props
+) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="インポートアイコン" />
-    </ThemeIcon>
+    <IconComponent
+      iconPath={importIconPath}
+      alt="インポートアイコン"
+      {...props}
+    />
   );
 };
