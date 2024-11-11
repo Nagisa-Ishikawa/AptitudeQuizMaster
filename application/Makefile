@@ -10,6 +10,10 @@ migrate:
 seed:
 	npx tsx prisma/seed/seed.ts
 
+# DBのデータ全削除
+truncate:
+	npx tsx prisma/truncate.ts
+
 # storybook開始
 story:
 	npm run storybook

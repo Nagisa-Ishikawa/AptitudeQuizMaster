@@ -15,3 +15,15 @@ export const sessionStorage = createCookieSessionStorage({
     maxAge: 60 * 60 * 24,
   },
 });
+
+export const sessionStorageForCorp = createCookieSessionStorage({
+  cookie: {
+    name: "auth_session_corp",
+    sameSite: "lax",
+    path: "/",
+    httpOnly: true,
+    secrets: [sessionSecret],
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 60 * 60 * 24,
+  },
+});

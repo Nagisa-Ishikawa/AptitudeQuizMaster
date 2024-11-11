@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Button } from "@mantine/core";
 import { Exam } from "@prisma/client";
 import { LoaderFunctionArgs, json } from "@remix-run/node";

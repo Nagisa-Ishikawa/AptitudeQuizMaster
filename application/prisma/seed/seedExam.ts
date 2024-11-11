@@ -1,4 +1,5 @@
 import { Exam, Prisma, PrismaClient } from "@prisma/client";
+import { examineeTagColors } from "../../app/consts/tags";
 const prisma = new PrismaClient();
 
 // 試験作成
@@ -40,6 +41,7 @@ const seedExamTag = async (isProd: boolean, now: Date, exams: Exam[]) => {
     (x, i) =>
       ({
         name: x,
+        color: examineeTagColors[i % examineeTagColors.length], // TODO: 仮で受験者用のタグの色を使ってるので、いつの日か試験用の色を用意する
         deletedAt: i % 5 === 0 ? now : null,
         createdAt: now,
         updatedAt: now,
