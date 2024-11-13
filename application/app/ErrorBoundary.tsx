@@ -1,5 +1,4 @@
 import React from "react";
-import { Notification } from "./components/Notification"; // Notificationコンポーネントのパスを確認
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -27,13 +26,11 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   render() {
     if (this.state.hasError) {
       return (
-        <Notification
-          title="An error occurred"
-          mode="error"
-          onClose={() => this.setState({ hasError: false, error: null })}
-        >
+        <p>
+          すまない、エラーだ。\n
           {this.state.error?.message}
-        </Notification>
+        </p>
+
       );
     }
     return this.props.children;
