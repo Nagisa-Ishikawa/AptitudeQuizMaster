@@ -23,14 +23,14 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     console.error("Caught by ErrorBoundary:", error, errorInfo);
   }
 
+  handleCloseNotification = () => {
+    this.setState({ hasError: false, error: null });
+  };
+
   render() {
     if (this.state.hasError) {
       return (
-        <p>
-          すまない、エラーだ。\n
-          {this.state.error?.message}
-        </p>
-
+        <h1>{this.state.error?.toString()}</h1>
       );
     }
     return this.props.children;
