@@ -1,13 +1,12 @@
 import React from "react";
-import Icon from "../../../public/images/icons/timer.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
+import timerIconPath from "../../../public/images/icons/timer.svg";
+import { IconComponent } from "./IconComponent";
 
 /** タイマーアイコン */
-export const TimerIcon: React.FC = () => {
+export const TimerIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
+  props
+) => {
   return (
-    <ThemeIcon>
-      <Image src={Icon} alt="タイマーアイコン" />
-    </ThemeIcon>
+    <IconComponent iconPath={timerIconPath} alt="タイマーアイコン" {...props} />
   );
 };
