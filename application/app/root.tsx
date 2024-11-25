@@ -14,6 +14,7 @@ import {
   ScrollRestoration
 } from "@remix-run/react";
 import { ErrorBoundary } from "./ErrorBoundary";
+import {ErrorComponent} from "./components/ErrorComponent";
 import { theme } from "./components/MantineTheme";
 
 export const links: LinksFunction = () => [
@@ -37,7 +38,8 @@ export default function App() {
       <body style={{ height: "100%" }}>
         <MantineProvider theme={theme}>
           <ErrorBoundary>
-            <Outlet />
+            {/* <Outlet /> */}
+            <ErrorComponent />
           </ErrorBoundary>
           <ScrollRestoration />
           <Scripts />
