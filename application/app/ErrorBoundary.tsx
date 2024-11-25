@@ -8,7 +8,10 @@ interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
 }
-
+/**
+ * Notifications.tsxでキャッチできないエラーは本コンポーネントでキャッチされる。
+ * キャッチしたエラーメッセージがh1要素がreturnされる。
+ */
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
