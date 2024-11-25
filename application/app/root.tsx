@@ -1,5 +1,7 @@
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "reflect-metadata";
+
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
@@ -11,7 +13,6 @@ import {
   Scripts,
   ScrollRestoration
 } from "@remix-run/react";
-import "reflect-metadata";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { theme } from "./components/MantineTheme";
 
