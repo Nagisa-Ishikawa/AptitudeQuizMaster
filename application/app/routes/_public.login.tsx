@@ -25,14 +25,14 @@ import { authenticator } from "../services/auth.server";
 
 export default function LoginRoute() {
   const data = useActionData<typeof action>();
-  const theme = useMantineTheme();
-  const [visible, { toggle }] = useDisclosure(false);
   const [isError, setIsError] = useState<boolean>(!!data?.error);
 
   useEffect(() => {
     setIsError(data?.error);
   }, [data]);
 
+  const theme = useMantineTheme();
+  const [visible, { toggle }] = useDisclosure(false);
   const inputStyleProps = {
     size: rem(64),
     styles: {
