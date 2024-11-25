@@ -9,6 +9,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { StatusCodes } from 'http-status-codes';
 import { useEffect, useState } from "react";
@@ -29,7 +30,7 @@ export default function LoginRoute() {
   const [isError, setIsError] = useState<boolean>(!!data?.error);
 
   useEffect(() => {
-    setIsError(!!data?.error);
+    setIsError(data?.error);
   }, [data]);
 
   const inputStyleProps = {
@@ -64,6 +65,7 @@ export default function LoginRoute() {
             <Stack w={rem(448)} gap={rem(40)}>
               <Image src={Logo} alt="divxロゴ" />
               <Stack gap={rem(20)}>
+                {/* TODO: 今email認証だけど受験番号の方がいい気がしてきたので受験番号に揃える */}
                 <Input
                   placeholder="受験番号"
                   type="email"

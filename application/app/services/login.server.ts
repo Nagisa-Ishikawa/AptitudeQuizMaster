@@ -6,7 +6,7 @@ export async function login(email: string, password: string): Promise<number> {
   });
 
   if (!examinee) {
-    throw new Error("もしかしてログインに失敗しました？");
+    throw new Error("ログインに失敗しました");
   } else {
     return examinee.id;
   }
