@@ -3,8 +3,8 @@ import { useState } from "react";
 import {
   AdditionalTagsInput,
   Item,
-} from "../components/Tag/AdditionalTagsInput";
-import { TagsInput } from "../components/Tag/TagsInput";
+} from "../components/Input/TagsInput/AdditionalTagsInput";
+import { TagsInput } from "../components/Input/TagsInput/TagsInput";
 import { examineeTagColors } from "../consts/tags";
 
 /**
@@ -33,6 +33,7 @@ export default function Index() {
           { name: "シニア", color: examineeTagColors[3] },
         ]}
         w={rem(300)}
+        name={"tag"}
       />
       <AdditionalTagsInput
         values={addTags}
@@ -44,6 +45,7 @@ export default function Index() {
           { name: "シニア", color: examineeTagColors[3] },
         ]}
         w={rem(300)}
+        name={"tags"}
       />
     </main>
   );

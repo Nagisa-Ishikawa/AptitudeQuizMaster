@@ -18,7 +18,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Examinee } from "@prisma/client";
+import { Exam, Examinee, ExamineeTag, ExamTag } from "@prisma/client";
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
@@ -35,27 +35,43 @@ import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { RedoIcon } from "../../components/Icon/RedoIcon";
 import { Paper } from "../../components/Paper";
 import { prisma } from "../../services/db.server";
+import { CreateModal } from "./CreateModal";
 
-type ExamineeData = Examinee & {
-  tags: string[];
+export type FetchedData = {
+  examinees: LinkedExaminee[];
+  tagsMaster: ExamineeTag[];
+  examsMaster: LinkedExam[];
+};
+
+export type LinkedExaminee = Examinee & {
+  tags: ExamineeTag[];
+  exams: Exam[];
+};
+
+export type LinkedExam = Exam & {
+  tags: ExamTag[];
 };
 
 export default function Index() {
-  const examinees = useLoaderData<ExamineeData[]>();
+  const data = useLoaderData<FetchedData>();
 
   const [tagValue, setTagValue] = useState<string[]>([]);
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
+  const [
+    createModalOpened,
+    { open: createModalOpen, close: createModalClose },
+  ] = useDisclosure(false);
 
-  const totalCount = examinees.length;
+  const totalCount = data.examinees?.length;
   const totalPages = 10; // 仮の値
 
-  const rows = examinees.map((examinee) => (
+  const rows = data.examinees.map((examinee) => (
     <Table.Tr key={examinee.id} onClick={drawerOpen}>
       <Table.Td>{examinee.id}</Table.Td>
       <Table.Td>{examinee.name}</Table.Td>
-      <Table.Td>{examinee.tags}</Table.Td>
+      <Table.Td>tag</Table.Td>
       <Table.Td>{examinee.email}</Table.Td>
       <Table.Td>
         <Group gap={rem(32)}>
@@ -113,7 +129,7 @@ export default function Index() {
             <ButtonB leftSection={<ExportIcon size={rem(24)} />}>
               エクスポート
             </ButtonB>
-            <ButtonA>追加</ButtonA>
+            <ButtonA onClick={createModalOpen}>追加</ButtonA>
           </Group>
         </Flex>
         <Stack bg={"white"} p={(rem(32), rem(40))} gap={rem(32)}>
@@ -202,6 +218,10 @@ export default function Index() {
           <Pagination total={totalPages} />
         </Center>
       </Stack>
+
+      {createModalOpened && (
+        <CreateModal opend={createModalOpened} onClose={createModalClose} />
+      )}
     </>
   );
 }
@@ -218,11 +238,7 @@ export const loader: LoaderFunction = async () => {
             deletedAt: null,
           },
           include: {
-            examineeTag: {
-              select: {
-                name: true,
-              },
-            },
+            examineeTag: true,
           },
         },
       },
@@ -231,16 +247,23 @@ export const loader: LoaderFunction = async () => {
       },
     });
 
-    const examineesData = examinees.map((examinee) => {
-      return {
-        ...examinee,
-        tags: examinee.ExamineeTagging.map(
-          (tagging) => tagging.examineeTag.name
-        ).join(", "),
-      };
+    const tagsMaster = await prisma.examineeTag.findMany();
+    const examsMaster = await prisma.exam.findMany({
+      where: { deletedAt: null },
     });
 
-    return json(examineesData);
+    const data = {
+      examinees: examinees?.map((examinee) => {
+        return {
+          ...examinee,
+          tags: examinee.ExamineeTagging?.map((tagging) => tagging.examineeTag),
+        };
+      }),
+      tagsMaster: tagsMaster,
+      examsMaster: examsMaster,
+    };
+
+    return json(data);
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");

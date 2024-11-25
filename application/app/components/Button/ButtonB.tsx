@@ -10,7 +10,7 @@ type Props = {
 } & PolymorphicComponentProps<"button", ButtonProps>;
 
 /**
- * グレーのボタン
+ * 白・グレーのボタン
  */
 export const ButtonB: React.FC<Props> = ({ ...props }: Props) => {
   const theme = useMantineTheme();
