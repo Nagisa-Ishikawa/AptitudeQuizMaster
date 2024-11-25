@@ -28,7 +28,7 @@ export default function LoginRoute() {
   const [isError, setIsError] = useState<boolean>(!!data?.error);
 
   useEffect(() => {
-    setIsError(data?.error);
+    setIsError(!!data?.error);
   }, [data]);
 
   const theme = useMantineTheme();
