@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigate, useSearchParams } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
@@ -22,9 +22,11 @@ import { prisma } from "../../services/db.server";
 import { ExamineeTable } from "./ExamineeTable";
 import { SearchFilter } from "./SearchFilter";
 
+const PAGINATION_UNIT = 30;
+
 export type ExamineeData = {
-  name: string;
   id: number;
+  name: string;
   email: string;
   password: string;
   note: string | null;
@@ -34,16 +36,27 @@ export type ExamineeData = {
   tags: string[];
 };
 
+type LoaderData = {
+  examinees: ExamineeData[];
+  totalCount: number;
+};
+
 export default function Index() {
-  const examinees = useLoaderData<ExamineeData[]>();
+  const { examinees, totalCount } = useLoaderData<LoaderData>();
 
   const [tagValue, setTagValue] = useState<string[]>([]);
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
+  const [searchParams] = useSearchParams();
+  const currentPageParam = searchParams.get("page");
+  const currentPage = currentPageParam ? parseInt(currentPageParam, 10) : 1;
+  const totalPages = Math.ceil(totalCount / PAGINATION_UNIT);
+  const navigate = useNavigate();
 
-  const totalCount = examinees.length;
-  const totalPages = 10; // 仮の値
+  const handlePageChange = (value: number) => {
+    navigate(`?page=${value}`);
+  };
 
   return (
     <>
@@ -69,6 +82,7 @@ export default function Index() {
             <ButtonA>追加</ButtonA>
           </Group>
         </Flex>
+
         <SearchFilter
           toggleOpened={toggleOpened}
           toggle={toggle}
@@ -87,37 +101,54 @@ export default function Index() {
         </Stack>
 
         <Center>
-          <Pagination total={totalPages} />
+          <Pagination
+            total={totalPages}
+            value={currentPage}
+            onChange={handlePageChange}
+          />
         </Center>
       </Stack>
     </>
   );
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const page = parseInt(url.searchParams.get("page") || "1");
+  const offset = (page - 1) * PAGINATION_UNIT;
+
   try {
-    const examinees = await prisma.examinee.findMany({
-      where: {
-        deletedAt: null,
-      },
-      include: {
-        ExamineeTagging: {
-          where: {
-            deletedAt: null,
-          },
-          include: {
-            examineeTag: {
-              select: {
-                name: true,
+    const [examinees, totalCount] = await Promise.all([
+      prisma.examinee.findMany({
+        where: {
+          deletedAt: null,
+        },
+        include: {
+          ExamineeTagging: {
+            where: {
+              deletedAt: null,
+            },
+            include: {
+              examineeTag: {
+                select: {
+                  name: true,
+                },
               },
             },
           },
         },
-      },
-      orderBy: {
-        id: "asc",
-      },
-    });
+        orderBy: {
+          id: "asc",
+        },
+        skip: offset,
+        take: PAGINATION_UNIT,
+      }),
+      prisma.examinee.count({
+        where: {
+          deletedAt: null,
+        },
+      }),
+    ]);
 
     const examineesData = examinees.map((examinee) => {
       return {
@@ -128,7 +159,7 @@ export const loader: LoaderFunction = async () => {
       };
     });
 
-    return json(examineesData);
+    return json({ examinees: examineesData, totalCount });
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");
