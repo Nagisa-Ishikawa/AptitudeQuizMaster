@@ -10,6 +10,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Prisma } from "@prisma/client";
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useSearchParams } from "@remix-run/react";
 import { useState } from "react";
@@ -18,6 +19,7 @@ import { ButtonB } from "../../components/Button/ButtonB";
 import { ExportIcon } from "../../components/Icon/ExportIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { Paper } from "../../components/Paper";
+import { Item } from "../../components/Tag/TagsInput";
 import { prisma } from "../../services/db.server";
 import { ExamineeTable } from "./ExamineeTable";
 import { SearchFilter } from "./SearchFilter";
@@ -33,29 +35,36 @@ export type ExamineeData = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
-  tags: string[];
+  tags: Item[];
 };
 
 type LoaderData = {
   examinees: ExamineeData[];
   totalCount: number;
+  tagOptions: Item[];
 };
 
 export default function Index() {
-  const { examinees, totalCount } = useLoaderData<LoaderData>();
+  const { examinees, totalCount, tagOptions } = useLoaderData<LoaderData>();
 
-  const [tagValue, setTagValue] = useState<string[]>([]);
+  const [searchParams] = useSearchParams();
+  const examineeIdParam = searchParams.get("examineeId") || "";
+  const nameOrEmailParam = searchParams.get("nameOrEmail") || "";
+  const [tagValue, setTagValue] = useState<Item[]>([]);
+
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
-  const [searchParams] = useSearchParams();
+
   const currentPageParam = searchParams.get("page");
   const currentPage = currentPageParam ? parseInt(currentPageParam, 10) : 1;
   const totalPages = Math.ceil(totalCount / PAGINATION_UNIT);
   const navigate = useNavigate();
 
   const handlePageChange = (value: number) => {
-    navigate(`?page=${value}`);
+    const params = new URLSearchParams(searchParams);
+    params.set("page", value.toString());
+    navigate(`?${params.toString()}`);
   };
 
   return (
@@ -88,6 +97,9 @@ export default function Index() {
           toggle={toggle}
           tagValue={tagValue}
           setTagValue={setTagValue}
+          examineeId={examineeIdParam}
+          nameOrEmail={nameOrEmailParam}
+          tagOptions={tagOptions}
         />
 
         <Stack gap={rem(8)}>
@@ -114,15 +126,69 @@ export default function Index() {
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
+
   const page = parseInt(url.searchParams.get("page") || "1");
   const offset = (page - 1) * PAGINATION_UNIT;
 
-  try {
-    const [examinees, totalCount] = await Promise.all([
-      prisma.examinee.findMany({
-        where: {
-          deletedAt: null,
+  const examineeIdParam = url.searchParams.get("examineeId");
+  const nameOrEmailParam = url.searchParams.get("nameOrEmail");
+  const tagsParam = url.searchParams
+    .getAll("tags")
+    .filter((tags) => tags !== "");
+
+  let whereClause: Prisma.ExamineeWhereInput = {
+    deletedAt: null,
+  };
+
+  if (examineeIdParam) {
+    const examineeId = parseInt(examineeIdParam);
+    if (!isNaN(examineeId)) {
+      whereClause = {
+        ...whereClause,
+        id: examineeId,
+      };
+    }
+  }
+
+  if (nameOrEmailParam) {
+    const nameOrEmail = nameOrEmailParam;
+    whereClause = {
+      ...whereClause,
+      OR: [
+        {
+          name: {
+            contains: nameOrEmail,
+          },
         },
+        {
+          email: {
+            contains: nameOrEmail,
+          },
+        },
+      ],
+    };
+  }
+
+  if (tagsParam && tagsParam.length > 0) {
+    whereClause = {
+      ...whereClause,
+      ExamineeTagging: {
+        some: {
+          deletedAt: null,
+          examineeTag: {
+            name: {
+              in: tagsParam,
+            },
+          },
+        },
+      },
+    };
+  }
+
+  try {
+    const [examinees, totalCount, allTagOptions] = await Promise.all([
+      prisma.examinee.findMany({
+        where: whereClause,
         include: {
           ExamineeTagging: {
             where: {
@@ -132,6 +198,7 @@ export const loader: LoaderFunction = async ({ request }) => {
               examineeTag: {
                 select: {
                   name: true,
+                  color: true,
                 },
               },
             },
@@ -144,22 +211,36 @@ export const loader: LoaderFunction = async ({ request }) => {
         take: PAGINATION_UNIT,
       }),
       prisma.examinee.count({
+        where: whereClause,
+      }),
+      prisma.examineeTag.findMany({
         where: {
           deletedAt: null,
         },
+        select: {
+          name: true,
+          color: true,
+        },
+        distinct: ["name", "color"], // 重複を除いたnameとcolorの組み合わせを取得
       }),
     ]);
 
     const examineesData = examinees.map((examinee) => {
       return {
         ...examinee,
-        tags: examinee.ExamineeTagging.map(
-          (tagging) => tagging.examineeTag.name
-        ).join(", "),
+        tags: examinee.ExamineeTagging.map((tagging) => ({
+          name: tagging.examineeTag.name,
+          color: tagging.examineeTag.color || undefined,
+        })),
       };
     });
 
-    return json({ examinees: examineesData, totalCount });
+    const tagOptions: Item[] = allTagOptions.map((tag) => ({
+      name: tag.name,
+      color: tag.color || undefined,
+    }));
+
+    return json({ examinees: examineesData, totalCount, tagOptions });
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");

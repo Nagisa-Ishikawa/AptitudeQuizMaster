@@ -1,4 +1,11 @@
-import { ActionIcon, Group, rem, Table } from "@mantine/core";
+import {
+  ActionIcon,
+  Group,
+  Pill,
+  rem,
+  Table,
+  useMantineTheme,
+} from "@mantine/core";
 import { ExamineeData } from ".";
 import { AddIcon } from "../../components/Icon/AddIcon";
 import { DeleteIcon } from "../../components/Icon/DeleteIcon";
@@ -14,11 +21,29 @@ export const ExamineeTable = ({
   examinees,
   drawerOpen,
 }: ExamineeTableProps) => {
+  const theme = useMantineTheme();
   const examineeRows = examinees.map((examinee) => (
     <Table.Tr key={examinee.id} onClick={drawerOpen}>
       <Table.Td>{examinee.id}</Table.Td>
       <Table.Td>{examinee.name}</Table.Td>
-      <Table.Td>{examinee.tags}</Table.Td>
+      <Table.Td>
+        <Group>
+          {examinee.tags.map((tag) => (
+            <Pill
+              key={tag.name}
+              bg={tag.color}
+              style={{
+                height: rem(30),
+                fontSize: theme.fontSizes.xss,
+                fontWeight: theme.other.fontWeights.bold,
+                padding: `${rem(4)} ${rem(8)}`,
+              }}
+            >
+              {tag.name}
+            </Pill>
+          ))}
+        </Group>
+      </Table.Td>
       <Table.Td>{examinee.email}</Table.Td>
       <Table.Td>
         <Group gap={rem(32)}>
