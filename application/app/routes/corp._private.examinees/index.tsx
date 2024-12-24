@@ -9,7 +9,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, usePagination } from "@mantine/hooks";
 import { Prisma } from "@prisma/client";
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useSearchParams } from "@remix-run/react";
@@ -67,6 +67,12 @@ export default function Index() {
     navigate(`?${params.toString()}`);
   };
 
+  const pagination = usePagination({
+    total: totalPages,
+    page: currentPage,
+    onChange: (page) => handlePageChange(page),
+  });
+
   return (
     <>
       <Drawer
@@ -115,8 +121,8 @@ export default function Index() {
         <Center>
           <Pagination
             total={totalPages}
-            value={currentPage}
-            onChange={handlePageChange}
+            value={pagination.active}
+            onChange={pagination.setPage}
           />
         </Center>
       </Stack>
