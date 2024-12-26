@@ -4,15 +4,18 @@ import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
 import { ModalA } from "../../components/Modal/ModalA";
 
-type Props = {};
+type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  stack: any;
+};
 
-export const CreateComfirmModal: React.FC<Props> = ({}) => {
+export const CreateComfirmModal: React.FC<Props> = ({ stack }: Props) => {
   return (
-    <ModalA opened={true} onClose={() => {}} title="受験者 登録">
+    <ModalA title="受験者 登録" {...stack.register("confirm")}>
       <Center mt={rem(16)}>
         <Group gap={rem(16)}>
-          <ButtonB>戻る</ButtonB>
-          <ButtonA>進む</ButtonA>
+          <ButtonB onClick={() => stack.close("confirm")}>戻る</ButtonB>
+          <ButtonA onClick={stack.closeAll}>進む</ButtonA>
         </Group>
       </Center>
     </ModalA>

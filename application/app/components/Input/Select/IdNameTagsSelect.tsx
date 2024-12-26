@@ -1,8 +1,10 @@
 import {
   Box,
   CheckIcon,
+  Flex,
   Group,
   InputWrapperProps,
+  Pill,
   rem,
   Select,
   SelectProps,
@@ -37,6 +39,19 @@ export const IdNameTagsSelect: React.FC<Props> = ({ options, ...props }) => {
         <Box style={{ fontWeight: theme.other.fontWeights.bold }}>
           {item.title}
         </Box>
+        <Flex
+          style={{
+            gap: rem(8),
+            fontSize: theme.fontSizes.xsss,
+            fontWeight: theme.other.fontWeights.bold,
+          }}
+        >
+          {item.tags?.map((tag, i) => (
+            <Pill key={i} bg={tag.color}>
+              {tag.name}
+            </Pill>
+          ))}
+        </Flex>
         {checked && <CheckIcon style={{ marginLeft: "auto" }} size={rem(10)} />}
       </Group>
     );
