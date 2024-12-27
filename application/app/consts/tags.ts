@@ -6,3 +6,5 @@ export const examineeTagColors = [
   "#E1D7F2",
   "#F4E8C2",
 ];
+
+export const defaultExamineeTagColor = "#E9ECEF";

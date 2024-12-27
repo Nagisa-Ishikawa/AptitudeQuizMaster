@@ -85,6 +85,7 @@ export const theme = createTheme({
   },
   fontFamily: "YuGothic",
   fontSizes: {
+    xsss: rem(10),
     xss: rem(12),
     xs: rem(14),
     sm: rem(16),

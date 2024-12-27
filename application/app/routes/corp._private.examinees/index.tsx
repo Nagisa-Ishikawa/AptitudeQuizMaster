@@ -16,19 +16,12 @@ import {
   Text,
   TextInput,
   Title,
-  useModalsStack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Exam, Examinee, ExamineeTag, ExamTag } from "@prisma/client";
-import {
-  ActionFunction,
-  json,
-  LoaderFunction,
-  redirect,
-} from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
-import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
 import { AddIcon } from "../../components/Icon/AddIcon";
 import { ArrowDownIcon } from "../../components/Icon/ArrowDownIcon";
@@ -42,8 +35,8 @@ import { RedoIcon } from "../../components/Icon/RedoIcon";
 import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
-import { CreateComfirmModal } from "./CreateComfirmModal";
-import { CreateModal } from "./CreateModal";
+import { CreateExaminee } from "./Create";
+import { CreateButton } from "./CreateButton";
 
 export type FetchedData = {
   examinees: LinkedExaminee[];
@@ -67,8 +60,6 @@ export default function Index() {
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
-
-  const createModalsStack = useModalsStack(["input", "confirm"]);
 
   const totalCount = data.examinees?.length;
   const totalPages = 10; // 仮の値
@@ -135,9 +126,8 @@ export default function Index() {
             <ButtonB leftSection={<ExportIcon size={rem(24)} />}>
               エクスポート
             </ButtonB>
-            <ButtonA onClick={() => createModalsStack.open("input")}>
-              追加
-            </ButtonA>
+            {/* 受験者追加ボタン・追加機能 */}
+            <CreateButton />
           </Group>
         </Flex>
         <Stack bg={"white"} p={(rem(32), rem(40))} gap={rem(32)}>
@@ -226,9 +216,6 @@ export default function Index() {
           <Pagination total={totalPages} />
         </Center>
       </Stack>
-
-      <CreateModal stack={createModalsStack} />
-      <CreateComfirmModal stack={createModalsStack} />
     </>
   );
 }
@@ -254,7 +241,9 @@ export const loader: LoaderFunction = async () => {
       },
     });
 
-    const tagsMaster = await prisma.examineeTag.findMany();
+    const tagsMaster = await prisma.examineeTag.findMany({
+      where: { deletedAt: null },
+    });
     const examsMaster = await prisma.exam.findMany({
       where: { deletedAt: null },
       include: {
@@ -288,7 +277,7 @@ export const loader: LoaderFunction = async () => {
       }),
     };
 
-    return json(data);
+    return data;
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");
@@ -297,7 +286,12 @@ export const loader: LoaderFunction = async () => {
 
 export const action: ActionFunction = async ({ request }) => {
   const now = new Date();
-
   const formData = await request.formData();
+  console.log("🤔formData :", formData);
+  switch (request.method) {
+    case "POST": {
+      CreateExaminee(formData, now);
+    }
+  }
   return redirect(pages.corpExaminees.path);
 };

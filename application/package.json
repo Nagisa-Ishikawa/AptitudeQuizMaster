@@ -13,8 +13,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@mantine/core": "^7.13.3",
-    "@mantine/hooks": "^7.13.3",
+    "@mantine/core": "^7.15.2",
+    "@mantine/hooks": "^7.15.2",
     "@prisma/client": "^5.21.1",
     "@remix-run/css-bundle": "^2.13.1",
     "@remix-run/express": "^2.13.1",
@@ -32,7 +32,8 @@
     "remark-gfm": "^4.0.0",
     "remix": "^2.13.1",
     "remix-auth": "^3.7.0",
-    "remix-auth-form": "^1.5.0"
+    "remix-auth-form": "^1.5.0",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
