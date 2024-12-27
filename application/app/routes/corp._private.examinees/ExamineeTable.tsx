@@ -15,13 +15,21 @@ import { RedoIcon } from "../../components/Icon/RedoIcon";
 type ExamineeTableProps = {
   examinees: ExamineeData[];
   drawerOpen: () => void;
+  onSort: (field: string) => void;
 };
 
 export const ExamineeTable = ({
   examinees,
   drawerOpen,
+  onSort,
 }: ExamineeTableProps) => {
   const theme = useMantineTheme();
+
+  // ソートクリック時のハンドラー
+  const handleSortClick = (field: string) => {
+    onSort(field);
+  };
+
   const examineeRows = examinees.map((examinee) => (
     <Table.Tr key={examinee.id} onClick={drawerOpen}>
       <Table.Td>{examinee.id}</Table.Td>
@@ -63,10 +71,32 @@ export const ExamineeTable = ({
     <Table highlightOnHover>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>受験者ID</Table.Th>
-          <Table.Th>名前</Table.Th>
-          <Table.Th>タグ</Table.Th>
-          <Table.Th>メールアドレス</Table.Th>
+          <Table.Th
+            onClick={() => handleSortClick("id")}
+            style={{ cursor: "pointer" }}
+          >
+            受験者ID
+          </Table.Th>
+          <Table.Th
+            onClick={() => handleSortClick("name")}
+            style={{ cursor: "pointer" }}
+          >
+            名前
+          </Table.Th>
+          <Table.Th
+            onClick={() => {
+              handleSortClick("tags");
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            タグ
+          </Table.Th>
+          <Table.Th
+            onClick={() => handleSortClick("email")}
+            style={{ cursor: "pointer" }}
+          >
+            メールアドレス
+          </Table.Th>
           <Table.Th></Table.Th>
         </Table.Tr>
       </Table.Thead>

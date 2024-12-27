@@ -44,6 +44,8 @@ type LoaderData = {
   tagOptions: Item[];
 };
 
+export type sortDirectionType = "asc" | "desc";
+
 export default function Index() {
   const { examinees, totalCount, tagOptions } = useLoaderData<LoaderData>();
 
@@ -51,6 +53,9 @@ export default function Index() {
   const examineeIdParam = searchParams.get("examineeId") || "";
   const nameOrEmailParam = searchParams.get("nameOrEmail") || "";
   const [tagValue, setTagValue] = useState<Item[]>([]);
+  const sortField = searchParams.get("sortField") || "id";
+  const sortDirection =
+    (searchParams.get("sortDirection") as sortDirectionType) || "desc";
 
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
@@ -72,6 +77,18 @@ export default function Index() {
     page: currentPage,
     onChange: (page) => handlePageChange(page),
   });
+
+  const handleSort = (field: string) => {
+    let direction: "asc" | "desc" = "desc";
+    if (field === sortField) {
+      direction = sortDirection === "asc" ? "desc" : "asc";
+    }
+    const params = new URLSearchParams(searchParams);
+    params.set("sortField", field);
+    params.set("sortDirection", direction);
+    params.set("page", "1");
+    navigate(`?${params.toString()}`);
+  };
 
   return (
     <>
@@ -114,7 +131,11 @@ export default function Index() {
             <Text>全{totalCount}件</Text>
           </Flex>
           <Paper>
-            <ExamineeTable examinees={examinees} drawerOpen={drawerOpen} />
+            <ExamineeTable
+              examinees={examinees}
+              drawerOpen={drawerOpen}
+              onSort={handleSort}
+            />
           </Paper>
         </Stack>
 
@@ -141,6 +162,9 @@ export const loader: LoaderFunction = async ({ request }) => {
   const tagsParam = url.searchParams
     .getAll("tags")
     .filter((tags) => tags !== "");
+  const sortFieldParam = url.searchParams.get("sortField") || "id";
+  const sortDirectionParam =
+    (url.searchParams.get("sortDirection") as sortDirectionType) || "desc";
 
   let whereClause: Prisma.ExamineeWhereInput = {
     deletedAt: null,
@@ -191,6 +215,13 @@ export const loader: LoaderFunction = async ({ request }) => {
     };
   }
 
+  const orderByClause: Prisma.ExamineeOrderByWithRelationInput =
+    sortFieldParam === "tags"
+      ? {}
+      : {
+          [sortFieldParam]: sortDirectionParam,
+        };
+
   try {
     const [examinees, totalCount, allTagOptions] = await Promise.all([
       prisma.examinee.findMany({
@@ -210,11 +241,7 @@ export const loader: LoaderFunction = async ({ request }) => {
             },
           },
         },
-        orderBy: {
-          id: "asc",
-        },
-        skip: offset,
-        take: PAGINATION_UNIT,
+        orderBy: orderByClause,
       }),
       prisma.examinee.count({
         where: whereClause,
@@ -223,30 +250,48 @@ export const loader: LoaderFunction = async ({ request }) => {
         where: {
           deletedAt: null,
         },
-        select: {
-          name: true,
-          color: true,
-        },
-        distinct: ["name", "color"], // 重複を除いたnameとcolorの組み合わせを取得
       }),
     ]);
 
     const examineesData = examinees.map((examinee) => {
+      const tagIds = examinee.ExamineeTagging.map(
+        (tagging) => tagging.examineeTagId
+      ).sort((a, b) => a - b);
+
       return {
         ...examinee,
         tags: examinee.ExamineeTagging.map((tagging) => ({
+          id: tagging.examineeTagId,
           name: tagging.examineeTag.name,
           color: tagging.examineeTag.color || undefined,
         })),
+        tagIdsString: JSON.stringify(tagIds),
       };
     });
+
+    // tagでソートの場合のみ、後でソートする
+    if (sortFieldParam === "tags") {
+      examineesData.sort((a, b) => {
+        if (sortDirectionParam === "asc") {
+          return a.tagIdsString.localeCompare(b.tagIdsString);
+        } else {
+          return b.tagIdsString.localeCompare(a.tagIdsString);
+        }
+      });
+    }
+
+    // ページネーション
+    const examineesDataPaginated = examineesData.slice(
+      offset,
+      offset + PAGINATION_UNIT
+    );
 
     const tagOptions: Item[] = allTagOptions.map((tag) => ({
       name: tag.name,
       color: tag.color || undefined,
     }));
 
-    return json({ examinees: examineesData, totalCount, tagOptions });
+    return json({ examinees: examineesDataPaginated, totalCount, tagOptions });
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");
