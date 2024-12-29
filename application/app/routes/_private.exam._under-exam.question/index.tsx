@@ -8,7 +8,7 @@ import {
 import { useLoaderData } from "@remix-run/react";
 import { useRef } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
-import { PaperA } from "../../components/Paper/PaperA";
+import { Paper } from "../../components/Paper";
 
 import { pages } from "../../consts/pages";
 import { AnswerEntity } from "../../entities/AnswerEntity";
@@ -46,7 +46,7 @@ export default function Index() {
       <input type="hidden" name="questionIndex" value={questionIndex} />
       <input type="hidden" name="questionType" value={question.type} />
 
-      <PaperA>
+      <Paper>
         <Flex align="center" justify="space-between">
           {/* 問題番号 */}
           <Text
@@ -71,7 +71,7 @@ export default function Index() {
             <InputForAnswer question={question} />
           </Grid.Col>
         </Grid>
-      </PaperA>
+      </Paper>
       <Flex
         align="center"
         justify="flex-end"

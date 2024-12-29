@@ -14,7 +14,7 @@ type CustomPaperProps = {
 /**
  * 青い枠
  */
-export const PaperA: React.FC<CustomPaperProps> = ({
+export const Paper: React.FC<CustomPaperProps> = ({
   children,
   borderWidth = rem(2),
   ...props

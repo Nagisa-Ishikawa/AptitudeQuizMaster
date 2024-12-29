@@ -2,10 +2,10 @@ import {
   Center,
   Flex,
   Group,
-  Pill,
   rem,
   Stack,
   Text,
+  Textarea,
   useMantineTheme,
 } from "@mantine/core";
 import { useLoaderData } from "@remix-run/react";
@@ -17,8 +17,8 @@ import { ExamIcon } from "../../components/Icon/ExamIcon";
 import { MailIcon } from "../../components/Icon/MailIcon";
 import { TagIcon } from "../../components/Icon/TagIcon";
 import { ModalA } from "../../components/Modal/ModalA";
-import { PaperA } from "../../components/Paper/PaperA";
-import { PaperB } from "../../components/Paper/PaperB";
+import { Paper } from "../../components/Paper";
+import { Pill } from "../../components/Pill";
 import { defaultExamineeTagColor } from "../../consts/tags";
 import { formRef2DataObj } from "../../functions/formRef2DataObj";
 
@@ -51,7 +51,7 @@ export const CreateComfirmModal: React.FC<Props> = ({
         </Center>
 
         <Center>
-          <PaperA p={rem(24)} miw={rem(288)} borderWidth={rem(1)}>
+          <Paper p={rem(24)} miw={rem(288)} borderWidth={rem(1)}>
             <Stack gap={rem(16)} align="center">
               <Text
                 size={theme.fontSizes.lg}
@@ -91,19 +91,30 @@ export const CreateComfirmModal: React.FC<Props> = ({
                     {inputs.exam === "" ? "試験設定なし" : inputs.exam}
                   </Text>
                 </Flex>
-                {inputs.note === "" ? (
-                  <></>
-                ) : (
-                  <PaperB p={`${rem(10)} ${rem(20)}`}>
-                    <Text size={theme.fontSizes.xss}>{inputs.note}</Text>
-                  </PaperB>
+                {inputs.note !== "" && (
+                  <Textarea
+                    size={theme.fontSizes.xss}
+                    autosize
+                    value={inputs.note}
+                    styles={{
+                      input: {
+                        padding: `${rem(8)} ${rem(16)}`,
+                        color:
+                          theme.colors.textColor[theme.primaryShade as number],
+                        backgroundColor:
+                          theme.colors.bodyColorPallet[
+                            theme.primaryShade as number
+                          ],
+                      },
+                    }}
+                  />
                 )}
               </Stack>
             </Stack>
-          </PaperA>
+          </Paper>
         </Center>
 
-        <Center mt={rem(16)}>
+        <Center>
           <Group gap={rem(16)}>
             <ButtonB onClick={() => stack.close("confirm")}>戻る</ButtonB>
             <ButtonA

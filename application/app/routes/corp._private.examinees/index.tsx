@@ -32,7 +32,7 @@ import { ExportIcon } from "../../components/Icon/ExportIcon";
 import { FilterIcon } from "../../components/Icon/FilterIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { RedoIcon } from "../../components/Icon/RedoIcon";
-import { PaperA } from "../../components/Paper/PaperA";
+import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
 import { CreateExaminee } from "./Create";
@@ -196,7 +196,7 @@ export default function Index() {
             <Title size={rem(24)}>受験者一覧</Title>
             <Text>全{totalCount}件</Text>
           </Flex>
-          <PaperA>
+          <Paper>
             <Table highlightOnHover>
               <Table.Thead>
                 <Table.Tr>
@@ -209,7 +209,7 @@ export default function Index() {
               </Table.Thead>
               <Table.Tbody>{rows}</Table.Tbody>
             </Table>
-          </PaperA>
+          </Paper>
         </Stack>
 
         <Center>

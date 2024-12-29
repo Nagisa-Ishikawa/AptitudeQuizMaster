@@ -63,7 +63,7 @@ export const CreateModal: React.FC<Props> = ({ stack, formRef }: Props) => {
             w="100%"
             options={data.examsMaster}
           />
-          <Textarea label="メモ" name="note" w="100%" />
+          <Textarea label="メモ" name="note" w="100%" autosize />
 
           <Center mt={rem(16)}>
             <Group gap={rem(16)}>

@@ -8,26 +8,27 @@ export const CreateExaminee = async (formData: any, now: Date) => {
     // 受験者タグマスタ更新
     const examineeTagsName = formData.get("tags");
     const examineeTagsId = await Promise.all(
-      examineeTagsName?.split(",")?.map(async (x: string) => {
-        const examineeTag = await prisma.examineeTag.findFirst({
-          where: {
-            name: x,
-            deletedAt: null,
-          },
-        });
-        if (examineeTag) return examineeTag.id;
-
-        // タグが存在しなければ作成
-        const createdExamineeTag = await prisma.examineeTag.create({
-          data: {
-            name: x,
-            color: defaultExamineeTagColor,
-            createdAt: now,
-            updatedAt: now,
-          },
-        });
-        return createdExamineeTag.id;
-      })
+      examineeTagsName.trim() === ""
+        ? []
+        : examineeTagsName.split(",")?.map(async (x: string) => {
+            const examineeTag = await prisma.examineeTag.findFirst({
+              where: {
+                name: x,
+                deletedAt: null,
+              },
+            });
+            if (examineeTag) return examineeTag.id;
+            // タグが存在しなければ作成
+            const createdExamineeTag = await prisma.examineeTag.create({
+              data: {
+                name: x,
+                color: defaultExamineeTagColor,
+                createdAt: now,
+                updatedAt: now,
+              },
+            });
+            return createdExamineeTag.id;
+          })
     );
 
     // 受験者作成
