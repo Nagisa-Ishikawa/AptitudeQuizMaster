@@ -1,20 +1,12 @@
 import {
-  ActionIcon,
-  Button,
   Center,
-  Collapse,
-  Divider,
   Drawer,
   Flex,
   Group,
-  NumberInput,
   Pagination,
   rem,
   Stack,
-  Table,
-  TagsInput,
   Text,
-  TextInput,
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -23,15 +15,8 @@ import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonB } from "../../components/Button/ButtonB";
-import { AddIcon } from "../../components/Icon/AddIcon";
-import { ArrowDownIcon } from "../../components/Icon/ArrowDownIcon";
-import { ArrowUpIcon } from "../../components/Icon/ArrowUpIcon";
-import { DeleteIcon } from "../../components/Icon/DeleteIcon";
-import { EditIcon } from "../../components/Icon/EditIcon";
 import { ExportIcon } from "../../components/Icon/ExportIcon";
-import { FilterIcon } from "../../components/Icon/FilterIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
-import { RedoIcon } from "../../components/Icon/RedoIcon";
 import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
@@ -130,66 +115,12 @@ export default function Index() {
             <CreateButton />
           </Group>
         </Flex>
-        <Stack bg={"white"} p={(rem(32), rem(40))} gap={rem(32)}>
-          <Flex
-            justify={"space-between"}
-            component={"a"}
-            variant={"transparent"}
-            onClick={toggle}
-          >
-            <Group gap={rem(8)} align={"center"}>
-              <FilterIcon />
-              検索フィルター
-            </Group>
-            {toggleOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
-          </Flex>
-          <Collapse in={toggleOpened}>
-            <Stack gap={rem(32)}>
-              <Stack gap={rem(8)}>
-                <Flex gap={rem(16)}>
-                  <NumberInput
-                    label="受験者ID"
-                    placeholder="受験者IDを入力してください"
-                    flex={1}
-                    hideControls
-                  />
-                  <TextInput
-                    label="名前 or メールアドレス"
-                    placeholder="名前 or メールアドレス"
-                    flex={1}
-                  />
-                </Flex>
-                <TagsInput
-                  label="タグ"
-                  data={[]}
-                  value={tagValue}
-                  onChange={setTagValue}
-                />
-              </Stack>
-              <Center>
-                <Button>検索</Button>
-              </Center>
-            </Stack>
-          </Collapse>
-          <Collapse in={!toggleOpened}>
-            <Flex justify={"flex-start"} align={"center"} gap={rem(32)}>
-              <Stack gap={rem(0)}>
-                <Text>受験者ID</Text>
-                <Text>000</Text>
-              </Stack>
-              <Divider orientation="vertical" />
-              <Stack gap={rem(0)}>
-                <Text>名前 or メールアドレス</Text>
-                <Text>青山あかね</Text>
-              </Stack>
-              <Divider orientation="vertical" />
-              <Stack gap={rem(0)}>
-                <Text>タグ</Text>
-                <Text>タグ1, タグ2</Text>
-              </Stack>
-            </Flex>
-          </Collapse>
-        </Stack>
+        <SearchFilter
+          toggleOpened={toggleOpened}
+          toggle={toggle}
+          tagValue={tagValue}
+          setTagValue={setTagValue}
+        />
 
         <Stack gap={rem(8)}>
           <Flex justify={"space-between"} align={"center"}>
@@ -197,18 +128,7 @@ export default function Index() {
             <Text>全{totalCount}件</Text>
           </Flex>
           <Paper>
-            <Table highlightOnHover>
-              <Table.Thead>
-                <Table.Tr>
-                  <Table.Th>受験者ID</Table.Th>
-                  <Table.Th>名前</Table.Th>
-                  <Table.Th>タグ</Table.Th>
-                  <Table.Th>メールアドレス</Table.Th>
-                  <Table.Th></Table.Th>
-                </Table.Tr>
-              </Table.Thead>
-              <Table.Tbody>{rows}</Table.Tbody>
-            </Table>
+            <ExamineeTable examinees={examinees} drawerOpen={drawerOpen} />
           </Paper>
         </Stack>
 

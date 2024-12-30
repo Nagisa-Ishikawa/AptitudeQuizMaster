@@ -1,18 +1,10 @@
 import React from "react";
-import Icon from "../../../public/images/icons/add.svg";
+import addIconPath from "../../../public/images/icons/add.svg";
+import { IconComponent } from "./IconComponent";
 
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
-
-/** アドアイコン */
-export const AddIcon: React.FC<Props> = ({ size, ...props }: Props) => {
-  return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="アドアイコン" />
-    </ThemeIcon>
-  );
+// 追加アイコン
+export const AddIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
+  props
+) => {
+  return <IconComponent iconPath={addIconPath} alt="追加アイコン" {...props} />;
 };

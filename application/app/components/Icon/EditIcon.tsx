@@ -1,18 +1,13 @@
 import React from "react";
-import Icon from "../../../public/images/icons/edit.svg";
+import editIconPath from "../../../public/images/icons/edit.svg";
+import { IconComponent } from "./IconComponent";
 
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
+/** 編集アイコン */
+export const EditIcon: React.FC<{
   size?: string;
   [key: string]: unknown;
-};
-
-/** エディットアイコン */
-export const EditIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+}> = (props) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="エディットアイコン" />
-    </ThemeIcon>
+    <IconComponent iconPath={editIconPath} alt="編集アイコン" {...props} />
   );
 };

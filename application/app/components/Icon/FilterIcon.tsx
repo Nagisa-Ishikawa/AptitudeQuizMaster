@@ -1,18 +1,17 @@
 import React from "react";
-import Icon from "../../../public/images/icons/filter_alt.svg";
-
-import { Image, ThemeIcon } from "@mantine/core";
-
-type Props = {
-  size?: string;
-  [key: string]: unknown;
-};
+import filterIconPath from "../../../public/images/icons/filter_alt.svg";
+import { IconComponent } from "./IconComponent";
 
 /** フィルターアイコン */
-export const FilterIcon: React.FC<Props> = ({ size, ...props }: Props) => {
+export const FilterIcon: React.FC<{
+  size?: string;
+  [key: string]: unknown;
+}> = (props) => {
   return (
-    <ThemeIcon size={size} {...props}>
-      <Image w={size} h={size} src={Icon} alt="フィルターアイコン" />
-    </ThemeIcon>
+    <IconComponent
+      iconPath={filterIconPath}
+      alt="フィルターアイコン"
+      {...props}
+    />
   );
 };

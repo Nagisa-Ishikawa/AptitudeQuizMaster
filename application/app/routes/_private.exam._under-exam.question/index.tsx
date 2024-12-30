@@ -98,7 +98,7 @@ export const loader: LoaderFunction = async ({ params, request, context }) => {
   const questionIndex = findFirstNotStartedQuestionIndex(data.examAttempt);
 
   // 回答開始前の問題がない場合、完了ページにリダイレクト
-  if (questionIndex === -1) return redirect(pages.examQuestion.path);
+  if (questionIndex === -1) return redirect(pages.examCompletion.path);
 
   // 回答開始時間を記録
   const questions = data.examAttempt.exam.examQuestions;
