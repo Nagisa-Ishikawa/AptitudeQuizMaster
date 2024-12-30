@@ -22,6 +22,8 @@ import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
 import { CreateExaminee } from "./Create";
 import { CreateButton } from "./CreateButton";
+import { ExamineeTable } from "./ExamineeTable";
+import { SearchFilter } from "./SearchFilter";
 
 export type FetchedData = {
   examinees: LinkedExaminee[];
@@ -48,47 +50,6 @@ export default function Index() {
 
   const totalCount = data.examinees?.length;
   const totalPages = 10; // 仮の値
-
-  const rows = data.examinees.map((examinee) => (
-    <Table.Tr key={examinee.id} onClick={drawerOpen}>
-      <Table.Td>{examinee.id}</Table.Td>
-      <Table.Td>{examinee.name}</Table.Td>
-      <Table.Td>tag</Table.Td>
-      <Table.Td>{examinee.email}</Table.Td>
-      <Table.Td>
-        <Group gap={rem(32)}>
-          <ActionIcon
-            variant={"transparent"}
-            size={rem(24)}
-            aria-label={"redo icon"}
-          >
-            <RedoIcon size={rem(24)} />
-          </ActionIcon>
-          <ActionIcon
-            variant={"transparent"}
-            size={rem(24)}
-            aria-label={"add icon"}
-          >
-            <AddIcon size={rem(24)} />
-          </ActionIcon>
-          <ActionIcon
-            variant={"transparent"}
-            size={rem(24)}
-            aria-label={"edit icon"}
-          >
-            <EditIcon size={rem(24)} />
-          </ActionIcon>
-          <ActionIcon
-            variant={"transparent"}
-            size={rem(24)}
-            aria-label={"delete icon"}
-          >
-            <DeleteIcon size={rem(24)} />
-          </ActionIcon>
-        </Group>
-      </Table.Td>
-    </Table.Tr>
-  ));
 
   return (
     <>
@@ -128,7 +89,7 @@ export default function Index() {
             <Text>全{totalCount}件</Text>
           </Flex>
           <Paper>
-            <ExamineeTable examinees={examinees} drawerOpen={drawerOpen} />
+            <ExamineeTable drawerOpen={drawerOpen} />
           </Paper>
         </Stack>
 
@@ -153,6 +114,14 @@ export const loader: LoaderFunction = async () => {
           },
           include: {
             examineeTag: true,
+          },
+        },
+        ExamAttempt: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            exam: true,
           },
         },
       },
@@ -186,15 +155,16 @@ export const loader: LoaderFunction = async () => {
         return {
           ...examinee,
           tags: examinee.ExamineeTagging?.map((tagging) => tagging.examineeTag),
+          exams: examinee.ExamAttempt?.map((attempt) => attempt.exam),
         };
-      }),
-      tagsMaster: tagsMaster,
+      }) as LinkedExaminee[],
+      tagsMaster: tagsMaster as ExamineeTag[],
       examsMaster: examsMaster?.map((exam) => {
         return {
           ...exam,
           tags: exam.ExamTagging?.map((tagging) => tagging.examTag),
         };
-      }),
+      }) as LinkedExam[],
     };
 
     return data;

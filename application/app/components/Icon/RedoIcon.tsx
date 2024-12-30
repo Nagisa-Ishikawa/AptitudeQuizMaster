@@ -1,12 +1,10 @@
 import React from "react";
 import redoIconPath from "../../../public/images/icons/redo.svg";
-import { IconComponent } from "./IconComponent";
+import { Icon } from "./Icon";
 
 /** リドゥアイコン */
 export const RedoIcon: React.FC<{ size?: string; [key: string]: unknown }> = (
   props
 ) => {
-  return (
-    <IconComponent iconPath={redoIconPath} alt="リドゥアイコン" {...props} />
-  );
+  return <Icon iconPath={redoIconPath} alt="リドゥアイコン" {...props} />;
 };

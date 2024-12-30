@@ -1,7 +1,7 @@
 import React from "react";
 import FilledIcon from "../../../public/images/icons/star.svg";
 import OutlineIcon from "../../../public/images/icons/star_outline.svg";
-import { IconComponent } from "./IconComponent";
+import { Icon } from "./Icon";
 
 type Props = {
   isStarred?: boolean;
@@ -16,7 +16,7 @@ export const StarIcon: React.FC<Props> = ({
   ...props
 }: Props) => {
   return (
-    <IconComponent
+    <Icon
       size={size}
       iconPath={isStarred ? FilledIcon : OutlineIcon}
       alt={isStarred ? "星アイコン" : "星アイコン（アウトライン）"}

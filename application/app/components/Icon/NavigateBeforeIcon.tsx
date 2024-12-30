@@ -1,6 +1,6 @@
 import React from "react";
 import navigateBeforeIconPath from "../../../public/images/icons/navigate_before.svg";
-import { IconComponent } from "./IconComponent";
+import { Icon } from "./Icon";
 
 /** 戻るアイコン */
 export const NavigateBeforeIcon: React.FC<{
@@ -8,10 +8,6 @@ export const NavigateBeforeIcon: React.FC<{
   [key: string]: unknown;
 }> = (props) => {
   return (
-    <IconComponent
-      iconPath={navigateBeforeIconPath}
-      alt="戻るアイコン"
-      {...props}
-    />
+    <Icon iconPath={navigateBeforeIconPath} alt="戻るアイコン" {...props} />
   );
 };

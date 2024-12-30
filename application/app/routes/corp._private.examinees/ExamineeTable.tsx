@@ -1,24 +1,23 @@
 import { ActionIcon, Group, rem, Table } from "@mantine/core";
-import { ExamineeData } from ".";
+import { useLoaderData } from "@remix-run/react";
+import { FetchedData } from ".";
 import { AddIcon } from "../../components/Icon/AddIcon";
 import { DeleteIcon } from "../../components/Icon/DeleteIcon";
 import { EditIcon } from "../../components/Icon/EditIcon";
 import { RedoIcon } from "../../components/Icon/RedoIcon";
 
-type ExamineeTableProps = {
-  examinees: ExamineeData[];
+type Props = {
   drawerOpen: () => void;
 };
 
-export const ExamineeTable = ({
-  examinees,
-  drawerOpen,
-}: ExamineeTableProps) => {
-  const examineeRows = examinees.map((examinee) => (
+export const ExamineeTable = ({ drawerOpen }: Props) => {
+  const data = useLoaderData<FetchedData>();
+
+  const examineeRows = data.examinees.map((examinee) => (
     <Table.Tr key={examinee.id} onClick={drawerOpen}>
       <Table.Td>{examinee.id}</Table.Td>
       <Table.Td>{examinee.name}</Table.Td>
-      <Table.Td>{examinee.tags}</Table.Td>
+      <Table.Td>タグ</Table.Td>
       <Table.Td>{examinee.email}</Table.Td>
       <Table.Td>
         <Group gap={rem(32)}>
