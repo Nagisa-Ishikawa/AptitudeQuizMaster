@@ -1,7 +1,7 @@
 import React from "react";
 import OffIcon from "../../../public/images/icons/visibility_off.svg";
 import OnIcon from "../../../public/images/icons/visibility_on.svg";
-import { IconComponent } from "./IconComponent";
+import { Icon } from "./Icon";
 
 type Props = {
   /**
@@ -19,7 +19,7 @@ export const VisibilityIcon: React.FC<Props> = ({
   ...props
 }: Props) => {
   return (
-    <IconComponent
+    <Icon
       size={size}
       iconPath={isVisible ? OnIcon : OffIcon}
       alt={isVisible ? "表示マークアイコン" : "非表示マークアイコン"}

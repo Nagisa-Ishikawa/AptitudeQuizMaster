@@ -79,9 +79,7 @@ export default function Index() {
         gap={rem(20)}
         wrap="wrap"
       >
-        <ButtonA h={rem(60)} w={rem(240)} type="submit">
-          次へ
-        </ButtonA>
+        <ButtonA type="submit">次へ</ButtonA>
       </Flex>
     </form>
   );

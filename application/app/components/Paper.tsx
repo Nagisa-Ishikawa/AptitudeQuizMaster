@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 
 type CustomPaperProps = {
   children: ReactNode;
+  borderWidth?: string;
 } & PaperProps;
 
 /**
@@ -15,6 +16,7 @@ type CustomPaperProps = {
  */
 export const Paper: React.FC<CustomPaperProps> = ({
   children,
+  borderWidth = rem(2),
   ...props
 }: CustomPaperProps) => {
   const theme = useMantineTheme();
@@ -23,7 +25,7 @@ export const Paper: React.FC<CustomPaperProps> = ({
       style={{
         padding: rem(40),
         borderRadius: rem(0),
-        border: `${rem(2)} solid ${
+        border: `${borderWidth} solid ${
           theme.colors.primaryColor[theme.primaryShade as number]
         }`,
       }}

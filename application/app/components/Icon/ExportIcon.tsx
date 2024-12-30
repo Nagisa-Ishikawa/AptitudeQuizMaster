@@ -1,6 +1,6 @@
 import React from "react";
 import uploadIconPath from "../../../public/images/icons/file_upload.svg";
-import { IconComponent } from "./IconComponent";
+import { Icon } from "./Icon";
 
 /** エクスポートアイコン */
 export const ExportIcon: React.FC<{
@@ -8,10 +8,6 @@ export const ExportIcon: React.FC<{
   [key: string]: unknown;
 }> = (props) => {
   return (
-    <IconComponent
-      iconPath={uploadIconPath}
-      alt="エクスポートアイコン"
-      {...props}
-    />
+    <Icon iconPath={uploadIconPath} alt="エクスポートアイコン" {...props} />
   );
 };

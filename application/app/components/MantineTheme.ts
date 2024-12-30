@@ -5,8 +5,13 @@ import {
   createTheme,
   Input,
   MantineColorsTuple,
+  Modal,
+  PillsInput,
   rem,
+  Select,
   Text,
+  Textarea,
+  TextInput,
   ThemeIcon,
   Title,
 } from "@mantine/core";
@@ -80,6 +85,7 @@ export const theme = createTheme({
   },
   fontFamily: "YuGothic",
   fontSizes: {
+    xsss: rem(10),
     xss: rem(12),
     xs: rem(14),
     sm: rem(16),
@@ -93,19 +99,11 @@ export const theme = createTheme({
   components: {
     Button: Button.extend({
       defaultProps: {
+        h: rem(60),
+        w: rem(240),
         color: "primaryColorPalette",
         variant: "filled",
         radius: "xl",
-      },
-    }),
-    Input: Input.extend({
-      defaultProps: {
-        radius: rem(8),
-      },
-    }),
-    Text: Text.extend({
-      defaultProps: {
-        c: textColor,
       },
     }),
     Checkbox: Checkbox.extend({
@@ -116,6 +114,41 @@ export const theme = createTheme({
       },
       defaultProps: {
         color: "primaryColor",
+      },
+    }),
+    Input: Input.extend({
+      defaultProps: {
+        radius: rem(10),
+      },
+    }),
+    Modal: Modal.extend({
+      defaultProps: {
+        radius: rem(10),
+      },
+    }),
+    PillsInput: PillsInput.extend({
+      defaultProps: {
+        radius: rem(10),
+      },
+    }),
+    Select: Select.extend({
+      defaultProps: {
+        radius: rem(10),
+      },
+    }),
+    Text: Text.extend({
+      defaultProps: {
+        c: textColor,
+      },
+    }),
+    Textarea: Textarea.extend({
+      defaultProps: {
+        radius: rem(10),
+      },
+    }),
+    TextInput: TextInput.extend({
+      defaultProps: {
+        radius: rem(10),
       },
     }),
     ThemeIcon: ThemeIcon.extend({

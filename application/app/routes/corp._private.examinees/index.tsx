@@ -10,39 +10,45 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { json, LoaderFunction } from "@remix-run/node";
+import { Exam, Examinee, ExamineeTag, ExamTag } from "@prisma/client";
+import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
-import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
 import { ExportIcon } from "../../components/Icon/ExportIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { Paper } from "../../components/Paper";
+import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
+import { CreateExaminee } from "./Create";
+import { CreateButton } from "./CreateButton";
 import { ExamineeTable } from "./ExamineeTable";
 import { SearchFilter } from "./SearchFilter";
 
-export type ExamineeData = {
-  name: string;
-  id: number;
-  email: string;
-  password: string;
-  note: string | null;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  tags: string[];
+export type FetchedData = {
+  examinees: LinkedExaminee[];
+  tagsMaster: ExamineeTag[];
+  examsMaster: LinkedExam[];
+};
+
+export type LinkedExaminee = Examinee & {
+  tags: ExamineeTag[];
+  exams: Exam[];
+};
+
+export type LinkedExam = Exam & {
+  tags: ExamTag[];
 };
 
 export default function Index() {
-  const examinees = useLoaderData<ExamineeData[]>();
+  const data = useLoaderData<FetchedData>();
 
   const [tagValue, setTagValue] = useState<string[]>([]);
   const [toggleOpened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { open: drawerOpen, close: drawerClose }] =
     useDisclosure(false);
 
-  const totalCount = examinees.length;
+  const totalCount = data.examinees?.length;
   const totalPages = 10; // 仮の値
 
   return (
@@ -66,7 +72,8 @@ export default function Index() {
             <ButtonB leftSection={<ExportIcon size={rem(24)} />}>
               エクスポート
             </ButtonB>
-            <ButtonA>追加</ButtonA>
+            {/* 受験者追加ボタン・追加機能 */}
+            <CreateButton />
           </Group>
         </Flex>
         <SearchFilter
@@ -82,7 +89,7 @@ export default function Index() {
             <Text>全{totalCount}件</Text>
           </Flex>
           <Paper>
-            <ExamineeTable examinees={examinees} drawerOpen={drawerOpen} />
+            <ExamineeTable drawerOpen={drawerOpen} />
           </Paper>
         </Stack>
 
@@ -106,31 +113,74 @@ export const loader: LoaderFunction = async () => {
             deletedAt: null,
           },
           include: {
-            examineeTag: {
-              select: {
-                name: true,
-              },
-            },
+            examineeTag: true,
+          },
+        },
+        ExamAttempt: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            exam: true,
           },
         },
       },
       orderBy: {
-        id: "asc",
+        id: "desc",
       },
     });
 
-    const examineesData = examinees.map((examinee) => {
-      return {
-        ...examinee,
-        tags: examinee.ExamineeTagging.map(
-          (tagging) => tagging.examineeTag.name
-        ).join(", "),
-      };
+    const tagsMaster = await prisma.examineeTag.findMany({
+      where: { deletedAt: null },
+    });
+    const examsMaster = await prisma.exam.findMany({
+      where: { deletedAt: null },
+      include: {
+        ExamTagging: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            examTag: true,
+          },
+        },
+      },
+      orderBy: {
+        id: "desc",
+      },
     });
 
-    return json(examineesData);
+    const data = {
+      examinees: examinees?.map((examinee) => {
+        return {
+          ...examinee,
+          tags: examinee.ExamineeTagging?.map((tagging) => tagging.examineeTag),
+          exams: examinee.ExamAttempt?.map((attempt) => attempt.exam),
+        };
+      }) as LinkedExaminee[],
+      tagsMaster: tagsMaster as ExamineeTag[],
+      examsMaster: examsMaster?.map((exam) => {
+        return {
+          ...exam,
+          tags: exam.ExamTagging?.map((tagging) => tagging.examTag),
+        };
+      }) as LinkedExam[],
+    };
+
+    return data;
   } catch (error) {
     console.error(error);
     throw new Error("データを取得できませんでした");
   }
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  const now = new Date();
+  const formData = await request.formData();
+  switch (request.method) {
+    case "POST": {
+      CreateExaminee(formData, now);
+    }
+  }
+  return redirect(pages.corpExaminees.path);
 };

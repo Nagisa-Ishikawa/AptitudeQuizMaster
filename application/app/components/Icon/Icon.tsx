@@ -8,7 +8,7 @@ type IconProps = {
   [key: string]: unknown;
 };
 
-export const IconComponent: React.FC<IconProps> = ({
+export const Icon: React.FC<IconProps> = ({
   iconPath,
   size,
   alt,
