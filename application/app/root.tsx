@@ -11,8 +11,9 @@ import {
   MetaFunction,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration
 } from "@remix-run/react";
+import { ErrorBoundary } from "./ErrorBoundary";
 import { theme } from "./components/MantineTheme";
 
 export const links: LinksFunction = () => [
@@ -35,7 +36,9 @@ export default function App() {
       </head>
       <body style={{ height: "100%" }}>
         <MantineProvider theme={theme}>
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
           <ScrollRestoration />
           <Scripts />
           <LiveReload />

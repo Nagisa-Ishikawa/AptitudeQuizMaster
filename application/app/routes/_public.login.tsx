@@ -11,7 +11,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
-import { StatusCodes } from "http-status-codes";
+import { StatusCodes } from 'http-status-codes';
 import { useEffect, useState } from "react";
 import LoginBackgroundImage from "../../public/images/backgrounds/login.svg";
 import Logo from "../../public/images/logo.svg";
@@ -28,7 +28,7 @@ export default function LoginRoute() {
   const [isError, setIsError] = useState<boolean>(!!data?.error);
 
   useEffect(() => {
-    setIsError(data?.error);
+    setIsError(!!data?.error);
   }, [data]);
 
   const theme = useMantineTheme();
@@ -53,7 +53,6 @@ export default function LoginRoute() {
   return (
     <main style={{ height: "100%" }}>
       {isError && (
-        // TODO: なんかうまくいってない なんとかしてー
         <Notification
           title={"ログインに失敗しました"}
           onClose={() => setIsError(false)}
