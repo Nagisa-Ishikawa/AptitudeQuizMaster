@@ -8,6 +8,7 @@ import {
   Stack,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure, usePagination } from "@mantine/hooks";
 import { Prisma } from "@prisma/client";
@@ -15,7 +16,7 @@ import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useSearchParams } from "@remix-run/react";
 import { useState } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
-import { ButtonB } from "../../components/Button/ButtonB";
+import { SquareButton } from "../../components/Button/SquareButton";
 import { ExportIcon } from "../../components/Icon/ExportIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { Paper } from "../../components/Paper";
@@ -48,6 +49,7 @@ export type sortDirectionType = "asc" | "desc";
 
 export default function Index() {
   const { examinees, totalCount, tagOptions } = useLoaderData<LoaderData>();
+  const theme = useMantineTheme();
 
   const [searchParams] = useSearchParams();
   const examineeIdParam = searchParams.get("examineeId") || "";
@@ -104,14 +106,35 @@ export default function Index() {
       <Stack bg={"#EEF2F8"} p={rem(40)} gap={rem(32)}>
         <Flex justify={"space-between"} align={"center"}>
           <Title order={1}>受験者</Title>
-          <Group>
-            <ButtonB leftSection={<ImportIcon size={rem(24)} />}>
-              インポート
-            </ButtonB>
-            <ButtonB leftSection={<ExportIcon size={rem(24)} />}>
-              エクスポート
-            </ButtonB>
-            <ButtonA>追加</ButtonA>
+          <Group gap={rem(16)}>
+            <Group gap={rem(8)}>
+              <SquareButton
+                leftSection={<ImportIcon size={rem(24)} />}
+                onClick={() => {
+                  alert("インポートボタンがクリックされました");
+                }}
+              >
+                インポート
+              </SquareButton>
+              <SquareButton
+                leftSection={<ExportIcon size={rem(24)} />}
+                onClick={() => {
+                  alert("エクスポートボタンがクリックされました");
+                }}
+              >
+                エクスポート
+              </SquareButton>
+            </Group>
+            <ButtonA
+              size={"lg"}
+              w={rem(256)}
+              h={rem(60)}
+              onClick={() => {
+                alert("追加ボタンがクリックされました");
+              }}
+            >
+              追加
+            </ButtonA>
           </Group>
         </Flex>
 
@@ -128,7 +151,13 @@ export default function Index() {
         <Stack gap={rem(8)}>
           <Flex justify={"space-between"} align={"center"}>
             <Title size={rem(24)}>受験者一覧</Title>
-            <Text>全{totalCount}件</Text>
+            <Text
+              c={theme.colors.lightTextColor[6]}
+              fs={theme.fontSizes.sm}
+              fw={theme.other.fontWeights.bold}
+            >
+              全{totalCount}件
+            </Text>
           </Flex>
           <Paper>
             <ExamineeTable

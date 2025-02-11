@@ -71,7 +71,17 @@ export const TagsInput: React.FC<Props> = ({
     >
       {/* タグ */}
       <Combobox.DropdownTarget>
-        <PillsInput onClick={() => combobox.openDropdown()} {...props}>
+        <PillsInput
+          onClick={() => combobox.openDropdown()}
+          styles={{
+            label: { fontWeight: "bold" },
+            input: {
+              minHeight: rem(56),
+              padding: `${rem(8)} ${rem(16)}`,
+            },
+          }}
+          {...props}
+        >
           <Pill.Group>
             {values.map((x) => (
               <Pill
@@ -80,10 +90,18 @@ export const TagsInput: React.FC<Props> = ({
                 onRemove={() => handleTagRemove(x.name)}
                 bg={x.color}
                 style={{
-                  height: rem(30),
-                  fontSize: theme.fontSizes.xss,
+                  height: rem(36),
+                  fontSize: theme.fontSizes.xs,
                   fontWeight: theme.other.fontWeights.bold,
                   padding: `${rem(4)} ${rem(8)} ${rem(4)} ${rem(14)}`,
+                }}
+                styles={{
+                  label: {
+                    lineHeight: rem(28),
+                  },
+                  remove: {
+                    color: theme.colors.gray[6],
+                  },
                 }}
               >
                 {x.name}

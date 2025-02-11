@@ -7,6 +7,7 @@ import {
   MantineColorsTuple,
   rem,
   Text,
+  TextInput,
   ThemeIcon,
   Title,
 } from "@mantine/core";
@@ -101,6 +102,22 @@ export const theme = createTheme({
     Input: Input.extend({
       defaultProps: {
         radius: rem(8),
+      },
+    }),
+    TextInput: TextInput.extend({
+      defaultProps: {
+        radius: rem(8),
+        fw: "bold",
+      },
+      styles: {
+        input: {
+          padding: `${rem(8)} ${rem(16)}`,
+          lineHeight: rem(28),
+          height: rem(56),
+        },
+        label: {
+          fontWeight: "bold",
+        },
       },
     }),
     Text: Text.extend({
