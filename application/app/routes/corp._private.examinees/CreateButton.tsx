@@ -1,19 +1,19 @@
 import { useModalsStack } from "@mantine/core";
 import React, { useRef } from "react";
 import { ButtonA } from "../../components/Button/ButtonA";
-import { CreateComfirmModal } from "./CreateComfirmModal";
-import { CreateModal } from "./CreateModal";
+import { RegistrationConfirmModal } from "./RegistrationConfirmModal";
+import { RegistrationInputModal } from "./RegistrationInputModal";
 
 export const CreateButton: React.FC = () => {
-  const createModalsStack = useModalsStack(["input", "confirm"]);
+  const modalsStack = useModalsStack(["input", "confirm"]);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   return (
     <>
-      <ButtonA onClick={() => createModalsStack.open("input")}>追加</ButtonA>
+      <ButtonA onClick={() => modalsStack.open("input")}>追加</ButtonA>
 
-      <CreateModal stack={createModalsStack} formRef={formRef} />
-      <CreateComfirmModal stack={createModalsStack} formRef={formRef} />
+      <RegistrationInputModal stack={modalsStack} formRef={formRef} />
+      <RegistrationConfirmModal stack={modalsStack} formRef={formRef} />
     </>
   );
 };

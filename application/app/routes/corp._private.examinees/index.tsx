@@ -20,9 +20,9 @@ import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
 import { prisma } from "../../services/db.server";
-import { CreateExaminee } from "./Create";
 import { CreateButton } from "./CreateButton";
-import { ExamineeTable } from "./ExamineeTable";
+import { List } from "./List";
+import { RegisterAction } from "./RegisterAction";
 import { SearchFilter } from "./SearchFilter";
 
 export type FetchedData = {
@@ -89,7 +89,7 @@ export default function Index() {
             <Text>全{totalCount}件</Text>
           </Flex>
           <Paper>
-            <ExamineeTable drawerOpen={drawerOpen} />
+            <List drawerOpen={drawerOpen} />
           </Paper>
         </Stack>
 
@@ -177,10 +177,10 @@ export const loader: LoaderFunction = async () => {
 export const action: ActionFunction = async ({ request }) => {
   const now = new Date();
   const formData = await request.formData();
+
   switch (request.method) {
-    case "POST": {
-      CreateExaminee(formData, now);
-    }
+    case "POST":
+      await RegisterAction(formData, now);
   }
   return redirect(pages.corpExaminees.path);
 };

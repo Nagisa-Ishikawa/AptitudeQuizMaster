@@ -1,4 +1,4 @@
-import { Center, Flex, Group, rem, Stack } from "@mantine/core";
+import { Center, Flex, Group, rem, Stack, VisuallyHidden } from "@mantine/core";
 import { Form, useLoaderData } from "@remix-run/react";
 import React, { useState } from "react";
 import { FetchedData } from ".";
@@ -17,15 +17,27 @@ type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   stack: any;
   formRef: React.RefObject<HTMLFormElement>;
+  defaultValues?: {
+    id: number;
+    name: string;
+    email: string;
+    tags: TagItem[];
+    exam?: number;
+    note?: string;
+  };
 };
 
-export const CreateModal: React.FC<Props> = ({ stack, formRef }: Props) => {
+export const RegistrationInputModal: React.FC<Props> = ({
+  stack,
+  formRef,
+  defaultValues,
+}: Props) => {
   const data = useLoaderData<FetchedData>();
-  const [tags, setTags] = useState<TagItem[]>([]);
+  const [tags, setTags] = useState<TagItem[]>(defaultValues?.tags || []);
 
   const onClose = () => {
     formRef.current?.reset();
-    setTags([]);
+    setTags(defaultValues?.tags || []);
     stack.closeAll();
   };
   const onNext = () => {
@@ -36,15 +48,34 @@ export const CreateModal: React.FC<Props> = ({ stack, formRef }: Props) => {
   };
 
   return (
-    <ModalA title="受験者 登録" {...stack.register("input")} onClose={onClose}>
+    <ModalA
+      title={`受験者 ${defaultValues ? "更新" : "登録"}`}
+      {...stack.register("input")}
+      onClose={onClose}
+    >
       <Stack>
         <Form ref={formRef} method="POST">
           <Flex gap={rem(16)}>
-            <TextInput name="name" label="名前" required w="100%" />
+            <VisuallyHidden>
+              <TextInput
+                name="id"
+                label="受験者ID"
+                type="number"
+                value={defaultValues?.id}
+              />
+            </VisuallyHidden>
+            <TextInput
+              name="name"
+              label="名前"
+              defaultValue={defaultValues?.name}
+              required
+              w="100%"
+            />
             <TextInput
               name="email"
               label="メールアドレス"
               type="email"
+              defaultValue={defaultValues?.email}
               required
               w="100%"
             />
@@ -60,10 +91,17 @@ export const CreateModal: React.FC<Props> = ({ stack, formRef }: Props) => {
           <IdNameTagsSelect
             label="試験"
             name="exam"
+            defaultValue={defaultValues?.exam?.toString()}
             w="100%"
             options={data.examsMaster}
           />
-          <Textarea label="メモ" name="note" w="100%" autosize />
+          <Textarea
+            label="メモ"
+            name="note"
+            defaultValue={defaultValues?.note}
+            w="100%"
+            autosize
+          />
 
           <Center mt={rem(16)}>
             <Group gap={rem(16)}>
