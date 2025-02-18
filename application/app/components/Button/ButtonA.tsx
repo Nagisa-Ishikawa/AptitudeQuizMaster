@@ -7,6 +7,6 @@ type Props = {
 /**
  * 青のボタン
  */
-export const ButtonA: React.FC<Props> = ({ ...props }: Props) => {
-  return <Button {...props} />;
+export const ButtonA: React.FC<Props> = ({ type, ...props }: Props) => {
+  return <Button type={type} {...props} />;
 };

@@ -2,15 +2,18 @@ import { v4 as uuidv4 } from "uuid";
 import { defaultExamineeTagColor } from "../../consts/tags";
 import { prisma } from "../../services/db.server";
 
+// 受験者upsert
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const CreateExaminee = async (formData: any, now: Date) => {
+export const RegisterAction = async (formData: any, now: Date) => {
   await prisma.$transaction(async (prisma) => {
+    const examineeId = parseInt(formData.get("id") || "0");
+
     // 受験者タグマスタ更新
-    const examineeTagsName = formData.get("tags");
-    const examineeTagsId = await Promise.all(
-      examineeTagsName.trim() === ""
+    const examineeTagsNames = formData.get("tags");
+    const examineeTagsIds = await Promise.all(
+      examineeTagsNames.trim() === ""
         ? []
-        : examineeTagsName.split(",")?.map(async (x: string) => {
+        : examineeTagsNames.split(",")?.map(async (x: string) => {
             const examineeTag = await prisma.examineeTag.findFirst({
               where: {
                 name: x,
@@ -31,29 +34,52 @@ export const CreateExaminee = async (formData: any, now: Date) => {
           })
     );
 
-    // 受験者作成
-    const examinee = await prisma.examinee.create({
-      data: {
+    // 受験者作成 or 更新
+    const examinee = await prisma.examinee.upsert({
+      where: {
+        id: examineeId,
+      },
+      create: {
         name: formData.get("name"),
         email: formData.get("email"),
         note: formData.get("note"),
         password: uuidv4(),
         createdAt: now,
         updatedAt: now,
-        ExamineeTagging: {
-          createMany: {
-            data: examineeTagsId.map((id) => ({
-              examineeTagId: id,
-              createdAt: now,
-              updatedAt: now,
-            })),
-          },
-        },
+      },
+      update: {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        note: formData.get("note"),
+        updatedAt: now,
       },
     });
 
-    // 試験が指定されていれば、受験作成
+    // 受験者タグ付け更新
+    // 全部削除 -> 作成 で更新する
+    await prisma.examineeTagging.deleteMany({
+      where: {
+        examineeId: examineeId,
+      },
+    });
+    await prisma.examineeTagging.createMany({
+      data: examineeTagsIds.map((id) => ({
+        examineeId: examinee.id,
+        examineeTagId: id,
+        createdAt: now,
+        updatedAt: now,
+      })),
+    });
+
+    // 受験作成
+    // 全部削除 -> 作成 で更新する
+    // ※受験履歴がすでにあれば、削除に失敗する
     const examId = parseInt(formData.get("exam"));
+    await prisma.examAttempt.deleteMany({
+      where: {
+        examineeId: examinee.id,
+      },
+    });
     if (examId) {
       await prisma.examAttempt.create({
         data: {

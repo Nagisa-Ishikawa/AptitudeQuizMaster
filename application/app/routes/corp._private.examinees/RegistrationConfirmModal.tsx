@@ -11,6 +11,7 @@ import {
 import { useLoaderData } from "@remix-run/react";
 import React from "react";
 import { FetchedData } from ".";
+import { IdBadge } from "../../components/Badge/IdBadge";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
 import { ExamIcon } from "../../components/Icon/ExamIcon";
@@ -28,7 +29,7 @@ type Props = {
   formRef: React.RefObject<HTMLFormElement>;
 };
 
-export const CreateComfirmModal: React.FC<Props> = ({
+export const RegistrationConfirmModal: React.FC<Props> = ({
   stack,
   formRef,
 }: Props) => {
@@ -39,20 +40,24 @@ export const CreateComfirmModal: React.FC<Props> = ({
   if (!inputs) return <></>;
 
   return (
-    <ModalA title="受験者 登録" {...stack.register("confirm")}>
+    <ModalA
+      title={`受験者 ${inputs.id ? "更新" : "登録"}`}
+      {...stack.register("confirm")}
+    >
       <Stack gap={rem(32)}>
         <Center>
           <Text
             size={theme.fontSizes.md}
             style={{ fontWeight: theme.other.fontWeights.bold }}
           >
-            このユーザを登録しますか？
+            {`このユーザを${inputs.id ? "更新" : "登録"}しますか？`}
           </Text>
         </Center>
 
         <Center>
           <Paper p={rem(24)} miw={rem(288)} borderWidth={rem(1)}>
             <Stack gap={rem(16)} align="center">
+              {inputs.id && <IdBadge value={inputs.id} />}
               <Text
                 size={theme.fontSizes.lg}
                 style={{ fontWeight: theme.other.fontWeights.bold }}
@@ -95,10 +100,16 @@ export const CreateComfirmModal: React.FC<Props> = ({
                   <Textarea
                     size={theme.fontSizes.xss}
                     autosize
+                    readOnly
                     value={inputs.note}
                     styles={{
                       input: {
                         padding: `${rem(8)} ${rem(16)}`,
+                        border: `${rem(1)} solid ${
+                          theme.colors.secondaryColorPallet[
+                            theme.primaryShade as number
+                          ]
+                        }`,
                         color:
                           theme.colors.textColor[theme.primaryShade as number],
                         backgroundColor:
@@ -116,13 +127,11 @@ export const CreateComfirmModal: React.FC<Props> = ({
 
         <Center>
           <Group gap={rem(16)}>
-            <ButtonB onClick={() => stack.close("confirm")}>戻る</ButtonB>
-            <ButtonA
-              onClick={() => {
-                formRef.current?.submit();
-              }}
-            >
-              進む
+            <ButtonB type="button" onClick={() => stack.close("confirm")}>
+              戻る
+            </ButtonB>
+            <ButtonA type="button" onClick={() => formRef.current?.submit()}>
+              {inputs.id ? "更新" : "登録"}
             </ButtonA>
           </Group>
         </Center>
