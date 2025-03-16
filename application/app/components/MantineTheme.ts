@@ -23,7 +23,9 @@ const bodyColor = "#FFFFFF";
 const corpBodyColor = "#EEF2F8";
 const textColor = "#121412";
 const lightTextColor = "#676867";
+const tableHeaderTextColor = "#888988";
 const noteColor = "#D9D9D9";
+const errorColor = "#D23E3E";
 
 const primaryColorPalette: MantineColorsTuple = [
   "#ebf3ff",
@@ -81,7 +83,9 @@ export const theme = createTheme({
     corpBodyColor: colorsTuple(corpBodyColor),
     textColor: colorsTuple(textColor),
     lightTextColor: colorsTuple(lightTextColor),
+    tableHeaderTextColor: colorsTuple(tableHeaderTextColor),
     noteColor: colorsTuple(noteColor),
+    errorColor: colorsTuple(errorColor),
   },
   fontFamily: "YuGothic",
   fontSizes: {

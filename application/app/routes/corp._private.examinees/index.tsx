@@ -1,6 +1,5 @@
 import {
   Center,
-  Drawer,
   Flex,
   Group,
   Pagination,
@@ -10,7 +9,6 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Exam, Examinee, ExamineeTag, ExamTag } from "@prisma/client";
 import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
@@ -19,26 +17,12 @@ import { ExportIcon } from "../../components/Icon/ExportIcon";
 import { ImportIcon } from "../../components/Icon/ImportIcon";
 import { Paper } from "../../components/Paper";
 import { pages } from "../../consts/pages";
-import { prisma } from "../../services/db.server";
+import { RegisterAction } from "./Action";
 import { CreateButton } from "./CreateButton";
+import { Drawer } from "./Drawer";
 import { List } from "./List";
-import { RegisterAction } from "./RegisterAction";
+import { fetch, FetchedData } from "./Loader";
 import { SearchFilter } from "./SearchFilter";
-
-export type FetchedData = {
-  examinees: LinkedExaminee[];
-  tagsMaster: ExamineeTag[];
-  examsMaster: LinkedExam[];
-};
-
-export type LinkedExaminee = Examinee & {
-  tags: ExamineeTag[];
-  exams: Exam[];
-};
-
-export type LinkedExam = Exam & {
-  tags: ExamTag[];
-};
 
 export default function Index() {
   const data = useLoaderData<FetchedData>();
@@ -53,15 +37,6 @@ export default function Index() {
 
   return (
     <>
-      <Drawer
-        opened={drawerOpened}
-        onClose={drawerClose}
-        position="bottom"
-        withCloseButton={false}
-      >
-        {/* ドロワーの中身を書く */}
-      </Drawer>
-
       <Stack bg={"#EEF2F8"} p={rem(40)} gap={rem(32)}>
         <Flex justify={"space-between"} align={"center"}>
           <Title order={1}>受験者</Title>
@@ -72,6 +47,7 @@ export default function Index() {
             <ButtonB leftSection={<ExportIcon size={rem(24)} />}>
               エクスポート
             </ButtonB>
+
             {/* 受験者追加ボタン・追加機能 */}
             <CreateButton />
           </Group>
@@ -97,81 +73,14 @@ export default function Index() {
           <Pagination total={totalPages} />
         </Center>
       </Stack>
+
+      <Drawer opend={drawerOpened} close={drawerClose} />
     </>
   );
 }
 
 export const loader: LoaderFunction = async () => {
-  try {
-    const examinees = await prisma.examinee.findMany({
-      where: {
-        deletedAt: null,
-      },
-      include: {
-        ExamineeTagging: {
-          where: {
-            deletedAt: null,
-          },
-          include: {
-            examineeTag: true,
-          },
-        },
-        ExamAttempt: {
-          where: {
-            deletedAt: null,
-          },
-          include: {
-            exam: true,
-          },
-        },
-      },
-      orderBy: {
-        id: "desc",
-      },
-    });
-
-    const tagsMaster = await prisma.examineeTag.findMany({
-      where: { deletedAt: null },
-    });
-    const examsMaster = await prisma.exam.findMany({
-      where: { deletedAt: null },
-      include: {
-        ExamTagging: {
-          where: {
-            deletedAt: null,
-          },
-          include: {
-            examTag: true,
-          },
-        },
-      },
-      orderBy: {
-        id: "desc",
-      },
-    });
-
-    const data = {
-      examinees: examinees?.map((examinee) => {
-        return {
-          ...examinee,
-          tags: examinee.ExamineeTagging?.map((tagging) => tagging.examineeTag),
-          exams: examinee.ExamAttempt?.map((attempt) => attempt.exam),
-        };
-      }) as LinkedExaminee[],
-      tagsMaster: tagsMaster as ExamineeTag[],
-      examsMaster: examsMaster?.map((exam) => {
-        return {
-          ...exam,
-          tags: exam.ExamTagging?.map((tagging) => tagging.examTag),
-        };
-      }) as LinkedExam[],
-    };
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw new Error("データを取得できませんでした");
-  }
+  return await fetch();
 };
 
 export const action: ActionFunction = async ({ request }) => {

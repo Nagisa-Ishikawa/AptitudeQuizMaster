@@ -1,7 +1,6 @@
 import { Center, Flex, Group, rem, Stack, VisuallyHidden } from "@mantine/core";
 import { Form, useLoaderData } from "@remix-run/react";
 import React, { useState } from "react";
-import { FetchedData } from ".";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
 import { IdNameTagsSelect } from "../../components/Input/Select/IdNameTagsSelect";
@@ -12,6 +11,7 @@ import {
 import { Textarea } from "../../components/Input/Text/Textarea";
 import { TextInput } from "../../components/Input/Text/TextInput";
 import { ModalA } from "../../components/Modal/ModalA";
+import { FetchedData } from "./Loader";
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

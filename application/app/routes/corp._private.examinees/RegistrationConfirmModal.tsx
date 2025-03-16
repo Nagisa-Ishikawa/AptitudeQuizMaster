@@ -10,7 +10,6 @@ import {
 } from "@mantine/core";
 import { useLoaderData } from "@remix-run/react";
 import React from "react";
-import { FetchedData } from ".";
 import { IdBadge } from "../../components/Badge/IdBadge";
 import { ButtonA } from "../../components/Button/ButtonA";
 import { ButtonB } from "../../components/Button/ButtonB";
@@ -22,6 +21,7 @@ import { Paper } from "../../components/Paper";
 import { Pill } from "../../components/Pill";
 import { defaultExamineeTagColor } from "../../consts/tags";
 import { formRef2DataObj } from "../../functions/formRef2DataObj";
+import { FetchedData } from "./Loader";
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

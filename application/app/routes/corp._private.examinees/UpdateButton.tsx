@@ -1,8 +1,8 @@
 import { rem, useModalsStack } from "@mantine/core";
 import { useLoaderData } from "@remix-run/react";
 import React, { useRef } from "react";
-import { FetchedData } from ".";
 import { EditIcon } from "../../components/Icon/EditIcon";
+import { FetchedData } from "./Loader";
 import { RegistrationConfirmModal } from "./RegistrationConfirmModal";
 import { RegistrationInputModal } from "./RegistrationInputModal";
 
